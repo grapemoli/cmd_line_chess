@@ -1,0 +1,16 @@
+project (chess){
+  exename = chess
+  install = .
+ 
+  specific (make, gnuace) {
+    compile_flags += -std=c++14
+  }
+
+  Source_Files {
+    driver.cpp
+  }
+
+  Template_Files {
+    //Chess.h
+  }
+}
