@@ -6,7 +6,7 @@
 3. NAMESPACES ??
 
 ## Savepoints
-1. Create UML
+1. Create UML <--
 2. Create Chess Pieces 
 3. Test Chess Pieces
 4. Create catching algorithm 
