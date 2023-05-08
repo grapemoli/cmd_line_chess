@@ -4,6 +4,7 @@
 1. Use design patterns
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
+4. Please use folders to seperate code accordingly
 
 ## Savepoints
 1. Create UML <--
