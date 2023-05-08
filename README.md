@@ -7,9 +7,9 @@
 
 ## Savepoints
 1. Create UML <--
-2. Create Chess Pieces 
-3. Test Chess Pieces
-4. Create catching algorithm 
+2. Determine representation of the Board / Pieces on the Board
+3. Create Chess Pieces 
+4. Test Chess Pieces
 5. Add pawn-transformation functionality
 6. Create Board
 
