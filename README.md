@@ -16,20 +16,20 @@
 8. Optimize the physical representation of the board
 
 ## Board Representation (Structure TBD)
-K – king
-Q – queen
-R – rook
-B – bishop
-N – knight
-P – pawn 
-| *R* | *N* | *B* | *Q* | *K* | *B* | *N* | *R* |
-| *P* | *P* | *P* | *P* | *P* | *P* | *P* | *P* |
-|         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |
-| -P- | -P- | -P- | -P- | -P- | -P- | -P- | -P- |
-| -R- | -N- | -B- | -K- | -Q- | -B- | -N- | -R- |
+K – king <br>
+Q – queen <br>
+R – rook <br>
+B – bishop <br>
+N – knight <br>
+P – pawn <br>
+| *R* | *N* | *B* | *Q* | *K* | *B* | *N* | *R* | <br>
+| *P* | *P* | *P* | *P* | *P* | *P* | *P* | *P* | <br>
+|         |         |         |         |         |         |         |         | <br>
+|         |         |         |         |         |         |         |         | <br>
+|         |         |         |         |         |         |         |         | <br>
+|         |         |         |         |         |         |         |         | <br>
+| -P- | -P- | -P- | -P- | -P- | -P- | -P- | -P- | <br>
+| -R- | -N- | -B- | -K- | -Q- | -B- | -N- | -R- | <br>
 
 
 ## UML
