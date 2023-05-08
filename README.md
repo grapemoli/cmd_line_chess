@@ -1,5 +1,10 @@
 # Chess
 
+## Goals
+1. Use design patterns
+2. Dynamic / Linear Programming if possible
+3. NAMESPACES ??
+
 ## Savepoints
 1. Create UML
 2. Create Chess Pieces 
