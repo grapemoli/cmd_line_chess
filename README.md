@@ -5,6 +5,7 @@
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
 4. Please use folders to seperate code accordingly
+5. Implement undo/redo features 
 
 ## Savepoints
 1. Create UML <--
