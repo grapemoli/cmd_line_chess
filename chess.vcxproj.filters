@@ -5,10 +5,27 @@
       <UniqueIdentifier>{B1F27843-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
       <Extensions>cpp;cxx;cc;c;C</Extensions>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{06319535-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hh</Extensions>
+    </Filter>
+    <Filter Include="Template Files">
+      <UniqueIdentifier>{5635C877-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Chess_Piece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Chess_Piece.h">
+      <Filter>Template Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

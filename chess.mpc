@@ -11,6 +11,6 @@ project (chess){
   }
 
   Template_Files {
-    //Chess.h
+    Chess_Piece.h
   }
 }
