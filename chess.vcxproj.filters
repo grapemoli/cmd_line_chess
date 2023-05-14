@@ -9,6 +9,10 @@
       <UniqueIdentifier>{06319535-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hh</Extensions>
     </Filter>
+    <Filter Include="Inline Files">
+      <UniqueIdentifier>{763028EF-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
+      <Extensions>i;ipp;inl</Extensions>
+    </Filter>
     <Filter Include="Template Files">
       <UniqueIdentifier>{5635C877-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
     </Filter>
@@ -22,6 +26,11 @@
     <ClInclude Include="Chess_Piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Chess_Piece.inl">
+      <Filter>Inline Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Chess_Piece.h">

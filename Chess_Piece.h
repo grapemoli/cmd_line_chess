@@ -4,7 +4,7 @@
  * File: Chess_Piece.h
  * By: Grace Nguyen
  */
- //==============================================================================
+//==============================================================================
 
 
 #pragma once
@@ -25,18 +25,11 @@ class Chess_Piece
 {
 public:
   /**
-   * Default constructor.
+   * Default constructer.
    * 
    * @param[in]         color         Boolean representation of the color
-   */
-  Chess_Piece (bool color);
-
-  /**
-   * Overloaded constructer to non-default placement.
-   * 
-   * @param[in]         color         Boolean representation of the color
-   * @param[in]         x             The x-coordinate
-   * @param[in]         y             The y-coordinate
+   * @param[in]         x             The x coordinate
+   * @param[in]         y             The y coordinate
    */
   Chess_Piece (bool color, size_t x, size_t y);
 
@@ -53,7 +46,7 @@ public:
   bool get_color (void);
 
   /// Return the stack of actions.
-  std::stack<array<int, 2>> get_actions (void);
+  std::stack<std::array<int, 2>> & get_actions (void);
 
   /**
    * A pure method that will check the placement validity,
@@ -62,7 +55,7 @@ public:
    * 
    * @param[in]         board         The Chess_Board instance
    */
-   void execute (void) = 0;       /// TODO: add in BOARD
+   virtual void execute (void) = 0;                                 /// TODO: add in BOARD
 
    /**
     * Checks if the movement of the chess piece will cause
@@ -72,30 +65,30 @@ public:
     * @retvalue           True          There is a collision
     * @retvalue           False         There is no collision
     */
-    bool is_collide (void);     /// TODO: add in BOARD
+    bool is_collide (void);                                         /// TODO: add in BOARD
+
+   /**
+    * List the possible moves that can be made, taking into
+    * account edge collision. Unique to each specific piece.
+    */
+    virtual void list_moves (void) = 0;
+
+   /**
+    * Check if the movement is valid. Unique to each specific
+    * piece.
+    * 
+    * @param[in]          x             The to-be x placement
+    * @param[in]          y             The to-be y placement
+    * @retvalue           True          Valid
+    * @retvalue           False         Not valid
+    */
+    virtual bool is_valid (size_t x, size_t y) = 0;
 
     /**
-     * List the possible moves that can be made, taking into
-     * account edge collision. Unique to each specific piece.
+     * Support the undo() operation by regressing to the top
+     * position on the stack.
      */
-     void list_moves (void) = 0;
-
-     /**
-      * Check if the movement is valid. Unique to each specific
-      * piece.
-      * 
-      * @param[in]          x             The to-be x placement
-      * @param[in]          y             The to-be y placement
-      * @retvalue           True          Valid
-      * @retvalue           False         Not valid
-      */
-      bool is_valid (size_t x, size_t y) = 0;
-
-      /**
-       * Support the undo() operation by regressing to the top
-       * position on the stack.
-       */
-       void undo (void);
+     void undo (void);
 
 private:
   /*************
@@ -113,6 +106,10 @@ private:
    /// A stack of previous placements of the chess piece. 
    std::stack<std::array<int, 2>> actions_;
 };
+
+
+// Include the inline file.
+#include "Chess_Piece.inl"
 
 
 #endif   // !defined _CHESS_PIECE_H
