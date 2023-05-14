@@ -84,11 +84,11 @@ public:
     */
     virtual bool is_valid (size_t x, size_t y) = 0;
 
-    /**
-     * Support the undo() operation by regressing to the top
-     * position on the stack.
-     */
-     void undo (void);
+   /**
+    * Support the undo() operation by regressing to the top
+    * position on the stack.
+    */
+    void undo (void);
 
 private:
   /*************

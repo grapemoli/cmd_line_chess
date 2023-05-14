@@ -31,3 +31,15 @@ Chess_Piece::~Chess_Piece(void)
 {
   // There is nothing to deallocate.
 }
+
+
+/*
+  Movement Methods
+*/
+//
+// is_collide (Chess_Board)
+//
+bool Chess_Piece::is_collide(void)
+{
+  return true;
+}
