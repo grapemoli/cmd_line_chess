@@ -561,6 +561,7 @@
     <ClInclude Include="Pawn.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Chess_Board.inl" />
     <None Include="Chess_Piece.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

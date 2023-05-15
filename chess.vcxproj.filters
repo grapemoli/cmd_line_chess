@@ -40,6 +40,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Chess_Board.inl">
+      <Filter>Inline Files</Filter>
+    </None>
     <None Include="Chess_Piece.inl">
       <Filter>Inline Files</Filter>
     </None>

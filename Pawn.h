@@ -46,13 +46,13 @@ public:
    * @param[in]         y             New y position
    * @param[in]         board         The Chess_Board instance
    */
-   void execute (size_t x, size_t y);                                   /// TODO: add in BOARD
+  void execute (size_t x, size_t y);                                   /// TODO: add in BOARD
 
   /**
    * List the possible moves that can be made, taking into
    * account edge collision. Unique to each specific piece.
    */
-   void list_valid_moves (void);
+  void list_valid_moves (void);
 
   /**
    * Check if the movement is valid. Unique to each specific
@@ -63,14 +63,14 @@ public:
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-   bool is_valid (size_t x, size_t y);
+  bool is_valid (size_t x, size_t y);
 
-   /**
-    * Enable double dispatching. Used for collision detection.
-    *
-    * @param[in]         v             Chess_Piece_Visitor instance
-    */
-   void accept (void);
+  /**
+   * Enable double dispatching. Used for collision detection.
+   *
+   * @param[in]         v             Chess_Piece_Visitor instance
+   */
+  void accept (void);
 };
 
 

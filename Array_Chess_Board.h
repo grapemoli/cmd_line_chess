@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //==============================================================================
 /**
- * File: Chess_Board.h
+ * File: Array_Chess_Board.h
  * By: Grace Nguyen
  */
 //==============================================================================
@@ -33,10 +33,10 @@ public:
   virtual ~Chess_Board (void);
 
   /// Print the board.
-  virtual void print (void) = 0;
+  void print (void);
 
   /// Start the game.
-  virtual void start (void) = 0;
+  void start (void);
 
   /**
    * Check for game over (if a king is eaten).
@@ -44,7 +44,7 @@ public:
    * @retvalue          True          Game Over
    * @retvalue          False         Game is not over
    */
-  virtual bool game_over (void) = 0;
+  bool game_over (void);
 
   /**
    * Ask for the user input needed to move the appropiate
@@ -52,17 +52,9 @@ public:
    * 
    * @param[in]          color         Boolean representing the color playing
    */
-  virtual void move (bool color) = 0;
+  void move (bool color);
 
-  /**
-   * Transform the pawn by replacing the Pawn representation
-   * with the new representation that the user chooses.
-   * 
-   * @param[in]         piece           Transform_Chess_Piece reference
-   */
-  virtual void transform (Chess_Piece & piece) = 0;
-
-protected:
+private:
   /*************
    * Attributes
    **************/
