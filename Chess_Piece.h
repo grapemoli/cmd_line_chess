@@ -102,14 +102,20 @@ public:
   /// Destructor.
   virtual ~Chess_Piece (void);
 
-  /// Return the x_ data member.
-  size_t get_x (void);
+  /// Return the x_ data member, which can not change this.
+  const size_t get_x (void) const;
 
-  /// Return the y_ data member.
-  size_t get_y (void);
+  /// Return the x_ data member, which can change this.
+  size_t get_x(void);
+
+  /// Return the y_ data member, which can not change this.
+  const size_t get_y (void) const;
+
+  /// Return the y_ data member, which can change this.
+  size_t get_y(void);
 
   /// Return the is_white_ data member.
-  bool is_white (void);
+  const bool is_white (void) const;
 
   /// Return the stack of actions.
   std::stack<std::array<int, 2>> & get_actions (void);
@@ -137,7 +143,7 @@ public:
    * @retvalue           False         There is no collision
    * @exception          game_over     The opposing King is eaten.
    */
-  bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
+  const bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
 
   /**
    * List the possible moves that can be made, taking into
@@ -154,7 +160,7 @@ public:
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual bool is_valid (size_t x, size_t y) = 0;
+  virtual const bool is_valid (size_t x, size_t y) = 0;
 
   /**
    * Support the undo() operation by regressing to the top

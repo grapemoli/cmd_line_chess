@@ -8,7 +8,7 @@
 
 
 #include "Chess_Piece.h"
-//#include "Tranform_Chess_Piece.h"
+//#include "Transform_Chess_Piece.h"
 #include "Pawn.h"
 #include "Chess_Board.h"
 

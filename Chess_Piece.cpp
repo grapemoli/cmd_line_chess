@@ -38,7 +38,7 @@ Chess_Piece::~Chess_Piece()
 //
 // is_collide (size_t, size_t, Chess_Board)
 //
-bool Chess_Piece::is_collide(size_t x, size_t y)
+const bool Chess_Piece::is_collide(size_t x, size_t y)
 {
   /*
   if there is a thing on the chess_board at that place:

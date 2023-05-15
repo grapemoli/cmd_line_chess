@@ -6,6 +6,17 @@
  */
 //==============================================================================
 
+
+//
+// get_x ()
+//
+inline
+const size_t Chess_Piece::get_x(void) const
+{
+  return this->x_;
+}
+
+
 //
 // get_x ()
 //
@@ -14,6 +25,17 @@ size_t Chess_Piece::get_x(void)
 {
   return this->x_;
 }
+
+
+//
+// get_y ()
+//
+inline
+const size_t Chess_Piece::get_y(void) const
+{
+  return this->y_;
+}
+
 
 //
 // get_y ()
@@ -24,14 +46,16 @@ size_t Chess_Piece::get_y(void)
   return this->y_;
 }
 
+
 //
 // is_white ()
 //
 inline
-bool Chess_Piece::is_white(void)
+const bool Chess_Piece::is_white(void) const
 {
   return this->is_white_;
 }
+
 
 //
 // get_actions ()

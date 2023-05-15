@@ -63,7 +63,7 @@ public:
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  bool is_valid (size_t x, size_t y);
+  const bool is_valid (size_t x, size_t y);
 
   /**
    * Enable double dispatching. Used for collision detection.
