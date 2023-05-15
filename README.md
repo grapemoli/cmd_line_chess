@@ -16,7 +16,7 @@
 7. Give option to reverse the printing of the board based on which player is playing
 8. Optimize the physical representation of the board
 
-## Algorithms
+## Algorithms & Implementations
 ### Collision Detection and Game Over Detection
 Collision detection WILL NOT require the latest concretion, BUT GAME OVER DETECTION WILL.
 
@@ -24,7 +24,21 @@ For collision detection: check the color (does not depend on latest concretion),
 For Game Over dectection: get the concretion, if opposing color & king, then return game_over.\
 - use double dispatching to get the concretion -- get_result() will return true IF A KING (and you can get the color because all base Chess_Piece will have an is_white attribute)!!!!
 
-## Board Representation (2D Array)
+### Undo
+Currently, undo() is only supported for when the user inputs a faulty coordinate. However, supporting undo for "undoing" the conglomerate moves that the two players have done is simple: with the "UNDO" option chosen, just pop from the moves_ stack in Chess_Board.
+
+### User Interface
+~ insert Board ~
+WHITE'S TURN (input 'QUIT' to quit):
+Choose a piece to move: x, y
+New X coordinate:
+New Y coordinate: 
+
+..
+..
+..
+
+##$ Board Representation (2D Array)
 K – king <br>
 Q – queen <br>
 R – rook <br>
