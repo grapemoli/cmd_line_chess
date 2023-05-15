@@ -53,9 +53,9 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
 
 
 //
-// is_valid (size_t, size_t, Chess_Board &)
+// is_valid (size_t, size_t)
 //
-const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
+const bool Pawn::is_valid(size_t x, size_t y)
 {
   return true;
 }

@@ -60,11 +60,10 @@ public:
    * 
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
-   * @param[in]          board         Reference to a Chess_Board instance
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  const bool is_valid (size_t x, size_t y, Chess_Board & board);
+  const bool is_valid (size_t x, size_t y);
 
   /**
    * Enable double dispatching. Used for collision detection.

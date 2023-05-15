@@ -61,7 +61,7 @@ public:
    * @param[in]         y             The y coordinate to retrieve from
    * @return            Chess_Piece instance
    */
-  virtual Chess_Piece get_chess_piece(size_t x, size_t y) = 0;
+  virtual Chess_Piece get_chess_piece (size_t x, size_t y) = 0;
 
   /**
    * Transform the pawn by replacing the Pawn representation

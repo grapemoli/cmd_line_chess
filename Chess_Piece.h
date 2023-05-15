@@ -160,11 +160,10 @@ public:
    * 
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
-   * @param[in]          board         Reference to the Chess_Board instance
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool is_valid (size_t x, size_t y, Chess_Board & board) = 0;
+  virtual const bool is_valid (size_t x, size_t y) = 0;
 
   /**
    * Support the undo() operation by regressing to the top
