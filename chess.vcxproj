@@ -128,7 +128,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\chess\I386\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
@@ -137,7 +138,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\chess\I386\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
@@ -146,7 +148,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\chess\AMD64\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
@@ -155,7 +158,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Release\chess\AMD64\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
@@ -164,7 +168,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Debug\chess\ARM\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" />
@@ -173,7 +178,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Release\chess\ARM\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">false</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|ARM'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" />
@@ -182,7 +188,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Debug\chess\ARM64\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" />
@@ -191,7 +198,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Release\chess\ARM64\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">false</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">chess</TargetName>
-    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'"></LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    </LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(OutDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" />
@@ -229,10 +237,10 @@
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)\chess_exe.pdb</ProgramDatabaseFile>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -267,10 +275,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -304,18 +312,18 @@
       <OutputFile>$(OutDir)chess.exe</OutputFile>
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)\chess_exe.pdb</ProgramDatabaseFile>
-<!--
+      <!--
   Though we can set TargetMachine explicitly, VC++
   can figure it out by project type. We don't need
   to set it by ourselves.
 -->
-<!--      <TargetMachine>0</TargetMachine>-->
+      <!--      <TargetMachine>0</TargetMachine>-->
       <AdditionalOptions>/machine:AMD64 %(AdditionalOptions)</AdditionalOptions>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -349,18 +357,18 @@
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-<!--
+      <!--
   Though we can set TargetMachine explicitly, VC++
   can figure it out by project type. We don't need
   to set it by ourselves.
 -->
-<!--      <TargetMachine>0</TargetMachine>-->
+      <!--      <TargetMachine>0</TargetMachine>-->
       <AdditionalOptions>/machine:AMD64 %(AdditionalOptions)</AdditionalOptions>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -394,18 +402,18 @@
       <OutputFile>$(OutDir)chess.exe</OutputFile>
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)\chess_exe.pdb</ProgramDatabaseFile>
-<!--
+      <!--
   Though we can set TargetMachine explicitly, VC++
   can figure it out by project type. We don't need
   to set it by ourselves.
 -->
-<!--      <TargetMachine>0</TargetMachine>-->
+      <!--      <TargetMachine>0</TargetMachine>-->
       <AdditionalOptions>/machine:ARM %(AdditionalOptions)</AdditionalOptions>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -439,18 +447,18 @@
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-<!--
+      <!--
   Though we can set TargetMachine explicitly, VC++
   can figure it out by project type. We don't need
   to set it by ourselves.
 -->
-<!--      <TargetMachine>0</TargetMachine>-->
+      <!--      <TargetMachine>0</TargetMachine>-->
       <AdditionalOptions>/machine:ARM %(AdditionalOptions)</AdditionalOptions>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -484,18 +492,18 @@
       <OutputFile>$(OutDir)chess.exe</OutputFile>
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)\chess_exe.pdb</ProgramDatabaseFile>
-<!--
+      <!--
   Though we can set TargetMachine explicitly, VC++
   can figure it out by project type. We don't need
   to set it by ourselves.
 -->
-<!--      <TargetMachine>0</TargetMachine>-->
+      <!--      <TargetMachine>0</TargetMachine>-->
       <AdditionalOptions>/machine:ARM64 %(AdditionalOptions)</AdditionalOptions>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -529,18 +537,18 @@
       <AdditionalLibraryDirectories>.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-<!--
+      <!--
   Though we can set TargetMachine explicitly, VC++
   can figure it out by project type. We don't need
   to set it by ourselves.
 -->
-<!--      <TargetMachine>0</TargetMachine>-->
+      <!--      <TargetMachine>0</TargetMachine>-->
       <AdditionalOptions>/machine:ARM64 %(AdditionalOptions)</AdditionalOptions>
     </Link>
-<!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
+    <!-- "postclean" was made-up by MPC for use by vs_postclean.pl.
      Check if msbuild has any support for a custom post-cleaning step
  -->
-<!-- No known equivalent for DeploymentTool in vc10:
+    <!-- No known equivalent for DeploymentTool in vc10:
 -->
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -561,7 +569,6 @@
     <ClInclude Include="Pawn.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Chess_Board.inl" />
     <None Include="Chess_Piece.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

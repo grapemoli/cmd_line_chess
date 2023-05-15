@@ -169,7 +169,7 @@ public:
    * Support the undo() operation by regressing to the top
    * position on the stack.
    */
-   void undo (void);
+  void undo (void);
 
   /**
    * Enable double dispatching. Used for collision detection.

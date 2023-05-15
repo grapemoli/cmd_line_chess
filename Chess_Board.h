@@ -71,13 +71,23 @@ public:
    */
   virtual void transform (Chess_Piece & piece) = 0;
 
+  /// Return size_.
+  size_t get_size (void) const;
+
 protected:
   /*************
    * Attributes
    **************/
   /// Allows for back-tracking of moves.
   std::stack<Chess_Piece> moves_;
+
+  /// A Chess_Board is 8x8.
+  size_t size_;
 };
+
+
+// Include inline.
+#include "Chess_Board.inl"
 
 
 #endif   // !defined _CHESS_BOARD_H_

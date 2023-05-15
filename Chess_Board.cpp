@@ -6,6 +6,7 @@
  */
  //==============================================================================
 
+#define SIZE 8
 
 #include "Chess_Piece.h"
 //#include "Transform_Chess_Piece.h"
@@ -20,7 +21,8 @@
 // Chess_Board ()
 //
 Chess_Board::Chess_Board(void)
-  :moves_()
+  :moves_(),
+  size_(SIZE)
 {}
 
 
