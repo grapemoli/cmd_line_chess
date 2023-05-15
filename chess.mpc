@@ -8,6 +8,7 @@ project (chess){
 
   Source_Files {
     driver.cpp
+    Pawn.cpp
   }
 
   Template_Files {

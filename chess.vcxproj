@@ -546,6 +546,8 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Pawn.cpp">
+    </ClCompile>
     <ClCompile Include="driver.cpp">
     </ClCompile>
   </ItemGroup>

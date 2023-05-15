@@ -43,3 +43,14 @@ bool Chess_Piece::is_collide(void)
 {
   return true;
 }
+
+
+//
+// undo ()
+//
+void Chess_Piece::undo(void)
+{
+  std::array<int, 2> prev_pos = this->actions_.pop();
+  this->x_ = prev_pos[0];
+  this->y_ = prev_pos[1];
+}

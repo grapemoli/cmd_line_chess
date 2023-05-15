@@ -8,12 +8,11 @@
 
 
 #pragma once
-#ifndef _CHESS_PIECE_H_
-#define _CHESS_PIECE_H_
+#ifndef _CHESS_PIECE_H
+#define _CHESS_PIECE_H
 
 #include <stack>          // For stack.
 #include <array>          // For array.
-#include <exception>      // For custom exception: invalid_move.
 
 
 /**
@@ -25,40 +24,6 @@
 class Chess_Piece 
 {
 public:
-  /*************
-   * Custom Exception: invalid_move
-   **************/
-  /**
-    * @class invalid_move
-    *
-    * Exception thrown to indicate invalid move.
-    */
-  class invalid_move: public std::exception
-  {
-  public:
-    /// Default constructor.
-    invalid_move (void)
-      :std::exception () { }
-      
-    /**
-     * Initializing constructor.
-     *
-     * @param[in]      msg          Error message.
-     */
-    invalid_move (const char * msg)
-      :std::exception (msg) { }
-
-    /// Message to be returned when what() is called.
-    const char* what() const throw()
-    {
-      return "Invalid move.";
-    }
-  };
-
-
-  /*************
-   * Member Functions
-   **************/
   /**
    * Default constructer.
    * 
@@ -85,15 +50,12 @@ public:
 
   /**
    * A pure method that will check the placement validity,
-   * and then move the chess piece. Lastly, the "previous" 
-   * position is pushed into the actions stack.
+   * and then move the chess piece. Made into a Template method. Lastly,
+   * the "previous" position is pushed into the actions stack.
    * 
-   * @param[in]         x             New x position
-   * @param[in]         y             New y position
-   * @param[in]         board         Reference to a Chess_Board instance
-   * @exception         invalid_move
+   * @param[in]         board         The Chess_Board instance
    */
-   virtual void execute (size_t x, size_t y) = 0;                                 /// TODO: add in BOARD
+   virtual void execute (void) = 0;                                 /// TODO: add in BOARD
 
    /**
     * Checks if the movement of the chess piece will cause
@@ -128,7 +90,7 @@ public:
     */
     void undo (void);
 
-protected:
+private:
   /*************
    * Attributes
    **************/
