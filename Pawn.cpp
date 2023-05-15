@@ -8,6 +8,7 @@
 
 
 #include "Chess_Piece.h"
+#include "Chess_Board.h"
 #include "Pawn.h"
 
 
@@ -43,18 +44,18 @@ Pawn::~Pawn(void)
   Movement Execution Methods
 */
 // 
-// execute (size_t x, size_t y, Chess_Board)
+// execute (size_t x, size_t y, Chess_Board &)
 //
-void Pawn::execute(size_t x, size_t y)
+void Pawn::execute(size_t x, size_t y, Chess_Board & board)
 {
   std::cout << "x: " << x << "\ny: " << y << "\n";
 }
 
 
 //
-// is_valid (size_t, size_t)
+// is_valid (size_t, size_t, Chess_Board &)
 //
-const bool Pawn::is_valid(size_t x, size_t y)
+const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
 {
   return true;
 }

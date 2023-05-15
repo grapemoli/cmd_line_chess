@@ -6,8 +6,9 @@
  */
 //==============================================================================
 
- 
+
 #include "Chess_Piece.h"
+#include "Chess_Board.h"
 
 
 /*
@@ -36,9 +37,9 @@ Chess_Piece::~Chess_Piece()
   Movement Methods
 */
 //
-// is_collide (size_t, size_t, Chess_Board)
+// is_collide (size_t, size_t, Chess_Board &)
 //
-const bool Chess_Piece::is_collide(size_t x, size_t y)
+const bool Chess_Piece::is_collide(size_t x, size_t y, Chess_Board & board)
 {
   /*
   if there is a thing on the chess_board at that place:

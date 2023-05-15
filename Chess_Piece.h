@@ -16,6 +16,9 @@
 #include <exception>      // For custom exception: invalid_move, game_over.
 #include <iostream>       // For printing.
 
+// Forward Declarations.
+class Chess_Board;
+
 
 /**
  * @class Chess_Piece
@@ -106,13 +109,13 @@ public:
   const size_t get_x (void) const;
 
   /// Return the x_ data member, which can change this.
-  size_t get_x(void);
+  size_t get_x (void);
 
   /// Return the y_ data member, which can not change this.
   const size_t get_y (void) const;
 
   /// Return the y_ data member, which can change this.
-  size_t get_y(void);
+  size_t get_y (void);
 
   /// Return the is_white_ data member.
   const bool is_white (void) const;
@@ -130,7 +133,7 @@ public:
    * @param[in]         board         Reference to a Chess_Board instance
    * @exception         invalid_move
    */
-  virtual void execute (size_t x, size_t y) = 0;                                 /// TODO: add in BOARD
+  virtual void execute (size_t x, size_t y, Chess_Board & board) = 0;
 
   /**
    * Checks if the movement of the chess piece will cause
@@ -143,7 +146,7 @@ public:
    * @retvalue           False         There is no collision
    * @exception          game_over     The opposing King is eaten.
    */
-  const bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
+  const bool is_collide (size_t x, size_t y, Chess_Board & board);
 
   /**
    * List the possible moves that can be made, taking into
@@ -157,10 +160,11 @@ public:
    * 
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
+   * @param[in]          board         Reference to the Chess_Board instance
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool is_valid (size_t x, size_t y) = 0;
+  virtual const bool is_valid (size_t x, size_t y, Chess_Board & board) = 0;
 
   /**
    * Support the undo() operation by regressing to the top
