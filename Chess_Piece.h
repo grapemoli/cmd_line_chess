@@ -14,6 +14,7 @@
 #include <stack>          // For stack.
 #include <array>          // For array.
 #include <exception>      // For custom exception: invalid_move.
+#include <iostream>       // For printing.
 
 
 /**
@@ -62,14 +63,14 @@ public:
   /**
    * Default constructer.
    * 
-   * @param[in]         color         Boolean representation of the color
+   * @param[in]         is_white      Boolean to determine color
    * @param[in]         x             The x coordinate
    * @param[in]         y             The y coordinate
    */
-  Chess_Piece (bool color, size_t x, size_t y);
+  Chess_Piece (bool is_white, size_t x, size_t y);
 
   /// Destructor.
-  ~Chess_Piece (void);
+  virtual ~Chess_Piece (void);
 
   /// Return the x_ data member.
   size_t get_x (void);
@@ -77,8 +78,8 @@ public:
   /// Return the y_ data member.
   size_t get_y (void);
 
-  /// Return the color data member.
-  bool get_color (void);
+  /// Return the is_white_ data member.
+  bool is_white (void);
 
   /// Return the stack of actions.
   std::stack<std::array<int, 2>> & get_actions (void);
@@ -99,17 +100,19 @@ public:
     * Checks if the movement of the chess piece will cause
     * a collision with any other piece.
     * 
+    * @param[in]          x             New x position
+    * @param[in]          y             New y position
     * @param[in]          board         The Chess_Board instance
     * @retvalue           True          There is a collision
     * @retvalue           False         There is no collision
     */
-    bool is_collide (void);                                         /// TODO: add in BOARD
+    bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
 
    /**
     * List the possible moves that can be made, taking into
     * account edge collision. Unique to each specific piece.
     */
-    virtual void list_moves (void) = 0;
+    virtual void list_valid_moves (void) = 0;
 
    /**
     * Check if the movement is valid. Unique to each specific
@@ -126,14 +129,15 @@ public:
     * Support the undo() operation by regressing to the top
     * position on the stack.
     */
+
     void undo (void);
 
 protected:
   /*************
    * Attributes
    **************/
-   /// The color of the chess piece (white is 1, black is 0).
-   bool color_;
+   /// True if the chess piece is white, false if black.
+   bool is_white_;
 
    /// The x position of the chess piece.
    size_t x_;

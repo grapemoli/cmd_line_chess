@@ -11,7 +11,9 @@
 #ifndef _PAWN_H_
 #define _PAWN_H_
 
-#include "Chess_Piece.h"
+
+// Forward Declarations.
+class Chess_Piece;
 
 
 /**
@@ -27,10 +29,10 @@ public:
   /**
    * Default constructer.
    * 
-   * @param[in]         color         Boolean representation of the color
+   * @param[in]         is_white      Boolean representation of the color
    * @param[in]         x             The x position
    */
-  Pawn (bool color, size_t x);
+  Pawn (bool is_white, size_t x);
 
   /// Destructor.
   ~Pawn (void);
@@ -40,36 +42,28 @@ public:
    * If both passes are true, then set the new position and push to the
    * actions stack.
    * 
+   * @param[in]         x             New x position
+   * @param[in]         y             New y position
    * @param[in]         board         The Chess_Board instance
    */
-   void execute (void);                                   /// TODO: add in BOARD
+   void execute (size_t x, size_t y);                                   /// TODO: add in BOARD
 
-   /**
-    * Checks if the movement of the chess piece will cause
-    * a collision with any other piece.
-    * 
-    * @param[in]          board         The Chess_Board instance
-    * @retvalue           True          There is a collision
-    * @retvalue           False         There is no collision
-    */
-    bool is_collide (void);                                         /// TODO: add in BOARD
+  /**
+   * List the possible moves that can be made, taking into
+   * account edge collision. Unique to each specific piece.
+   */
+   void list_valid_moves (void);
 
-   /**
-    * List the possible moves that can be made, taking into
-    * account edge collision. Unique to each specific piece.
-    */
-    virtual void list_moves (void) = 0;
-
-   /**
-    * Check if the movement is valid. Unique to each specific
-    * piece.
-    * 
-    * @param[in]          x             The to-be x placement
-    * @param[in]          y             The to-be y placement
-    * @retvalue           True          Valid
-    * @retvalue           False         Not valid
-    */
-    bool is_valid (size_t x, size_t y);
+  /**
+   * Check if the movement is valid. Unique to each specific
+   * piece.
+   * 
+   * @param[in]          x             The to-be x placement
+   * @param[in]          y             The to-be y placement
+   * @retvalue           True          Valid
+   * @retvalue           False         Not valid
+   */
+   bool is_valid (size_t x, size_t y);
 };
 
 

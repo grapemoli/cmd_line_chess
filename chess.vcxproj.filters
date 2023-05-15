@@ -13,11 +13,11 @@
       <UniqueIdentifier>{763028EF-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
       <Extensions>i;ipp;inl</Extensions>
     </Filter>
-    <Filter Include="Template Files">
-      <UniqueIdentifier>{5635C877-FECA-1BAD-E241-8A060000002E}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Chess_Piece.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -29,15 +29,13 @@
     <ClInclude Include="Chess_Piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Pawn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Chess_Piece.inl">
       <Filter>Inline Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Chess_Piece.h">
-      <Filter>Template Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

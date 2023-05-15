@@ -9,6 +9,7 @@
 //
 // get_x ()
 //
+inline
 size_t Chess_Piece::get_x(void)
 {
   return this->x_;
@@ -17,22 +18,25 @@ size_t Chess_Piece::get_x(void)
 //
 // get_y ()
 //
+inline
 size_t Chess_Piece::get_y(void)
 {
   return this->y_;
 }
 
 //
-// get_color ()
+// is_white ()
 //
-bool Chess_Piece::get_color(void)
+inline
+bool Chess_Piece::is_white(void)
 {
-  return this->color_;
+  return this->is_white_;
 }
 
 //
 // get_actions ()
 //
+inline
 std::stack<std::array<int, 2>> & Chess_Piece::get_actions(void)
 {
   return this->actions_;

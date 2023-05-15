@@ -7,11 +7,13 @@ project (chess){
   }
 
   Source_Files {
-    driver.cpp
+    Chess_Piece.cpp
     Pawn.cpp
+
+    driver.cpp
   }
 
   Template_Files {
-    Chess_Piece.h
+    
   }
 }
