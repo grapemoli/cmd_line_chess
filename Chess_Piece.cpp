@@ -27,7 +27,8 @@ Chess_Piece::Chess_Piece(bool is_white, size_t x, size_t y)
 //
 // ~Chess_Piece ()
 //
-Chess_Piece::~Chess_Piece() {}
+Chess_Piece::~Chess_Piece() 
+{}
 
 
 
@@ -39,6 +40,12 @@ Chess_Piece::~Chess_Piece() {}
 //
 bool Chess_Piece::is_collide(size_t x, size_t y)
 {
+  /*
+  if there is a thing on the chess_board at that place:
+  1. accept()
+  2. if king, game over! return game_over
+  3. else, eat the piece.
+  */
   return true;
 }
 

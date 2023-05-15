@@ -47,7 +47,7 @@ Pawn::~Pawn(void)
 //
 void Pawn::execute(size_t x, size_t y)
 {
-  
+  std::cout << "x: " << x << "\ny: " << y << "\n";
 }
 
 
@@ -57,6 +57,16 @@ void Pawn::execute(size_t x, size_t y)
 bool Pawn::is_valid(size_t x, size_t y)
 {
   return true;
+}
+
+
+
+/*
+  accept (Chess_Piece_Visitor)
+*/
+void Pawn::accept(void)
+{
+
 }
 
 

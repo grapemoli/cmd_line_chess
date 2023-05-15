@@ -64,6 +64,13 @@ public:
    * @retvalue           False         Not valid
    */
    bool is_valid (size_t x, size_t y);
+
+   /**
+    * Enable double dispatching. Used for collision detection.
+    *
+    * @param[in]         v             Chess_Piece_Visitor instance
+    */
+   void accept (void);
 };
 
 

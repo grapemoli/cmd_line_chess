@@ -13,7 +13,7 @@
 
 #include <stack>          // For stack.
 #include <array>          // For array.
-#include <exception>      // For custom exception: invalid_move.
+#include <exception>      // For custom exception: invalid_move, game_over.
 #include <iostream>       // For printing.
 
 
@@ -27,7 +27,7 @@ class Chess_Piece
 {
 public:
   /*************
-   * Custom Exception: invalid_move
+   * Custom Exceptions
    **************/
   /**
     * @class invalid_move
@@ -50,11 +50,41 @@ public:
       :std::exception (msg) { }
 
     /// Message to be returned when what() is called.
-    const char* what() const throw()
+    const char* what () const throw ()
     {
       return "Invalid move.";
     }
   };
+
+
+  /**
+    * @class game_over
+    *
+    * Exception thrown to indicate game over (i.e.,
+    * the King is eaten!).
+    */
+  class game_over : public std::exception
+  {
+  public:
+    /// Default constructor.
+    game_over (void)
+      :std::exception () { }
+
+    /**
+     * Initializing constructor.
+     *
+     * @param[in]      msg          Error message.
+     */
+    game_over (const char* msg)
+      :std::exception (msg) { }
+
+    /// Message to be returned when what() is called.
+    const char* what () const throw ()
+    {
+      return "Game over!";
+    }
+  };
+
 
 
   /*************
@@ -105,6 +135,7 @@ public:
     * @param[in]          board         The Chess_Board instance
     * @retvalue           True          There is a collision
     * @retvalue           False         There is no collision
+    * @exception          game_over     The opposing King is eaten.
     */
     bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
 
@@ -129,8 +160,14 @@ public:
     * Support the undo() operation by regressing to the top
     * position on the stack.
     */
-
     void undo (void);
+
+   /**
+    * Enable double dispatching. Used for collision detection.
+    * 
+    * @param[in]         v             Chess_Piece_Visitor instance
+    */
+    virtual void accept (void) = 0;
 
 protected:
   /*************
