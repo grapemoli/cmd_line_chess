@@ -38,7 +38,7 @@ New Y coordinate: <br>
 .. <br>
 .. <br>
 
-##$ Board Representation (2D Array)
+## Board Representation (2D Array)
 K – king <br>
 Q – queen <br>
 R – rook <br>
