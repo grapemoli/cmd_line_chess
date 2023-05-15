@@ -12,6 +12,7 @@
 #define _CHESS_BOARD_H_
 
 #include <stack>          // For stack.
+#include <memory>         // For shared_ptr.
 
 // Forward Declarations.
 class Chess_Piece;
@@ -59,9 +60,9 @@ public:
    * 
    * @param[in]         x             The x coordinate to retrieve from
    * @param[in]         y             The y coordinate to retrieve from
-   * @return            Chess_Piece instance
+   * @return            Chess_Piece pointer (pointer because can be null)
    */
-  virtual Chess_Piece get_chess_piece (size_t x, size_t y) = 0;
+  virtual std::shared_ptr<Chess_Piece> get_chess_piece (size_t x, size_t y) = 0;
 
   /**
    * Transform the pawn by replacing the Pawn representation

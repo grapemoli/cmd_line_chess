@@ -41,13 +41,19 @@ Chess_Piece::~Chess_Piece()
 //
 const bool Chess_Piece::is_collide(size_t x, size_t y, Chess_Board & board)
 {
-  /*
-  if there is a thing on the chess_board at that place:
-  1. accept()
-  2. if king, game over! return game_over
-  3. else, eat the piece.
-  */
-  return true;
+  std::shared_ptr<Chess_Piece> occupied_piece = board.get_chess_piece(x, y);
+  if (occupied_piece == nullptr)
+  {
+    return false;
+  }
+  else
+  {
+    // Check if king.
+    // occupied_piece.accept(visitor);
+    // if (visitor.get_result() == true) { throw game_over(); }
+    // else { return true; }
+    return true;
+  }
 }
 
 

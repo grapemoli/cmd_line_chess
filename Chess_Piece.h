@@ -15,6 +15,7 @@
 #include <array>          // For array.
 #include <exception>      // For custom exception: invalid_move, game_over.
 #include <iostream>       // For printing.
+#include <memory>         // For shared_ptr.
 
 // Forward Declarations.
 class Chess_Board;
