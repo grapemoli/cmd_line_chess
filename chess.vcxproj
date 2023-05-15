@@ -546,6 +546,8 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Chess_Board.cpp">
+    </ClCompile>
     <ClCompile Include="Chess_Piece.cpp">
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
@@ -554,6 +556,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chess_Board.h" />
     <ClInclude Include="Chess_Piece.h" />
     <ClInclude Include="Pawn.h" />
   </ItemGroup>

@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Chess_Board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Chess_Piece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -26,6 +29,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chess_Board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Chess_Piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>

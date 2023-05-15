@@ -9,6 +9,8 @@ project (chess){
   Source_Files {
     Chess_Piece.cpp
     Pawn.cpp
+  
+    Chess_Board.cpp
 
     driver.cpp
   }

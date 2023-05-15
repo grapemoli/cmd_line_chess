@@ -124,66 +124,66 @@ public:
    * @param[in]         board         Reference to a Chess_Board instance
    * @exception         invalid_move
    */
-   virtual void execute (size_t x, size_t y) = 0;                                 /// TODO: add in BOARD
+  virtual void execute (size_t x, size_t y) = 0;                                 /// TODO: add in BOARD
 
-   /**
-    * Checks if the movement of the chess piece will cause
-    * a collision with any other piece.
-    * 
-    * @param[in]          x             New x position
-    * @param[in]          y             New y position
-    * @param[in]          board         The Chess_Board instance
-    * @retvalue           True          There is a collision
-    * @retvalue           False         There is no collision
-    * @exception          game_over     The opposing King is eaten.
-    */
-    bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
+  /**
+   * Checks if the movement of the chess piece will cause
+   * a collision with any other piece.
+   * 
+   * @param[in]          x             New x position
+   * @param[in]          y             New y position
+   * @param[in]          board         The Chess_Board instance
+   * @retvalue           True          There is a collision
+   * @retvalue           False         There is no collision
+   * @exception          game_over     The opposing King is eaten.
+   */
+  bool is_collide (size_t x, size_t y);                                         /// TODO: add in BOARD
 
-   /**
-    * List the possible moves that can be made, taking into
-    * account edge collision. Unique to each specific piece.
-    */
-    virtual void list_valid_moves (void) = 0;
+  /**
+   * List the possible moves that can be made, taking into
+   * account edge collision. Unique to each specific piece.
+   */
+  virtual void list_valid_moves (void) = 0;
 
-   /**
-    * Check if the movement is valid. Unique to each specific
-    * piece.
-    * 
-    * @param[in]          x             The to-be x placement
-    * @param[in]          y             The to-be y placement
-    * @retvalue           True          Valid
-    * @retvalue           False         Not valid
-    */
-    virtual bool is_valid (size_t x, size_t y) = 0;
+  /**
+   * Check if the movement is valid. Unique to each specific
+   * piece.
+   * 
+   * @param[in]          x             The to-be x placement
+   * @param[in]          y             The to-be y placement
+   * @retvalue           True          Valid
+   * @retvalue           False         Not valid
+   */
+  virtual bool is_valid (size_t x, size_t y) = 0;
 
-   /**
-    * Support the undo() operation by regressing to the top
-    * position on the stack.
-    */
-    void undo (void);
+  /**
+   * Support the undo() operation by regressing to the top
+   * position on the stack.
+   */
+   void undo (void);
 
-   /**
-    * Enable double dispatching. Used for collision detection.
-    * 
-    * @param[in]         v             Chess_Piece_Visitor instance
-    */
-    virtual void accept (void) = 0;
+  /**
+   * Enable double dispatching. Used for collision detection.
+   * 
+   * @param[in]         v             Chess_Piece_Visitor instance
+   */
+  virtual void accept (void) = 0;
 
 protected:
   /*************
    * Attributes
    **************/
-   /// True if the chess piece is white, false if black.
-   bool is_white_;
+  /// True if the chess piece is white, false if black.
+  bool is_white_;
 
-   /// The x position of the chess piece.
-   size_t x_;
+  /// The x position of the chess piece.
+  size_t x_;
 
-   /// The y position of the chess piece.
-   size_t y_;
+  /// The y position of the chess piece.
+  size_t y_;
 
-   /// A stack of previous placements of the chess piece. 
-   std::stack<std::array<int, 2>> actions_;
+  /// A stack of previous placements of the chess piece. 
+  std::stack<std::array<int, 2>> actions_;
 };
 
 
