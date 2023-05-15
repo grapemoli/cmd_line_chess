@@ -28,15 +28,15 @@ For Game Over dectection: get the concretion, if opposing color & king, then ret
 Currently, undo() is only supported for when the user inputs a faulty coordinate. However, supporting undo for "undoing" the conglomerate moves that the two players have done is simple: with the "UNDO" option chosen, just pop from the moves_ stack in Chess_Board.
 
 ### User Interface
-~ insert Board ~
-WHITE'S TURN (input 'QUIT' to quit):
-Choose a piece to move: x, y
-New X coordinate:
-New Y coordinate: 
+~ insert Board ~ <br>
+WHITE'S TURN (input 'QUIT' to quit): <br>
+Choose a piece to move: x, y <br>
+New X coordinate: <br>
+New Y coordinate: <br>
 
-..
-..
-..
+.. <br>
+.. <br>
+.. <br>
 
 ##$ Board Representation (2D Array)
 K – king <br>
