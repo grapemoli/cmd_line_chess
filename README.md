@@ -20,8 +20,9 @@
 ### Collision Detection and Game Over Detection
 Collision detection WILL NOT require the latest concretion, BUT GAME OVER DETECTION WILL.
 
-For collision detection: check the color, if different then replace. 
-For Game Over dectection: get the concretion, if opposing color & king, then return game_over.
+For collision detection: check the color (does not depend on latest concretion), if different then replace. 
+For Game Over dectection: get the concretion, if opposing color & king, then return game_over.\
+- use double dispatching to get the concretion -- get_result() will return true IF A KING (and you can get the color because all base Chess_Piece will have an is_white attribute)!!!!
 
 ## Board Representation (2D Array)
 K – king <br>
