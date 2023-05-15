@@ -4,20 +4,26 @@
 1. Use design patterns
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
-4. Please use folders to seperate code accordingly
-5. Implement undo/redo features 
+4. Implement undo/redo features 
 
 ## Savepoints
-1. Create UML <--
-2. Determine representation of the Board / Pieces on the Board <--
-3. Create Chess Pieces 
+1. Create UML [O]
+2. Determine representation of the Board / Pieces on the Board [O]
+3. Create Chess Pieces  <--
 4. Test Chess Pieces & Chess Eating
 5. Add pawn-transformation functionality
 6. Create Board
 7. Give option to reverse the printing of the board based on which player is playing
 8. Optimize the physical representation of the board
 
-## Board Representation (Structure TBD)
+## Algorithms
+### Collision Detection and Game Over Detection
+Collision detection WILL NOT require the latest concretion, BUT GAME OVER DETECTION WILL.
+
+For collision detection: check the color, if different then replace. 
+For Game Over dectection: get the concretion, if opposing color & king, then return game_over.
+
+## Board Representation (2D Array)
 K – king <br>
 Q – queen <br>
 R – rook <br>
