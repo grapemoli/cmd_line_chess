@@ -46,14 +46,14 @@ R – rook <br>
 B – bishop <br>
 N – knight <br>
 P – pawn <br>
-| *R* | *N* | *B* | *Q* | *K* | *B* | *N* | *R* | <br>
+| *R* | *N* | *B* | *K* | *Q* | *B* | *N* | *R* | <br>
 | *P* | *P* | *P* | *P* | *P* | *P* | *P* | *P* | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
 | -P- | -P- | -P- | -P- | -P- | -P- | -P- | -P- | <br>
-| -R- | -N- | -B- | -K- | -Q- | -B- | -N- | -R- | <br>
+| -R- | -N- | -B- | -Q- | -K- | -B- | -N- | -R- | <br>
 
 * differentiation of *white* and -black- pieces.
 
