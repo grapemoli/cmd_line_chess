@@ -75,6 +75,15 @@ public:
   /// Return size_.
   size_t get_size (void) const;
 
+  /**
+   * Set the chess piece to the inputted parameters.
+   * 
+   * @param[in]         x               The new x-position
+   * @param[in]         y               The new y-position
+   * @param[in]         piece           Chess_Piece reference
+   */
+  virtual void set_chess_piece (size_t x, size_t y, Chess_Piece & piece) = 0;
+
 protected:
   /*************
    * Attributes

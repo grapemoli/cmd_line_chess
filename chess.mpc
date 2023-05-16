@@ -7,6 +7,9 @@ project (chess){
   }
 
   Source_Files {
+    Movement_Validation_Strategy.cpp
+    Array_Validation_Strategy.cpp
+
     Chess_Piece_Visitor.h
     Game_Over_Visitor.cpp
 

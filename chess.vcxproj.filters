@@ -30,6 +30,9 @@
     <ClCompile Include="Game_Over_Visitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Movement_Validation_Strategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Pawn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,6 +50,9 @@
     <ClInclude Include="Game_Over_Visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Movement_Validation_Strategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Pawn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -56,6 +62,9 @@
       <Filter>Inline Files</Filter>
     </None>
     <None Include="Chess_Piece.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="Movement_Validation_Strategy.inl">
       <Filter>Inline Files</Filter>
     </None>
   </ItemGroup>

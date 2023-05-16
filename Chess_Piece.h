@@ -20,6 +20,7 @@
 // Forward Declarations.
 class Chess_Board;
 class Chess_Piece_Visitor;
+class Movement_Validation_Strategy;
 
 
 /**
@@ -101,8 +102,9 @@ public:
    * @param[in]         is_white      Boolean to determine color
    * @param[in]         x             The x coordinate
    * @param[in]         y             The y coordinate
+   * @param[in]         strategy      Movement_Validation_Strategy reference
    */
-  Chess_Piece (bool is_white, size_t x, size_t y);
+  Chess_Piece (bool is_white, size_t x, size_t y, Movement_Validation_Strategy & strategy);
 
   /// Destructor.
   virtual ~Chess_Piece (void);
@@ -122,6 +124,12 @@ public:
   /// Return the is_white_ data member.
   const bool is_white (void) const;
 
+  /// Set the x position.
+  void set_x (size_t x);
+
+  /// Set the y position.
+  void set_y (size_t y);
+
   /// Return the stack of actions.
   std::stack<std::array<int, 2>> & get_actions (void);
 
@@ -138,35 +146,10 @@ public:
   virtual void execute (size_t x, size_t y, Chess_Board & board) = 0;
 
   /**
-   * Checks if the movement of the chess piece will cause
-   * a collision with any other piece.
-   * 
-   * @param[in]          x             New x position
-   * @param[in]          y             New y position
-   * @param[in]          board         The Chess_Board instance
-   * @retvalue           True          There is a collision
-   * @retvalue           False         There is no collision
-   * @exception          game_over     The opposing King is eaten.
-   */
-  const bool is_collide (size_t x, size_t y, Chess_Board & board);
-
-  /**
    * List the possible moves that can be made, taking into
    * account edge collision. Unique to each specific piece.
    */
   virtual void list_valid_moves (void) = 0;
-
-  /**
-   * Check if the movement is valid. Unique to each specific
-   * piece.
-   * 
-   * @param[in]          x             The to-be x placement
-   * @param[in]          y             The to-be y placement
-   * @param[in]          board         Chess_Board reference
-   * @retvalue           True          Valid
-   * @retvalue           False         Not valid
-   */
-  virtual const bool is_valid (size_t x, size_t y, Chess_Board & board) = 0;
 
   /**
    * Support the undo() operation by regressing to the top
@@ -196,6 +179,9 @@ protected:
 
   /// A stack of previous placements of the chess piece. 
   std::stack<std::array<int, 2>> actions_;
+
+  /// The strategy to employ for movement, collision & game over detection.
+  Movement_Validation_Strategy & movement_strategy_;
 };
 
 

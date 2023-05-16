@@ -8,6 +8,7 @@
 
 
 #include "Chess_Board.h"
+#include "Movement_Validation_Strategy.h"
 #include "Game_Over_Visitor.h"
 #include "Pawn.h"
 
@@ -16,10 +17,10 @@
   Constructor & Destructor
 */
 //
-// Pawn (bool, size_t)
+// Pawn (bool, size_t, Movement_Validation_Strategy &)
 //
-Pawn::Pawn(bool is_white, size_t x)
-  :Chess_Piece(is_white, x, 1)
+Pawn::Pawn(bool is_white, size_t x, Movement_Validation_Strategy & strategy)
+  :Chess_Piece(is_white, x, 1, strategy)
 {
   // Pawns are initialized at y = 1 if the Pawn is black, and 
   // initialized at y = 6 if the Pawn is white.
@@ -48,61 +49,29 @@ Pawn::~Pawn(void)
 //
 void Pawn::execute(size_t x, size_t y, Chess_Board & board)
 {
-  std::cout << "x: " << x << "\ny: " << y << "\n";
-}
-
-
-//
-// is_valid (size_t, size_t, Chess_Board &)
-//
-const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
-{
-  // Take advantage of C++ return behavior by first checking for 
-  // border collision.
-  if (x > 7 || y > 7)
+  // Use the strategy to verify the validity of the move. 
+  // If the move is invalid, then throw the invalid_move exception.
+  // If the game is over, then throw game_over exception.
+  try 
   {
-    return false;
-  }
-  
-  // A pawn that does not eat other pieces can only move forward.
-  // White pawns' 'forward movement' result in decrementing y-coordinates,
-  // while black pawns' 'forward movement' result in incrementing 
-  // y-coordinates.
-  if (this->is_white_ == true && y == this->y_ - 1)
-  {
-    return true;
-  }
+    const bool is_valid = this->movement_strategy_.check_pawn_movement(x, y, *this);
 
-  if (this->is_white_ == false && y == this->y_ + 1)
-  {
-    return true;
-  }
-
-  // A pawn that eats other pieces can move forward diagonally.
-  if (this->is_white_ == true && y == this->y_ - 1)
-  {
-    if (x == this->x_ - 1 || x == this->x_ + 1)
+    if (is_valid == true)
     {
-      if (this->is_collide(x, y, board) == true)
-      {
-        return true;
-      }
+      // execute as needed.
+      board.set_chess_piece(x, y, *this);
+      this->x_ = y;
+      this->y_ = y;
+    }
+    else
+    {
+      throw invalid_move();
     }
   }
-
-  if (this->is_white_ == false && y == this->y_ + 1)
+  catch (Movement_Validation_Strategy::game_over & e)
   {
-    if (x == this->x_ - 1 || x == this->x_ + 1)
-    {
-      if (this->is_collide(x, y, board) == true)
-      {
-        return true;
-      }
-    }
+    throw game_over();
   }
-
-  // If any of the above is not true, then this move must be invalid.
-  return false;
 }
 
 
@@ -118,11 +87,8 @@ void Pawn::accept(Chess_Piece_Visitor & v)
 
 
 /*
-  Misc. Methods
+  list_valid_moves ()
 */
-//
-// list_moves ()
-//
 void Pawn::list_valid_moves(void)
 {
   // For each possible move, check that the coordinate

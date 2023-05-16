@@ -33,8 +33,9 @@ public:
    * 
    * @param[in]         is_white      Boolean representation of the color
    * @param[in]         x             The x position
+   * @param[in]         strategy      Movement_Validation_Strategy reference
    */
-  Pawn (bool is_white, size_t x);
+  Pawn (bool is_white, size_t x, Movement_Validation_Strategy & strategy);
 
   /// Destructor.
   ~Pawn (void);
@@ -55,18 +56,6 @@ public:
    * account edge collision. Unique to each specific piece.
    */
   void list_valid_moves (void);
-
-  /**
-   * Check if the movement is valid. Unique to each specific
-   * piece.
-   * 
-   * @param[in]          x             The to-be x placement
-   * @param[in]          y             The to-be y placement
-   * @parem[in]          board         Chess_Board reference
-   * @retvalue           True          Valid
-   * @retvalue           False         Not valid
-   */
-  const bool is_valid (size_t x, size_t y, Chess_Board & board);
 
   /**
    * Enable double dispatching. Used for collision detection.

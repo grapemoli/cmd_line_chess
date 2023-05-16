@@ -554,6 +554,8 @@
     </ClCompile>
     <ClCompile Include="Game_Over_Visitor.cpp">
     </ClCompile>
+    <ClCompile Include="Movement_Validation_Strategy.cpp">
+    </ClCompile>
     <ClCompile Include="Pawn.cpp">
     </ClCompile>
     <ClCompile Include="driver.cpp">
@@ -564,11 +566,13 @@
     <ClInclude Include="Chess_Piece.h" />
     <ClInclude Include="Chess_Piece_Visitor.h" />
     <ClInclude Include="Game_Over_Visitor.h" />
+    <ClInclude Include="Movement_Validation_Strategy.h" />
     <ClInclude Include="Pawn.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Chess_Board.inl" />
     <None Include="Chess_Piece.inl" />
+    <None Include="Movement_Validation_Strategy.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

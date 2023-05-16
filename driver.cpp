@@ -10,10 +10,11 @@
 #include <iostream>
 #include "Pawn.h"
 #include "Game_Over_Visitor.h"
+#include "Movement_Validation_Strategy.h"
 
 
 int main (void)
 {
-  Pawn g(true, 1);
+  // Chess_Board a = Array_Chess_Board ();
   std::cout << "Hello, world!\n";
 }
