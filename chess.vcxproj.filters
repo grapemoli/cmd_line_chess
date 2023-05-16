@@ -21,7 +21,13 @@
     <ClCompile Include="Chess_Piece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chess_Piece_Visitor.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="driver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Over_Visitor.h">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
@@ -33,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Chess_Piece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chess_Piece_Visitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Over_Visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pawn.h">

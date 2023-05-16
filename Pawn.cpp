@@ -77,7 +77,7 @@ const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
     return true;
   }
 
-  // A pawn that eats other pieces can move forwards diagonally.
+  // A pawn that eats other pieces can move forward diagonally.
   if (this->is_white_ == true && y == this->y_ - 1)
   {
     if (x == this->x_ - 1 || x == this->x_ + 1)

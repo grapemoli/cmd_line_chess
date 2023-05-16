@@ -9,6 +9,7 @@
  
 #include <iostream>
 #include "Pawn.h"
+#include "Game_Over_Visitor.h"
 
 
 int main (void)
