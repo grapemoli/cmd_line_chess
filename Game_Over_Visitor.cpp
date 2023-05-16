@@ -7,7 +7,7 @@
 //==============================================================================
 
 
-#include "Game_Over.h"
+#include "Game_Over_Visitor.h"
 #include "Pawn.h"
 //#include "Rook.h"
 //#include "King.h"
@@ -21,17 +21,17 @@
   Constructors & Destructors
 */
 //
-// Game_Over ()
+// Game_Over_Visitor ()
 //
-Game_Over::Game_Over(void)
+Game_Over_Visitor::Game_Over_Visitor(void)
   :visited_king_(false)
 {}
 
 
 //
-// ~Game_Over ()
+// ~Game_Over_Visitor ()
 //
-Game_Over::~Game_Over(void)
+Game_Over_Visitor::~Game_Over_Visitor(void)
 {}
 
 
@@ -42,7 +42,7 @@ Game_Over::~Game_Over(void)
 //
 // visit (Pawn &)
 //
-Game_Over::visit(Pawn & piece)
+void Game_Over_Visitor::visit(const Pawn & piece)
 {
   this->visited_king_ = false;
 }
@@ -52,7 +52,7 @@ Game_Over::visit(Pawn & piece)
 // visit (King &)
 //
 /*
-Game_Over::visit(King & piece)
+void Game_Over_Visitor::visit(const King & piece)
 {
   this->visited_king_ = true;
 }
@@ -63,7 +63,7 @@ Game_Over::visit(King & piece)
 // visit (Queen &)
 //
 /*
-Game_Over::visit(Queen & piece)
+void Game_Over_Visitor::visit(const Queen & piece)
 {
   this->visited_king_ = false;
 }
@@ -74,7 +74,7 @@ Game_Over::visit(Queen & piece)
 // visit (Bishop &)
 //
 /*
-Game_Over::visit(Bishop & piece)
+void Game_Over_Visitor::visit(const Bishop & piece)
 {
   this->visited_king_ = false;
 }
@@ -85,7 +85,7 @@ Game_Over::visit(Bishop & piece)
 // visit (Rook &)
 //
 /*
-Game_Over::visit(Rook & piece)
+void Game_Over_Visitor::visit(const Rook & piece)
 {
   this->visited_king_ = false;
 }
@@ -96,7 +96,7 @@ Game_Over::visit(Rook & piece)
 // visit (Knight &)
 //
 /*
-Game_Over::visit(Knight & piece)
+void Game_Over_Visitor::visit(const Knight & piece)
 {
   this->visited_king_ = false;
 }
@@ -107,7 +107,7 @@ Game_Over::visit(Knight & piece)
 /*
   get_result ()
 */
-bool get_result(void)
+bool Game_Over_Visitor::get_result(void)
 {
   bool result = this->visited_king_;
   this->visited_king_ = false;

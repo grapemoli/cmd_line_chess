@@ -9,6 +9,7 @@
 
 #include "Chess_Piece.h"
 #include "Chess_Board.h"
+#include "Game_Over_Visitor.h"
 
 
 /*
@@ -42,17 +43,37 @@ Chess_Piece::~Chess_Piece()
 const bool Chess_Piece::is_collide(size_t x, size_t y, Chess_Board & board)
 {
   std::shared_ptr<Chess_Piece> occupied_piece = board.get_chess_piece(x, y);
+  
+  // If there is no collision, return false. Else, check for if the taken piece
+  // if a king (i.e., checking for game over).
   if (occupied_piece == nullptr)
   {
     return false;
   }
   else
   {
-    // Check if king.
-    // occupied_piece.accept(visitor);
-    // if (visitor.get_result() == true) { throw game_over(); }
-    // else { return true; }
-    return true;
+    Game_Over_Visitor visitor;
+    occupied_piece->accept(visitor);
+    
+    // Check if the taken piece is a king.
+    if (visitor.get_result() == false)
+    {
+      // There is a collision, but the victim piece is not a king.
+      return true;
+    }
+    else 
+    { 
+      // If the king being taken is of the opposing side, the game is over.
+      if (occupied_piece->is_white() != this->is_white())
+      {
+        throw game_over();
+      }
+      else
+      {
+        // There is a king collision of the same color.
+        return true;
+      }
+    }
   }
 }
 

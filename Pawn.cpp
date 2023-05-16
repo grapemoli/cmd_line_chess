@@ -8,6 +8,7 @@
 
 
 #include "Chess_Board.h"
+#include "Game_Over_Visitor.h"
 #include "Pawn.h"
 
 
@@ -107,11 +108,11 @@ const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
 
 
 /*
-  accept (Chess_Piece_Visitor)
+  accept (Chess_Piece_Visitor &)
 */
-void Pawn::accept(void)
+void Pawn::accept(Chess_Piece_Visitor & v)
 {
-  //v.visit(*this);
+  v.visit(*this);
 }
 
 

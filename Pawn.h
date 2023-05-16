@@ -15,6 +15,7 @@
 
 // Forward Declarations.
 class Chess_Board;
+class Chess_Piece_Visitor;
 
 
 /**
@@ -72,7 +73,7 @@ public:
    *
    * @param[in]         v             Chess_Piece_Visitor instance
    */
-  void accept (void);
+  void accept (Chess_Piece_Visitor & v);
 };
 
 

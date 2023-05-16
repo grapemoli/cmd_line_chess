@@ -28,7 +28,7 @@ class Pawn;
  * Full implementation of the Chess_Piece_Visitor, made with the
  * goal to 
  */
-class Game_Over_Visitor
+class Game_Over_Visitor : public Chess_Piece_Visitor
 {
 public:
   /// Default constructor.
@@ -42,42 +42,42 @@ public:
    * 
    * @param[in]         piece         Reference to a Pawn
    */
-  void visit (Pawn & piece);
+  void visit (const Pawn & piece);
    
   /**
    * Set visited_king_ to true.
    * 
    * @param[in]         piece         Reference to a King
    */
-  //virtual void visit (King & piece) = 0;
+  //virtual void visit (const King & piece) = 0;
 
   /**
    * Set visited_king_ to false.
    * 
    * @param[in]         piece         Reference to a Queen
    */
-  //virtual void visit (Queen & piece) = 0;
+  //virtual void visit (const Queen & piece) = 0;
 
   /**
    * Set visited_king_ to false.
    * 
    * @param[in]         piece         Reference to a Bishop
    */
-  //virtual void visit (Bishop & piece) = 0;
+  //virtual void visit (const Bishop & piece) = 0;
 
   /**
    * Set visited_king_ to false. 
    * 
    * @param[in]         piece         Reference to a Rook
    */
-  //virtual void visit (Rook & piece) = 0;
+  //virtual void visit (const Rook & piece) = 0;
 
   /**
    * Set visited_king_ to false.
    * 
    * @param[in]         piece         Reference to a Knight
    */
-  //virtual void visit (Knight & piece) = 0;
+  //virtual void visit (const Knight & piece) = 0;
 
   /**
    * Return visited_king_, and then set visited_king_ to false.
@@ -90,8 +90,8 @@ private:
   /*************
    * Attributes
    **************/
-   /// True if the chess piece is white, false if black.
-  bool is_white_;
+   /// Keeps track of if the latest dispatch was to a King.
+  bool visited_king_;
 };
 
 

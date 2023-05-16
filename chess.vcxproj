@@ -552,7 +552,7 @@
     </ClCompile>
     <ClCompile Include="Chess_Piece_Visitor.h">
     </ClCompile>
-    <ClCompile Include="Game_Over_Visitor.h">
+    <ClCompile Include="Game_Over_Visitor.cpp">
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
     </ClCompile>

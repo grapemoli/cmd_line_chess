@@ -8,7 +8,7 @@ project (chess){
 
   Source_Files {
     Chess_Piece_Visitor.h
-    Game_Over_Visitor.h
+    Game_Over_Visitor.cpp
 
     Chess_Piece.cpp
     Pawn.cpp

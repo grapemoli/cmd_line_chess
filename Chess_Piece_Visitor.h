@@ -41,42 +41,42 @@ public:
    * 
    * @param[in]         piece         Reference to a Pawn
    */
-  virtual void visit (Pawn & piece) = 0;
+  virtual void visit (const Pawn & piece) = 0;
    
   /**
    * Enable double dispatching. 
    * 
    * @param[in]         piece         Reference to a King
    */
-  //virtual void visit (King & piece) = 0;
+  //virtual void visit (const King & piece) = 0;
 
   /**
    * Enable double dispatching. 
    * 
    * @param[in]         piece         Reference to a Queen
    */
-  //virtual void visit (Queen & piece) = 0;
+  //virtual void visit (const Queen & piece) = 0;
 
   /**
    * Enable double dispatching. 
    * 
    * @param[in]         piece         Reference to a Bishop
    */
-  //virtual void visit (Bishop & piece) = 0;
+  //virtual void visit (const Bishop & piece) = 0;
 
   /**
    * Enable double dispatching. 
    * 
    * @param[in]         piece         Reference to a Rook
    */
-  //virtual void visit (Rook & piece) = 0;
+  //virtual void visit (const Rook & piece) = 0;
 
   /**
    * Enable double dispatching. 
    * 
    * @param[in]         piece         Reference to a Knight
    */
-  //virtual void visit (Knight & piece) = 0;
+  //virtual void visit (const Knight & piece) = 0;
 
   /**
    * Get the result.

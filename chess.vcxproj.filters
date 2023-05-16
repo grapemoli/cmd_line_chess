@@ -27,7 +27,7 @@
     <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Over_Visitor.h">
+    <ClCompile Include="Game_Over_Visitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
