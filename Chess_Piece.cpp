@@ -44,8 +44,8 @@ const bool Chess_Piece::is_collide(size_t x, size_t y, Chess_Board & board)
 {
   std::shared_ptr<Chess_Piece> occupied_piece = board.get_chess_piece(x, y);
   
-  // If there is no collision, return false. Else, check for if the taken piece
-  // if a king (i.e., checking for game over).
+  // If there is no piece at the coordinates, there is no collision. Else, check
+  // whether the taken piece is a king or not (i.e., check for game over).
   if (occupied_piece == nullptr)
   {
     return false;

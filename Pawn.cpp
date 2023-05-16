@@ -67,7 +67,7 @@ const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
   // A pawn that does not eat other pieces can only move forward.
   // White pawns' 'forward movement' result in decrementing y-coordinates,
   // while black pawns' 'forward movement' result in incrementing 
-  // x-coordinates.
+  // y-coordinates.
   if (this->is_white_ == true && y == this->y_ - 1)
   {
     return true;
