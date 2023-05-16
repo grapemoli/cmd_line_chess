@@ -11,9 +11,10 @@
 #ifndef _PAWN_H_
 #define _PAWN_H_
 
+#include "Chess_Piece.h"
 
 // Forward Declarations.
-class Chess_Piece;
+class Chess_Board;
 
 
 /**
@@ -46,7 +47,7 @@ public:
    * @param[in]         y             New y position
    * @param[in]         board         The Chess_Board instance
    */
-  void execute (size_t x, size_t y, Chess_Board & board);                                   /// TODO: add in BOARD
+  void execute (size_t x, size_t y, Chess_Board & board);
 
   /**
    * List the possible moves that can be made, taking into
@@ -60,10 +61,11 @@ public:
    * 
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
+   * @parem[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  const bool is_valid (size_t x, size_t y);
+  const bool is_valid (size_t x, size_t y, Chess_Board & board);
 
   /**
    * Enable double dispatching. Used for collision detection.

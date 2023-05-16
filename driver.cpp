@@ -8,9 +8,11 @@
 
  
 #include <iostream>
+#include "Pawn.h"
 
 
 int main (void)
 {
+  Pawn g(true, 1);
   std::cout << "Hello, world!\n";
 }

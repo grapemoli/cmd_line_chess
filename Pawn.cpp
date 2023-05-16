@@ -7,7 +7,6 @@
 //==============================================================================
 
 
-#include "Chess_Piece.h"
 #include "Chess_Board.h"
 #include "Pawn.h"
 
@@ -53,11 +52,56 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
 
 
 //
-// is_valid (size_t, size_t)
+// is_valid (size_t, size_t, Chess_Board &)
 //
-const bool Pawn::is_valid(size_t x, size_t y)
+const bool Pawn::is_valid(size_t x, size_t y, Chess_Board & board)
 {
-  return true;
+  // Take advantage of C++ return behavior by first checking for 
+  // border collision.
+  if (x > 7 || y > 7)
+  {
+    return false;
+  }
+  
+  // A pawn that does not eat other pieces can only move forward.
+  // White pawns' 'forward movement' result in decrementing y-coordinates,
+  // while black pawns' 'forward movement' result in incrementing 
+  // x-coordinates.
+  if (this->is_white_ == true && y == this->y_ - 1)
+  {
+    return true;
+  }
+
+  if (this->is_white_ == false && y == this->y_ + 1)
+  {
+    return true;
+  }
+
+  // A pawn that eats other pieces can move forwards diagonally.
+  if (this->is_white_ == true && y == this->y_ - 1)
+  {
+    if (x == this->x_ - 1 || x == this->x_ + 1)
+    {
+      if (this->is_collide(x, y, board) == true)
+      {
+        return true;
+      }
+    }
+  }
+
+  if (this->is_white_ == false && y == this->y_ + 1)
+  {
+    if (x == this->x_ - 1 || x == this->x_ + 1)
+    {
+      if (this->is_collide(x, y, board) == true)
+      {
+        return true;
+      }
+    }
+  }
+
+  // If any of the above is not true, then this move must be invalid.
+  return false;
 }
 
 
@@ -67,7 +111,7 @@ const bool Pawn::is_valid(size_t x, size_t y)
 */
 void Pawn::accept(void)
 {
-
+  //v.visit(*this);
 }
 
 
@@ -80,5 +124,6 @@ void Pawn::accept(void)
 //
 void Pawn::list_valid_moves(void)
 {
-  
+  // For each possible move, check that the coordinate
+  // is valid!
 }

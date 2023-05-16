@@ -80,7 +80,7 @@ protected:
    * Attributes
    **************/
   /// Allows for back-tracking of moves.
-  std::stack<Chess_Piece> moves_;
+  std::stack<std::shared_ptr<Chess_Piece>> moves_;
 
   /// A Chess_Board is 8x8.
   size_t size_;
