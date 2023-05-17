@@ -11,12 +11,14 @@
 #include "Chess_Piece.h"
 #include "Pawn.h"
 #include "Game_Over_Visitor.h"
-#include "Movement_Validation_Strategy.h"
+#include "Array_Movement_Strategy.h"
+#include "Array_Chess_Board.h"
 
 
 int main (void)
 {
-  // Chess_Board a = Array_Chess_Board ();
+  Array_Movement_Strategy mv;
+  Array_Chess_Board a = Array_Chess_Board (mv);
   std::cout << "Hello, world!\n";
 
 }
