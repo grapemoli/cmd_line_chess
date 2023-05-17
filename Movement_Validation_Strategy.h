@@ -15,6 +15,7 @@
 #include <memory>         // For shared_ptr.
 
 // Forward Declarations.
+class Chess_Piece;
 class Chess_Board;
 class Chess_Piece_Visitor;
 
@@ -94,12 +95,8 @@ public:
   /*************
    * Member Functions
    **************/
-   /**
-    * Default constructor.
-    * 
-    * @param[in]          board         Chess_Board reference
-    */
-  Movement_Validation_Strategy (Chess_Board & board);
+   /// Default constructor.
+  Movement_Validation_Strategy ();
 
   /// Destructor.
   virtual ~Movement_Validation_Strategy (void);
@@ -111,11 +108,12 @@ public:
    * @param[in]          x             New x position
    * @param[in]          y             New y position
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          There is a collision
    * @retvalue           False         There is no collision
    * @exception          game_over     The opposing King is eaten
    */
-  const bool is_collide (size_t x, size_t y, Chess_Piece & piece);
+  const bool is_collide (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
   /**
    * Check if the movement is valid for a pawn.
@@ -123,10 +121,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool check_pawn_movement (size_t x, size_t y, Chess_Piece & piece) = 0;
+  virtual const bool check_pawn_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
   /**
    * Check if the movement is valid for a rook.
@@ -134,10 +133,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool check_rook_movement (size_t x, size_t y, Chess_Piece & piece) = 0;
+  //virtual const bool check_rook_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
   /**
    * Check if the movement is valid for a bishop.
@@ -146,10 +146,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool check_bishop_movement (size_t x, size_t y, Chess_Piece & piece) = 0;
+  //virtual const bool check_bishop_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
   /**
    * Check if the movement is valid for a knight.
@@ -157,10 +158,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool check_knight_movement (size_t x, size_t y, Chess_Piece & piece) = 0;
+  //virtual const bool check_knight_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
   /**
    * Check if the movement is valid for a queen.
@@ -168,10 +170,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece) = 0;
+  //virtual const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
   /**
    * Check if the movement is valid for a king.
@@ -179,16 +182,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  virtual const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece) = 0;
-
-  /// Setter for the board_ attribute.
-  void set_board (Chess_Board & board);
-
-  /// Get the board_ attribute.
-  Chess_Board & get_board (void);
+  //virtual const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
 protected:
   /*************
@@ -196,14 +194,7 @@ protected:
    **************/
   /// Instace of the appropiate visitor for collision/game over detection.
   Chess_Piece_Visitor & collision_visitor_;
-
-  /// The Chess_Board reference to work on.
-  Chess_Board & board_;
 };
-
-
-// Include inline file.
-#include "Movement_Validation_Strategy.inl"
 
 
 #endif   // !defined _MOVEMENT_VALIDTION_STRATEGY_H_

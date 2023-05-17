@@ -8,6 +8,16 @@
 
 
 //
+// string()
+//
+inline
+const std::string Chess_Piece::string(void)
+{
+  return this->string_representation_;
+}
+
+
+//
 // get_x ()
 //
 inline

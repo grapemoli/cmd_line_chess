@@ -13,9 +13,11 @@
 
 #include <stack>          // For stack.
 #include <memory>         // For shared_ptr.
+#include <sstream>        // For string conversion.
 
 // Forward Declarations.
 class Chess_Piece;
+class Movement_Validation_Strategy;
 
 
 /**
@@ -27,8 +29,19 @@ class Chess_Piece;
 class Chess_Board
 {
 public:
-  /// Default constructor.
-  Chess_Board (void);
+  /**
+   * Default constructor.
+   * 
+   * @param[in]         strategy      Strategy reference for movement
+   */
+  Chess_Board (Movement_Validation_Strategy & strategy);
+
+  /**
+   * Deep copy constructor.
+   * 
+   * @param[in]         board         Chess board reference
+   */
+  Chess_Board (Chess_Board & board);
 
   /// Destructor.
   virtual ~Chess_Board (void);
@@ -40,20 +53,13 @@ public:
   virtual void start (void) = 0;
 
   /**
-   * Check for game over (if a king is eaten).
-   * 
-   * @retvalue          True          Game Over
-   * @retvalue          False         Game is not over
-   */
-  virtual bool game_over (void) = 0;
-
-  /**
    * Ask for the user input needed to move the appropiate
    * chess piece.
    * 
+   * @param[in]          piece         Chess_Piece reference
    * @param[in]          color         Boolean representing the color playing
    */
-  virtual void move (bool color) = 0;
+  virtual void move (Chess_Piece & piece, bool color) = 0;
 
   /**
    * Get the chess piece at the passed parameters.
@@ -84,7 +90,25 @@ public:
    */
   virtual void set_chess_piece (size_t x, size_t y, Chess_Piece & piece) = 0;
 
+  /**
+   * Build the chess board such that it represents the board at the
+   * beginning of the game.
+   */
+  virtual void build_board (void) = 0;
+
 protected:
+  /**************
+   * Helper Methods
+   **************/
+  /**
+   * Turn the inputted string to a size_t.
+   * 
+   * @param[in]         input         String input
+   * @return            size_t of the input
+   */
+  size_t to_size_t (std::string input);
+  
+
   /*************
    * Attributes
    **************/
@@ -93,6 +117,9 @@ protected:
 
   /// A Chess_Board is 8x8.
   size_t size_;
+
+  /// Strategy for movement.
+  Movement_Validation_Strategy & movement_strategy_;
 };
 
 

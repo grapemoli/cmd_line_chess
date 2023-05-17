@@ -546,6 +546,10 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Array_Chess_Board.cpp">
+    </ClCompile>
+    <ClCompile Include="Array_Movement_Strategy.cpp">
+    </ClCompile>
     <ClCompile Include="Chess_Board.cpp">
     </ClCompile>
     <ClCompile Include="Chess_Piece.cpp">
@@ -562,6 +566,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Array_Chess_Board.h" />
+    <ClInclude Include="Array_Movement_Strategy.h" />
     <ClInclude Include="Chess_Board.h" />
     <ClInclude Include="Chess_Piece.h" />
     <ClInclude Include="Chess_Piece_Visitor.h" />

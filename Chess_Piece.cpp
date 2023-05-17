@@ -17,14 +17,15 @@
   Constructor & Destructor
 */
 //
-// Chess_Piece (bool, size_t, size_t, Movement_Validation_Strategy &)
+// Chess_Piece (bool, size_t, size_t, string, Movement_Validation_Strategy &)
 //
-Chess_Piece::Chess_Piece(bool is_white, size_t x, size_t y, Movement_Validation_Strategy & strategy)
+Chess_Piece::Chess_Piece(bool is_white, size_t x, size_t y, std::string str, Movement_Validation_Strategy & strategy)
   :is_white_(is_white),
   x_(x),
   y_(y),
   actions_(),
-  movement_strategy_(strategy)
+  movement_strategy_(strategy),
+  string_representation_(str)
 {}
 
 
@@ -45,26 +46,4 @@ void Chess_Piece::undo(void)
   this->actions_.pop();
   this->x_ = prev_pos[0];
   this->y_ = prev_pos[1];
-}
-
-
-
-/*
-  Setter Methods
-*/
-//
-// set_x (size_t)
-//
-void Chess_Piece::set_x(size_t x)
-{
-  this->x_ = x;
-}
-
-
-//
-// set_y (size_t)
-//
-void Chess_Piece::set_y(size_t y)
-{
-  this->y_ = y;
 }

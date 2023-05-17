@@ -17,11 +17,10 @@
   Constructors & Destructors
 */
 //
-// Movement_Validation_Strategy (Chess_Board &)
+// Movement_Validation_Strategy ()
 //
-Movement_Validation_Strategy::Movement_Validation_Strategy(Chess_Board & board)
-  :collision_visitor_(Game_Over_Visitor()),
-  board_(board)
+Movement_Validation_Strategy::Movement_Validation_Strategy(void)
+  :collision_visitor_(Game_Over_Visitor())
 {}
 
 
@@ -34,21 +33,11 @@ Movement_Validation_Strategy::~Movement_Validation_Strategy(void)
 
 
 /*
-  set_board (Chess_Board &)
+  is_collide (size_t, size_t, Chess_Piece &, Chess_Board &)
 */
-void Movement_Validation_Strategy::set_board(Chess_Board & board)
+const bool Movement_Validation_Strategy::is_collide(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
 {
-  this->board_ = board;
-}
-
-
-
-/*
-  is_collide (size_t, size_t, Chess_Piece &)
-*/
-const bool Movement_Validation_Strategy::is_collide(size_t x, size_t y, Chess_Piece & piece)
-{
-  std::shared_ptr<Chess_Piece> occupied_piece = this->board_.get_chess_piece(x, y);
+  std::shared_ptr<Chess_Piece> occupied_piece = board.get_chess_piece(x, y);
 
   // If there is no piece at the coordinates, there is no collision. Else, check
   // whether the taken piece is a king or not (i.e., check for game over).

@@ -29,13 +29,11 @@ class Array_Movement_Strategy: public Movement_Validation_Strategy
 public:
    /**
     * Default constructor.
-    * 
-    * @param[in]          board         Chess_Board reference
     */
-  Array_Movement_Strategy (Chess_Board & board);
+  Array_Movement_Strategy (void);
 
   /// Destructor.
-  virtual ~Array_Movement_Strategy(void);
+  virtual ~Array_Movement_Strategy (void);
 
   /**
    * Check if the movement is valid for a pawn.
@@ -43,10 +41,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  const bool check_pawn_movement (size_t x, size_t y, Chess_Piece & piece);
+  const bool check_pawn_movement (size_t x, size_t y, Chess_Piece & piece,Chess_Board & board);
 
   /**
    * Check if the movement is valid for a rook.
@@ -54,10 +53,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_rook_movement (size_t x, size_t y, Chess_Piece & piece);
+  //const bool check_rook_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
   /**
    * Check if the movement is valid for a bishop.
@@ -66,10 +66,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_bishop_movement (size_t x, size_t y, Chess_Piece & piece);
+  //const bool check_bishop_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
   /**
    * Check if the movement is valid for a knight.
@@ -77,10 +78,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_knight_movement (size_t x, size_t y, Chess_Piece & piece);
+  //const bool check_knight_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
   /**
    * Check if the movement is valid for a queen.
@@ -88,10 +90,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece);
+  //const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
   /**
    * Check if the movement is valid for a king.
@@ -99,10 +102,11 @@ public:
    * @param[in]          x             The to-be x placement
    * @param[in]          y             The to-be y placement
    * @param[in]          piece         Chess_Piece reference
+   * @param[in]          board         Chess_Board reference
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece);
+  //const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 };
 
 

@@ -63,6 +63,8 @@ public:
    * @param[in]         v             Chess_Piece_Visitor instance
    */
   void accept (Chess_Piece_Visitor & v);
+
+
 };
 
 

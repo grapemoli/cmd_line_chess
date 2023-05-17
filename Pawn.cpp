@@ -20,13 +20,14 @@
 // Pawn (bool, size_t, Movement_Validation_Strategy &)
 //
 Pawn::Pawn(bool is_white, size_t x, Movement_Validation_Strategy & strategy)
-  :Chess_Piece(is_white, x, 1, strategy)
+  :Chess_Piece(is_white, x, 1, "~P~", strategy)
 {
   // Pawns are initialized at y = 1 if the Pawn is black, and 
   // initialized at y = 6 if the Pawn is white.
   if (is_white == true)
   {
     this->y_ = 6;
+    this->string_representation_ = "-P-";
   }
 }
 
@@ -54,7 +55,7 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
   // If the game is over, then throw game_over exception.
   try 
   {
-    const bool is_valid = this->movement_strategy_.check_pawn_movement(x, y, *this);
+    const bool is_valid = this->movement_strategy_.check_pawn_movement(x, y, *this, board);
 
     if (is_valid == true)
     {

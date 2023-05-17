@@ -102,9 +102,10 @@ public:
    * @param[in]         is_white      Boolean to determine color
    * @param[in]         x             The x coordinate
    * @param[in]         y             The y coordinate
+   * @param[in]         str           The string representation of this class
    * @param[in]         strategy      Movement_Validation_Strategy reference
    */
-  Chess_Piece (bool is_white, size_t x, size_t y, Movement_Validation_Strategy & strategy);
+  Chess_Piece (bool is_white, size_t x, size_t y, std::string str, Movement_Validation_Strategy & strategy);
 
   /// Destructor.
   virtual ~Chess_Piece (void);
@@ -121,14 +122,11 @@ public:
   /// Return the y_ data member, which can change this.
   size_t get_y (void);
 
+  /// Return the string_representation_ data member.
+  const std::string string (void);
+
   /// Return the is_white_ data member.
   const bool is_white (void) const;
-
-  /// Set the x position.
-  void set_x (size_t x);
-
-  /// Set the y position.
-  void set_y (size_t y);
 
   /// Return the stack of actions.
   std::stack<std::array<int, 2>> & get_actions (void);
@@ -182,6 +180,9 @@ protected:
 
   /// The strategy to employ for movement, collision & game over detection.
   Movement_Validation_Strategy & movement_strategy_;
+
+  /// The string representation of this class on the board.
+  std::string string_representation_;
 };
 
 
