@@ -30,6 +30,19 @@ Chess_Piece::Chess_Piece(bool is_white, size_t x, size_t y, std::string str, Mov
 
 
 //
+// Chess_Piece (Chess_Piece & )
+//
+Chess_Piece::Chess_Piece (Chess_Piece & piece)
+  :is_white_(piece.is_white_),
+  x_(piece.x_),
+  y_(piece.y_),
+  actions_(piece.actions_),
+  movement_strategy_(piece.movement_strategy_),
+  string_representation_(piece.string())
+{}
+
+
+//
 // ~Chess_Piece ()
 //
 Chess_Piece::~Chess_Piece() 

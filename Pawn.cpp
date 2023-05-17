@@ -33,6 +33,14 @@ Pawn::Pawn(bool is_white, size_t x, Movement_Validation_Strategy & strategy)
 
 
 //
+// Pawn (Pawn &)
+//
+Pawn::Pawn(Pawn & piece)
+  :Chess_Piece(piece)
+{}
+
+
+//
 // ~Pawn ()
 //
 Pawn::~Pawn(void)

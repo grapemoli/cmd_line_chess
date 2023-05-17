@@ -37,6 +37,13 @@ public:
    */
   Pawn (bool is_white, size_t x, Movement_Validation_Strategy & strategy);
 
+  /**
+   * Copy constructor.
+   * 
+   * @param[in]         piece         Pawn representative
+   */
+  Pawn (Pawn & piece);
+
   /// Destructor.
   ~Pawn (void);
 

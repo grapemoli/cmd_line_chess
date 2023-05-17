@@ -267,8 +267,9 @@ void Array_Chess_Board::set_chess_piece (size_t x, size_t y, Chess_Piece & piece
 {
   // Set the original location to nullptr, and set the new location
   // to contain the piece.
+  std::shared_ptr<Chess_Piece> temp = this->board_[piece.get_y()][piece.get_x()];
   this->board_[piece.get_y()][piece.get_x()] = nullptr;
-  this->board_[y][x] = std::make_shared<Chess_Piece>(piece);
+  this->board_[y][x] = temp;
 }
 
 

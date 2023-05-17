@@ -107,6 +107,14 @@ public:
    */
   Chess_Piece (bool is_white, size_t x, size_t y, std::string str, Movement_Validation_Strategy & strategy);
 
+  /**
+   * Copy Constructor.
+   * 
+   * @param[in]         piece         Chess_Piece reference
+   */
+  Chess_Piece (Chess_Piece & piece);
+
+
   /// Destructor.
   virtual ~Chess_Piece (void);
 
