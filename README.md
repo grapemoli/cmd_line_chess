@@ -46,8 +46,8 @@ R – rook <br>
 B – bishop <br>
 N – knight <br>
 P – pawn <br>
-| *R* | *N* | *B* | *Q* | *K* | *B* | *N* | *R* | <br>
-| *P* | *P* | *P* | *P* | *P* | *P* | *P* | *P* | <br>
+| ~R~ | ~N~ | ~B~ | ~Q~ | ~K~ | ~B~ | ~N~ | ~R~ | <br>
+| ~P~ | ~P~ | ~P~ | ~P~ | ~P~ | ~P~ | ~P~ | ~P~ | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
 |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | <br>
@@ -55,7 +55,9 @@ P – pawn <br>
 | -P- | -P- | -P- | -P- | -P- | -P- | -P- | -P- | <br>
 | -R- | -N- | -B- | -Q- | -K- | -B- | -N- | -R- | <br>
 
-* differentiation of *white* and -black- pieces.
+* differentiation of -white- and ~black~ pieces.
+
+![image](https://github.com/grapemoli/cmd_line_chess/assets/105399768/2df35ad8-08ec-4466-8c38-e2d488acf922)
 
 
 ## UML
