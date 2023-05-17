@@ -5,17 +5,19 @@
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
 4. Implement undo/redo features 
-5. Castling !!
+5. Implement Castling !!
+6. With the UI, reflect the board's printing such that the player who is playing is on the bottom.
 
 ## Savepoints
 1. Create UML [O]
 2. Determine representation of the Board / Pieces on the Board [O]
 3. Create Chess Pieces  <--
-4. Test Chess Pieces & Chess Eating
-5. Add pawn-transformation functionality
-6. Create Board 
-7. Give option to reverse the printing of the board based on which player is playing
-8. Optimize the physical representation of the board
+4. Test Chess Pieces & Chess Eating 
+5. Add pawn-transformation functionality <--
+7. Create Board representation <-- [O]
+8. Create Board builder
+9. Give option to reverse the printing of the board based on which player is playing
+10. Optimize the physical representation of the board
 
 ## Algorithms & Implementations
 ### Collision Detection and Game Over Detection
