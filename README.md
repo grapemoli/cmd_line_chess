@@ -33,22 +33,24 @@ For Game Over dectection: get the concretion, if opposing color & king, then ret
 - There are no pieces between the king and the rook.
 - The king is not currently in check.
 - The king does not pass through or finish on a square that is attacked by an enemy piece.
-1. Requires that movement of the king check for the STACK OF MOVES of the king & direction 
-2. if in correct direction and is the first move, check that there are no pieces inbetween the king and the rook
-3. if so, then check that the rook is in the correct position
-4.  then, call execute for the rook and king in the correct position (make castling() a helper method in the Strategy)
-^ currently, do not ask the user for confirmation of
+1. If the user attempts to move the king left/right 2 spaces -and- this is the King's first move:
+2. Check that the rook in the direction of movement (if moves_.size() is 0, then it can be inferred that a rook is at this position)
+3. Check that there are not pieces in between the king and rook
+4. The king moves two spaces over in the direction specified
+5. The corresponding rook moves +/-1 where the king's original position was (depends on the king's direction of motion)
+^ Additional implementation: you can allow for movement *on top* of the rook to activate castling behavior
+
 
 ### Transformation Algorithm
-1. Check the transformation flag
-2. if true then transform into the selected chess piece
-^ two options for UI: (1) keep it as an option in the menu and check for transformation requirements in the menu method, -or- (2) only check and ask for transformation when a piece (check if its a pawn) reaches the other end of the board)
-^ note: because you program pawns to ONLY move forwards, you don't need to make sure that the pawns are at the end of the correct side of the board
-^ #2 is a cleaner user experience but #1 is easier to implement 
+1. For every pawn movement (in the Strategy), if the Pawn is moved to the end of the board, prompt the user for the piece they wish to transform the pawn into
+2. Replace the pawn with the appropiate instance
+^ Note, one does not need to check that the pawn moved to the 'correct end' of the board, because Pawn's are programmed to only allow forward movement
 
 
 ### Undo
 Currently, undo() is only supported for when the user inputs a faulty coordinate. However, supporting undo for "undoing" the conglomerate moves that the two players have done is simple: pop the Chess_Piece off of Chess_Board.moves_, and pop off the Chess_Piece's previous placement stored in Chess_Piece.moves_. Then, restore the Chess_Piece's previous placement.
+
+
 
 ### User Interface
 ~ insert Board ~ <br>
@@ -61,7 +63,12 @@ New Y coordinate: <br>
 .. <br>
 .. <br>
 
+
+
 ## Board Representation (2D Array)
+The current implementation of the chess board is via a 2D array; however, to increase the ease of replacing representations of the chess board in the future, the board is wrapped in a class that does not specify representation. Along with ease of replacing representation of the board, the strategy for movement of the chess piece's can also be easily replaced. It is the client's responsibility to pair the appropiate strategy with the board representation.
+
+The following symbols represent the following chess pieces:
 K – king <br>
 Q – queen <br>
 R – rook <br>
@@ -80,6 +87,7 @@ P – pawn <br>
 * differentiation of -white- and ~black~ pieces.
 
 ![image](https://github.com/grapemoli/cmd_line_chess/assets/105399768/2df35ad8-08ec-4466-8c38-e2d488acf922)
+
 
 
 ## UML
