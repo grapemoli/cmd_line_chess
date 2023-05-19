@@ -1,12 +1,13 @@
 # Chess
 
 ## Goals
-1. Use design patterns
+1. Use design patterns :check:
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
 4. Implement undo/redo features 
-5. Implement Castling !!
+5. Implement Castling :check:
 6. With the UI, reflect the board's printing such that the player who is playing is on the bottom.
+7. Check for moving into check
 
 ## Savepoints
 1. Create UML [O]
@@ -26,6 +27,25 @@ Collision detection WILL NOT require the latest concretion, BUT GAME OVER DETECT
 For collision detection: check the color (does not depend on latest concretion), if different then replace. 
 For Game Over dectection: get the concretion, if opposing color & king, then return game_over.\
 - use double dispatching to get the concretion -- get_result() will return true IF A KING (and you can get the color because all base Chess_Piece will have an is_white attribute)!!!!
+
+### Castling Detection
+- Neither the king nor the rook has previously moved.
+- There are no pieces between the king and the rook.
+- The king is not currently in check.
+- The king does not pass through or finish on a square that is attacked by an enemy piece.
+1. Requires that movement of the king check for the STACK OF MOVES of the king & direction 
+2. if in correct direction and is the first move, check that there are no pieces inbetween the king and the rook
+3. if so, then check that the rook is in the correct position
+4.  then, call execute for the rook and king in the correct position (make castling() a helper method in the Strategy)
+^ currently, do not ask the user for confirmation of
+
+### Transformation Algorithm
+1. Check the transformation flag
+2. if true then transform into the selected chess piece
+^ two options for UI: (1) keep it as an option in the menu and check for transformation requirements in the menu method, -or- (2) only check and ask for transformation when a piece (check if its a pawn) reaches the other end of the board)
+^ note: because you program pawns to ONLY move forwards, you don't need to make sure that the pawns are at the end of the correct side of the board
+^ #2 is a cleaner user experience but #1 is easier to implement 
+
 
 ### Undo
 Currently, undo() is only supported for when the user inputs a faulty coordinate. However, supporting undo for "undoing" the conglomerate moves that the two players have done is simple: pop the Chess_Piece off of Chess_Board.moves_, and pop off the Chess_Piece's previous placement stored in Chess_Piece.moves_. Then, restore the Chess_Piece's previous placement.
