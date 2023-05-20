@@ -6,8 +6,9 @@
 3. NAMESPACES ??
 4. Implement undo/redo features 
 5. Implement Castling ✔️
-6. With the UI, reflect the board's printing such that the player who is playing is on the bottom.
-7. Check for moving into check
+6. With the UI, reflect the board's printing such that the player who is playing is on the bottom
+7. Letter = x, Number = y system
+8. Check for moving into check
 
 ## Savepoints
 1. Create UML ✔️
