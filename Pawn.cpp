@@ -110,7 +110,7 @@ void Pawn::transform (Chess_Board & board)
     std::shared_ptr<Chess_Piece> new_piece = nullptr;
     //std::shared_ptr<Transform_Chess_Piece> new_piece = nullptr;
 
-    while (user_input != "QUIT" || user_input == "1" || user_input == "2" || user_input == "3" || user_input == "4")
+    while (user_input != "QUIT")
     {
       user_input.clear();
       std::cout << "\nPawn to...\n1. Queen\n2. Rook\n3. Bishop\n4. Knight\nYour choice ('QUIT' to keep the same): ";
@@ -122,36 +122,38 @@ void Pawn::transform (Chess_Board & board)
       {
         // Make a queen.
         //new_piece = std::make_shared<Queen>(*this);
+        break;
       }
       else if (user_input == "2")
       {
         // Make a rook.
         //new_piece = std::make_shared<Rook>(*this);
+        break;
       }
       else if (user_input == "3")
       {
         // Make a bishop.
         //new_piece = std::make_shared<Bishop>(*this);
+        break;
       }
       else if (user_input == "4")
       {
         // Make a knight.
         //new_piece = std::make_shared<Knight>(*this);
+        break;
       }
-      else if (user_input != "QUIT")
+      else if (user_input != "QUIT") 
       {
-        std::cout << "\nInvalid input. Try again.\n";
+        std::cout << "\nInvalid input, try again.";
       }
     }
 
+  
+
     // Set the piece on the chess board.
-    try
+    if (new_piece != nullptr)
     {
       board.transform(new_piece);
-    }
-    catch (Chess_Board::invalid_set & e)
-    {
-      throw invalid_move();
     }
   }
 }

@@ -183,7 +183,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 
       try
       {
-        std::cout << "\n1. View valid moves\n2. Move\n00. Go back\nChoose an option: ";
+        std::cout << "\n1.Move\n2. View valid moves\n00.Go back\nChoose an option : ";
         std::cin >> user_input;
 
         // Check if the user wants to go back.
@@ -191,13 +191,13 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
         {
           return false;
         }
-        else if (user_input == "1")
+        else if (user_input == "2")
         {
           std::cout << "\nValid Moves:";
           this->board_[piece.get_y()][piece.get_x()]->list_valid_moves(*this);
           std::cout << "\n";
         }
-        else if (user_input == "2")
+        else if (user_input == "1")
         { 
           // Get new coordinates.
           user_input.clear();
