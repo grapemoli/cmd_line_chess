@@ -172,32 +172,20 @@ void Pawn::accept(Chess_Piece_Visitor & v)
 */
 void Pawn::list_valid_moves(Chess_Board & board)
 {
-  // Pawns can move forwards. They may move diagonally if there is a piece there.
   // White y_ decrements, while black y_ increments for "forward" movement.
-  int count = 1;
+  // Take advantage of true <=> 1 conversion to "calculate" the direction that this
+  // piece needs to move in (white moves -y, black moves +y).
+  const int y_movement = 1 - (2 * this->is_white_);
 
-  // These one-liners look disgusting, but they are simple in nature: *only* print a
+
+  // These one-liners look complex, but they are simple in nature: *only* print a
   // coordinate if it is a valid coordindate.
-  if (this->is_white_ == true)
-  {
-    // (x, y - 1)
-    this->movement_strategy_.check_pawn_movement(this->x_, this->y_ - 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
-    
-    // (x + 1, y - 1)
-    this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ - 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+  // Typical Movement: (x, y -/+ 1)
+  this->movement_strategy_.check_pawn_movement(this->x_, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "(" << this->x_ << ", " << this->y_ + y_movement << ")" : std::cout << "";
 
-    // (x - 1, y - 1)
-    this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ - 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
-  }
-  else
-  {
-    // (x, y + 1)
-    this->movement_strategy_.check_pawn_movement(this->x_, this->y_ + 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+  // Pawn Eating Movement, pt. 1: (x + 1, y -/+ 1)
+  this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "(" << this->x_ + 1 << ", " << this->y_ + y_movement << ")" : std::cout << "";
 
-    // (x + 1, y + 1)
-    this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ + 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
-
-    // (x - 1, y + 1)
-    this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ + 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
-  }
+  // Pawn Eating Movement, pt. 2: (x - 1, y -/+ 1)
+  this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "(" << this->x_ - 1 << ", " << this->y_ + y_movement << ")" : std::cout << "";
 }
