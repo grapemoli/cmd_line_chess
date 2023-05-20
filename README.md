@@ -1,11 +1,11 @@
 # Chess
 
 ## Goals
-1. Use design patterns :check:
+1. Use design patterns ✔️
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
 4. Implement undo/redo features 
-5. Implement Castling :check:
+5. Implement Castling ✔️
 6. With the UI, reflect the board's printing such that the player who is playing is on the bottom.
 7. Check for moving into check
 
