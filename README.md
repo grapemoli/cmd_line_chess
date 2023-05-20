@@ -10,12 +10,12 @@
 7. Check for moving into check
 
 ## Savepoints
-1. Create UML [O]
-2. Determine representation of the Board / Pieces on the Board [O]
-3. Create Chess Pieces  <--
+1. Create UML ✔️
+2. Determine representation of the Board / Pieces on the Board ✔️
+3. Create Chess Pieces  👈
 4. Test Chess Pieces & Chess Eating 
-5. Add pawn-transformation functionality <--
-7. Create Board representation <-- [O]
+5. Add pawn-transformation functionality ✔️
+7. Create Board representation ✔️
 8. Create Board builder
 9. Give option to reverse the printing of the board based on which player is playing
 10. Optimize the physical representation of the board
