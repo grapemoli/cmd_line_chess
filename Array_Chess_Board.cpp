@@ -72,7 +72,7 @@ void Array_Chess_Board::start(void)
     // Get coordinates.
     try
     {
-      std::cout << "\nPlayer " << player + 1 << "\n";
+      std::cout << "\nPlayer " << player + 1;
       std::cout << "\nChoose an x coordinate: ";
       std::cin >> user_input;
 
@@ -139,6 +139,8 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 {
   // Player 1 is false (0) = white (1). Player 2 is true (1) = black (0).
   // Check that the player is moving a piece of the correct color.
+  std::cout << "\n-----------";
+
   if (player == piece.is_white())
   {
     std::cout << "\nAttempted to move the opposite team's chess piece.";
@@ -164,14 +166,18 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
         {
           break;
         }
-        else
+        else if (user_input == "1")
         {
+          //this->board_[piece.get_x()][piece.get_y()]->list_valid_moves(*this);
+        }
+        else if (user_input == "2")
+        { 
           // Get new coordinates.
           std::cout << "\nNew X coordinate: ";
           std::cin >> user_input;
           if (user_input == "QUIT")
           {
-            break;
+            return false;
           }
           else
           {
@@ -183,7 +189,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
           std::cin >> user_input;
           if (user_input == "QUIT")
           {
-            break;
+            return false;
           }
           else
           {
@@ -191,8 +197,13 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
           }
 
           // Move.
-          piece.execute(x_final, y_final, *this);
+          piece.execute(x_final,y_final, *this);
           keep_going = false;
+          return true;
+        }
+        else
+        {
+          std::cout << "\nInvalid input.";
         }
       }
       catch (Chess_Piece::invalid_move & e)
@@ -202,7 +213,6 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
       catch (Chess_Piece::game_over & e)
       {
         throw;
-        keep_going = false;
       }
       catch (...)
       {
