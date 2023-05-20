@@ -54,8 +54,10 @@ public:
    *
    * @param[in]          piece         Chess_Piece reference
    * @param[in]          color         Boolean representing the color playing
+   * @retvalue           True          Player completed their move
+   * @retvalue           False         Player did not complete their move ('QUIT')
    */
-  void move (Chess_Piece & piece, bool color);
+  bool move (Chess_Piece & piece, bool color);
 
   /**
    * Get the chess piece at the passed parameters.
@@ -98,6 +100,9 @@ protected:
    **************/
    /// Representation of the Chess_Board: two dimensional array.
   std::array<std::array<std::shared_ptr<Chess_Piece>, 8>, 8> board_;
+
+  /// Alphabet-to-Number conversion.
+  std::array<std::string, 8> alphabet_;
 };
 
 

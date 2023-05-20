@@ -20,5 +20,6 @@ int main (void)
 {
   Array_Movement_Strategy mv;
   Array_Chess_Board a = Array_Chess_Board (mv);
-  std::cout << "\nHello, world!" << std::endl;
+
+  a.start();
 }

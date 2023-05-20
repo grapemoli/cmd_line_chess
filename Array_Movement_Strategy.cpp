@@ -56,12 +56,12 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
   // White pawns' 'forward movement' result in decrementing y-coordinates,
   // while black pawns' 'forward movement' result in incrementing 
   // y-coordinates.
-  if (piece.is_white() == true && y == piece.get_y() - 1)   // White
+  if (piece.is_white() == true && y == piece.get_y() - 1 && x == piece.get_x())   // White
   {
     return true;
   }
 
-  if (piece.is_white() == false && y == piece.get_y() + 1)  // Black
+  if (piece.is_white() == false && y == piece.get_y() + 1 && x == piece.get_x())  // Black
   {
     return true;
   }

@@ -177,7 +177,6 @@ void Pawn::list_valid_moves(Chess_Board & board)
   // piece needs to move in (white moves -y, black moves +y).
   const int y_movement = 1 - (2 * this->is_white_);
 
-
   // These one-liners look complex, but they are simple in nature: *only* print a
   // coordinate if it is a valid coordindate.
   // Typical Movement: (x, y -/+ 1)

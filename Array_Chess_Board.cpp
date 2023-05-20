@@ -10,6 +10,7 @@
 #include "Array_Chess_Board.h"
 #include "Array_Movement_Strategy.h"
 #include "Chess_Piece.h"
+#include "Pawn.h"
 
 
 /*
@@ -26,7 +27,7 @@ Array_Chess_Board::Array_Chess_Board(Array_Movement_Strategy & strategy)
   // representations of the Chess_Board, therefore the client must 
   // use Array_Movement strategies/derived strategies.
 
-  //this->start_board();
+  this->build_board();
 }
 
 
@@ -65,7 +66,7 @@ void Array_Chess_Board::start(void)
 
   while (keep_going == true)
   {
-    std::cout << "\n\n***** CHESS ***** ('QUIT' to quit)\n";
+    std::cout << "\n\n***** CHESS *****\n('QUIT' to quit)\n\n";
     this->print();
 
     // Get coordinates.
@@ -83,6 +84,7 @@ void Array_Chess_Board::start(void)
       {
         x_initial = this->to_size_t(user_input);
       }
+
       std::cout << "\nChoose a y coordinate: ";
       std::cin >> user_input;
       if (user_input == "QUIT")
@@ -94,7 +96,7 @@ void Array_Chess_Board::start(void)
         y_initial = this->to_size_t(user_input);
       }
 
-      current_piece = this->board_[y_initial][x_initial]; 
+      current_piece = this->board_[x_initial][y_initial];
 
       // Check that the user inputted an existing piece.
       if (current_piece != nullptr)
@@ -133,7 +135,7 @@ void Array_Chess_Board::start(void)
 //
 // move (Chess_Piece & piece, bool)
 //
-void Array_Chess_Board::move(Chess_Piece & piece, bool player)
+bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 {
   // Player 1 is false (0) = white (1). Player 2 is true (1) = black (0).
   // Check that the player is moving a piece of the correct color.
@@ -222,13 +224,13 @@ void Array_Chess_Board::set_chess_piece (size_t x, size_t y, Chess_Piece & piece
 {
   // Set the original location to nullptr, and set the new location
   // to contain the piece.
-  std::shared_ptr<Chess_Piece> temp = this->board_[piece.get_y()][piece.get_x()];
+  std::shared_ptr<Chess_Piece> temp = this->board_[piece.get_x()][piece.get_y()];
   
   // Check that the stored piece and the passed piece are the same chess piece.
   if (temp.get() == &piece)
   {
-    this->board_[piece.get_y()][piece.get_x()] = nullptr;
-    this->board_[y][x] = temp;
+    this->board_[piece.get_x()][piece.get_y()] = nullptr;
+    this->board_[x][y] = temp;
   }
   else
   {
@@ -244,7 +246,7 @@ void Array_Chess_Board::transform (std::shared_ptr<Chess_Piece> piece)
 {
   if (piece.get() != nullptr)
   {
-    this->board_[piece->get_y()][piece->get_x()] = piece;
+    this->board_[piece->get_x()][piece->get_y()] = piece;
   }
   else
   {
@@ -258,7 +260,7 @@ void Array_Chess_Board::transform (std::shared_ptr<Chess_Piece> piece)
 //
 std::shared_ptr<Chess_Piece> Array_Chess_Board::get_chess_piece(size_t x, size_t y)
 {
-  return this->board_[y][x];
+  return this->board_[x][y];
 }
 
 
@@ -270,12 +272,13 @@ void Array_Chess_Board::print(void)
   // Print the board.
   for (int i = 0; i < 8; i++)
   {
+    std::cout << i << " ";
     for (int j = 0; j < 8; j++)
     {
       // Print differently based on if the space is occupied or not.
       if (this->board_[j][i] == nullptr)
       {
-        std::cout << "|    |";
+        std::cout << "|     |";
       }
       else
       {
@@ -285,6 +288,12 @@ void Array_Chess_Board::print(void)
     
     // New row, new line.
     std::cout << "\n";
+  }
+
+
+  for (int i = 0; i < 8; i++)
+  {
+    std::cout << "      " << i;
   }
 }
 
@@ -299,7 +308,9 @@ void Array_Chess_Board::build_board(void)
   {
     for (int j = 0; j < 8; j++)
     {
-      this->board_[j][i] = nullptr;
+      this->board_[i][j] = nullptr;
     }
   }
+
+  this->board_[0][6] = std::make_shared<Pawn>(true, 1, this->movement_strategy_);
 }

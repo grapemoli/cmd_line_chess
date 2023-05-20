@@ -91,11 +91,13 @@ public:
   /**
    * Ask for the user input needed to move the appropiate
    * chess piece.
-   * 
+   *
    * @param[in]          piece         Chess_Piece reference
    * @param[in]          color         Boolean representing the color playing
+   * @retvalue           True          Player completed their move
+   * @retvalue           False         Player did not complete their move ('QUIT')
    */
-  virtual void move (Chess_Piece & piece, bool color) = 0;
+  bool move (Chess_Piece & piece, bool color);
 
   /**
    * Get the chess piece at the passed parameters.
