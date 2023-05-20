@@ -66,50 +66,41 @@ void Array_Chess_Board::start(void)
 
   while (keep_going == true)
   {
-    std::cout << "\n\n***** CHESS *****\n('QUIT' to quit)\n\n";
+    std::cout << "\n\n\n***** CHESS *****\n('QUIT' to quit)\n\n";
     this->print();
 
     // Get coordinates.
     try
     {
       std::cout << "\nPlayer " << player + 1;
-      std::cout << "\nChoose an x coordinate: ";
-      std::cin >> user_input;
 
-      if (user_input == "QUIT")
-      {
-        break;
-      }
-      else
-      {
-        x_initial = this->to_size_t(user_input);
-      }
+      // Get coordinates
+      user_input.clear();
+      std::cout << "\n";
+      x_initial = this->get_coordinate("Choose a x coordinate: ");
+      y_initial = this->get_coordinate("Choose a y coordinate: ");
 
-      std::cout << "\nChoose a y coordinate: ";
-      std::cin >> user_input;
-      if (user_input == "QUIT")
-      {
-        break;
-      }
-      else
-      {
-        y_initial = this->to_size_t(user_input);
-      }
-
-      current_piece = this->board_[x_initial][y_initial];
+      current_piece = this->board_[y_initial][x_initial];
 
       // Check that the user inputted an existing piece.
       if (current_piece != nullptr)
       {
-        this->move(*current_piece, player);
+        bool moved = this->move(*current_piece, player);
 
         // Switch players.
-        player = !player;
+        if (moved == true)
+        {
+          player = !player;
+        }
       }
       else
       {
         std::cout << "\nNo piece at this coordinate. Try again.";
       }
+    }
+    catch (Chess_Board::quit & e)
+    {
+      break;
     }
     catch (Chess_Piece::game_over & e)
     {
@@ -128,6 +119,40 @@ void Array_Chess_Board::start(void)
 }
 
 
+//
+// get_coordinate (string)
+//
+size_t Array_Chess_Board::get_coordinate (std::string prompt)
+{
+  bool keep_going = true;
+  std::string user_input;
+
+  while (keep_going == true)
+  {
+    user_input.clear();
+    std::cout << prompt;
+    std::cin >> user_input;
+
+    if (user_input == "QUIT")
+    {
+      keep_going = false;
+      throw quit();
+    }
+    else
+    {
+      try
+      {
+        size_t coordindate = this->to_size_t(user_input);
+        return coordindate;
+      }
+      catch (...)
+      {
+        std::cout << "Invalid input. Try again.\n";
+      }
+    }
+  }
+}
+
 
 /*
   Movement Methods
@@ -139,11 +164,11 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 {
   // Player 1 is false (0) = white (1). Player 2 is true (1) = black (0).
   // Check that the player is moving a piece of the correct color.
-  std::cout << "\n-----------";
+  std::cout << "\n\n-----------";
 
   if (player == piece.is_white())
   {
-    std::cout << "\nAttempted to move the opposite team's chess piece.";
+    std::cout << "\nAttempted to move the opposite team's chess piece. Try again.";
   }
   else
   {
@@ -158,57 +183,41 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 
       try
       {
-        std::cout << "\n1. View valid moves\n2. Move\nChoose an option ('QUIT' to go back): ";
+        std::cout << "\n1. View valid moves\n2. Move\n00. Go back\nChoose an option: ";
         std::cin >> user_input;
 
         // Check if the user wants to go back.
-        if (user_input == "QUIT")
+        if (user_input == "00")
         {
-          break;
+          return false;
         }
         else if (user_input == "1")
         {
-          //this->board_[piece.get_x()][piece.get_y()]->list_valid_moves(*this);
+          std::cout << "\nValid Moves:";
+          this->board_[piece.get_y()][piece.get_x()]->list_valid_moves(*this);
+          std::cout << "\n";
         }
         else if (user_input == "2")
         { 
           // Get new coordinates.
-          std::cout << "\nNew X coordinate: ";
-          std::cin >> user_input;
-          if (user_input == "QUIT")
-          {
-            return false;
-          }
-          else
-          {
-
-            x_final = this->to_size_t(user_input);
-          }
-
-          std::cout << "\nNew Y coordinate: ";
-          std::cin >> user_input;
-          if (user_input == "QUIT")
-          {
-            return false;
-          }
-          else
-          {
-            x_final = this->to_size_t(user_input);
-          }
+          user_input.clear();
+          std::cout << "\n";
+          x_final = this->get_coordinate("New x Coordinate: ");
+          y_final = this->get_coordinate("New y Coordinate: ");
 
           // Move.
           piece.execute(x_final,y_final, *this);
           keep_going = false;
           return true;
         }
-        else
-        {
-          std::cout << "\nInvalid input.";
-        }
+      }
+      catch (Chess_Board::quit & e)
+      {
+        return false;
       }
       catch (Chess_Piece::invalid_move & e)
       {
-        std::cout << "\nInvalid move. Try again!";
+        std::cout << "\nInvalid move. Try again!\n";
       }
       catch (Chess_Piece::game_over & e)
       {
@@ -216,7 +225,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
       }
       catch (...)
       {
-        std::cout << "\nInvalid input! Try again.";
+        std::cout << "\nInvalid input! Try again.\n";
       }
     }
   }
@@ -225,7 +234,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 
 
 /*
-  Misc. Methods
+  Access Methods
 */
 //
 // set_chess_piece (size_t, size_t, Chess_Piece &)
@@ -234,13 +243,13 @@ void Array_Chess_Board::set_chess_piece (size_t x, size_t y, Chess_Piece & piece
 {
   // Set the original location to nullptr, and set the new location
   // to contain the piece.
-  std::shared_ptr<Chess_Piece> temp = this->board_[piece.get_x()][piece.get_y()];
+  std::shared_ptr<Chess_Piece> temp = this->board_[piece.get_y()][piece.get_x()];
   
   // Check that the stored piece and the passed piece are the same chess piece.
   if (temp.get() == &piece)
   {
-    this->board_[piece.get_x()][piece.get_y()] = nullptr;
-    this->board_[x][y] = temp;
+    this->board_[piece.get_y()][piece.get_x()] = nullptr;
+    this->board_[y][x] = temp;
   }
   else
   {
@@ -256,7 +265,7 @@ void Array_Chess_Board::transform (std::shared_ptr<Chess_Piece> piece)
 {
   if (piece.get() != nullptr)
   {
-    this->board_[piece->get_x()][piece->get_y()] = piece;
+    this->board_[piece->get_y()][piece->get_x()] = piece;
   }
   else
   {
@@ -270,10 +279,14 @@ void Array_Chess_Board::transform (std::shared_ptr<Chess_Piece> piece)
 //
 std::shared_ptr<Chess_Piece> Array_Chess_Board::get_chess_piece(size_t x, size_t y)
 {
-  return this->board_[x][y];
+  return this->board_[y][x];
 }
 
 
+
+/*
+  Misc. Methods
+*/
 //
 // print ()
 //
@@ -286,13 +299,13 @@ void Array_Chess_Board::print(void)
     for (int j = 0; j < 8; j++)
     {
       // Print differently based on if the space is occupied or not.
-      if (this->board_[j][i] == nullptr)
+      if (this->board_[i][j] == nullptr)
       {
         std::cout << "|     |";
       }
       else
       {
-        std::cout << "| " << this->board_[j][i]->string() << " |";
+        std::cout << "| " << this->board_[i][j]->string() << " |";
       }
     }
     
@@ -322,5 +335,9 @@ void Array_Chess_Board::build_board(void)
     }
   }
 
-  this->board_[0][6] = std::make_shared<Pawn>(true, 1, this->movement_strategy_);
+  std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(true, 0, this->movement_strategy_);
+  this->board_[pawn->get_y()][pawn->get_x()] = pawn;
+  
+  std::shared_ptr<Pawn> bl_pawn = std::make_shared<Pawn>(false, 1, this->movement_strategy_);
+  this->board_[bl_pawn->get_y()][bl_pawn->get_x()] = bl_pawn;
 }

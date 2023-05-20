@@ -61,6 +61,62 @@ public:
   };
 
 
+  /**
+   * @class invalid_input
+   *
+   * Exception thrown to indicate invalid input.
+   */
+  class invalid_input : public std::exception
+  {
+  public:
+    /// Default constructor.
+    invalid_input (void)
+      :std::exception() { }
+
+    /**
+     * Initializing constructor.
+     *
+     * @param[in]      msg          Error message.
+     */
+    invalid_input (const char* msg)
+      :std::exception(msg) { }
+
+    /// Message to be returned when what() is called.
+    const char* what() const throw ()
+    {
+      return "Invalid input.";
+    }
+  };
+
+
+  /**
+   * @class quit
+   *
+   * Exception thrown to indicate user wants to quit.
+   */
+  class quit : public std::exception
+  {
+  public:
+    /// Default constructor.
+    quit (void)
+      :std::exception() { }
+
+    /**
+     * Initializing constructor.
+     *
+     * @param[in]      msg          Error message.
+     */
+    quit (const char* msg)
+      :std::exception(msg) { }
+
+    /// Message to be returned when what() is called.
+    const char* what() const throw ()
+    {
+      return "User inputted 'QUIT' or equivalent.";
+    }
+  };
+
+
 
   /*************
   * Member Functions
@@ -143,6 +199,7 @@ protected:
    * 
    * @param[in]         input         String input
    * @return            size_t of the input
+   * @exception         invalid_input Input is invalid
    */
   size_t to_size_t (std::string input);
   

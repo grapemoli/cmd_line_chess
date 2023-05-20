@@ -54,14 +54,25 @@ Chess_Board::~Chess_Board(void)
 //
 size_t Chess_Board::to_size_t(std::string input)
 {
-  size_t size_t_str;
+  // Check that input is a positive integer!
+  // Check if the input contains all digits.
+  bool is_integer = (input.find_first_not_of("0123456789") == std::string::npos);
+ 
+  if (is_integer == true)
+  {
+    size_t size_t_str;
 
-  std::stringstream converter;
-  converter.clear();
-  converter.str("");
+    std::stringstream converter;
+    converter.clear();
+    converter.str("");
 
-  converter << input;
-  converter >> size_t_str;
+    converter << input;
+    converter >> size_t_str;
 
-  return size_t_str;
+    return size_t_str;
+  }
+  else
+  {
+    throw invalid_input();
+  }
 }

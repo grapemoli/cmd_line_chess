@@ -24,7 +24,8 @@ class Array_Movement_Strategy;
  * @class Array_Chess_Board
  *
  * Full implementation of Chess_Board, representing the board as a 
- * two-dimensional array.
+ * two-dimensional array. In this representation: x = arr[i].length, 
+ * while y = arr.length. To access appropiately: arr[y][x].
  */
 class Array_Chess_Board : public Chess_Board
 {
@@ -95,6 +96,19 @@ public:
   void build_board(void);
 
 protected:
+  /*************
+   * Helper Methods
+   **************/
+  /**
+   * Prompt the user for a coordinate until the input fits
+   * requirements.
+   *
+   * @param[in]         prompt          What to prompt the user
+   * @return            size_t of the user input
+   * @exception         quit()          User inputs 'QUIT'
+   */
+  size_t get_coordinate (std::string prompt);
+
   /*************
    * Attributes
    **************/
