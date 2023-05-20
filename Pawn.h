@@ -61,8 +61,10 @@ public:
   /**
    * List the possible moves that can be made, taking into
    * account edge collision. Unique to each specific piece.
+   * 
+   * @param[in]         board         Chess_Board reference
    */
-  void list_valid_moves (void);
+  void list_valid_moves (Chess_Board & board);
 
   /**
    * Enable double dispatching. Used for collision detection.

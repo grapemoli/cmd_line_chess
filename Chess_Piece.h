@@ -154,8 +154,10 @@ public:
   /**
    * List the possible moves that can be made, taking into
    * account edge collision. Unique to each specific piece.
+   * 
+   * @param[in]         board         Reference to a Chess_Board instance
    */
-  virtual void list_valid_moves (void) = 0;
+  virtual void list_valid_moves (Chess_Board & board) = 0;
 
   /**
    * Support the undo() operation by regressing to the top

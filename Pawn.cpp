@@ -145,7 +145,14 @@ void Pawn::transform (Chess_Board & board)
     }
 
     // Set the piece on the chess board.
-    board.set_chess_piece (this->x_, this->y_, *new_piece);
+    try
+    {
+      board.transform(new_piece);
+    }
+    catch (Chess_Board::invalid_set & e)
+    {
+      throw invalid_move();
+    }
   }
 }
 
@@ -161,10 +168,36 @@ void Pawn::accept(Chess_Piece_Visitor & v)
 
 
 /*
-  list_valid_moves ()
+  list_valid_moves (Chess_Board &)
 */
-void Pawn::list_valid_moves(void)
+void Pawn::list_valid_moves(Chess_Board & board)
 {
-  // For each possible move, check that the coordinate
-  // is valid!
+  // Pawns can move forwards. They may move diagonally if there is a piece there.
+  // White y_ decrements, while black y_ increments for "forward" movement.
+  int count = 1;
+
+  // These one-liners look disgusting, but they are simple in nature: *only* print a
+  // coordinate if it is a valid coordindate.
+  if (this->is_white_ == true)
+  {
+    // (x, y - 1)
+    this->movement_strategy_.check_pawn_movement(this->x_, this->y_ - 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+    
+    // (x + 1, y - 1)
+    this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ - 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+
+    // (x - 1, y - 1)
+    this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ - 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+  }
+  else
+  {
+    // (x, y + 1)
+    this->movement_strategy_.check_pawn_movement(this->x_, this->y_ + 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+
+    // (x + 1, y + 1)
+    this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ + 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+
+    // (x - 1, y + 1)
+    this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ + 1, *this, board) ? std::cout << "\n" << count << ". " << this->x_ << this->y_ + 1 : std::cout << "";
+  }
 }
