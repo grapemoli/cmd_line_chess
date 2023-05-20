@@ -1,21 +1,21 @@
 # Chess
 
 ## Goals
-1. Use design patterns :check:
+1. Use design patterns ✔️
 2. Dynamic / Linear Programming if possible
 3. NAMESPACES ??
 4. Implement undo/redo features 
-5. Implement Castling :check:
+5. Implement Castling ✔️
 6. With the UI, reflect the board's printing such that the player who is playing is on the bottom.
 7. Check for moving into check
 
 ## Savepoints
-1. Create UML [O]
-2. Determine representation of the Board / Pieces on the Board [O]
-3. Create Chess Pieces  <--
+1. Create UML ✔️
+2. Determine representation of the Board / Pieces on the Board ✔️
+3. Create Chess Pieces  👈
 4. Test Chess Pieces & Chess Eating 
-5. Add pawn-transformation functionality <--
-7. Create Board representation <-- [O]
+5. Add pawn-transformation functionality ✔️
+7. Create Board representation ✔️
 8. Create Board builder
 9. Give option to reverse the printing of the board based on which player is playing
 10. Optimize the physical representation of the board
