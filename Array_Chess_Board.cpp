@@ -164,7 +164,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 {
   // Player 1 is false (0) = white (1). Player 2 is true (1) = black (0).
   // Check that the player is moving a piece of the correct color.
-  std::cout << "\n\n-----------";
+  std::cout << "\n\n--- " << piece.string() << "(" << piece.get_x() << ", " << piece.get_y() << ") ---";
 
   if (player == piece.is_white())
   {

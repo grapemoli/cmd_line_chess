@@ -67,7 +67,7 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
     {
       // Set the pawn position on the board -and- the attribute.
       board.set_chess_piece(x, y, *this);
-      this->x_ = y;
+      this->x_ = x;
       this->y_ = y;
 
       // Check if the pawn can transform.
