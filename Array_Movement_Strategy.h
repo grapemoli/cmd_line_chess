@@ -15,6 +15,7 @@
 
 // Forward Declarations.
 class Chess_Board;
+class Pawn;
 
 
 /**

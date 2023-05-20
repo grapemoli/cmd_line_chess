@@ -71,7 +71,18 @@ public:
    */
   void accept (Chess_Piece_Visitor & v);
 
-
+private:
+  /*************
+   * Helper Methods
+   **************/
+  /**
+   * Check if the Pawn can transform (i.e., reaches the end of the board),
+   * and prompt the user for the piece they wish to transform the pawn
+   * into. Then, transform the pawn with the new piece.
+   * 
+   * @param[in]         board         Chess_Board reference
+   */
+  void transform (Chess_Board & board);
 };
 
 

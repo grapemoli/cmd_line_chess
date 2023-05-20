@@ -211,51 +211,6 @@ void Array_Chess_Board::move(Chess_Piece & piece, bool player)
 }
 
 
-//
-// transform (Transform_Chess_Piece &)
-//
-void Array_Chess_Board::transform(Chess_Piece & piece)
-{
-  // Make a new Chess_Piece with the same coordinates as the
-  // passed parameter, and replace the passed parameter on the 
-  // board.
-  bool keep_going = true;
-  std::string user_input;
-
-  while (keep_going == true)
-  {
-    std::cout << "\nPawn to...\n1. Queen\n2. Rook\n3. Bishop\n4. Knight\nYour choice ('QUIT' to keep the same): ";
-    std::cin >> user_input;
-
-    if (user_input == "QUIT")
-    {
-      break;
-    }
-    else
-    {
-      if (user_input == "1")
-      {
-        //make a queen
-      }
-      else if (user_input == "2")
-      {
-        //make a rook
-      }
-      else if (user_input == "3")
-      {
-        //make a bishop
-      }
-      else if (user_input == "4")
-      {
-        // make a knight
-      }
-
-      keep_going = false;
-    }
-  }
-}
-
-
 
 /*
   Misc. Methods
@@ -268,8 +223,33 @@ void Array_Chess_Board::set_chess_piece (size_t x, size_t y, Chess_Piece & piece
   // Set the original location to nullptr, and set the new location
   // to contain the piece.
   std::shared_ptr<Chess_Piece> temp = this->board_[piece.get_y()][piece.get_x()];
-  this->board_[piece.get_y()][piece.get_x()] = nullptr;
-  this->board_[y][x] = temp;
+  
+  // Check that the stored piece and the passed piece are the same chess piece.
+  if (temp.get() == &piece)
+  {
+    this->board_[piece.get_y()][piece.get_x()] = nullptr;
+    this->board_[y][x] = temp;
+  }
+  else
+  {
+    throw invalid_set();
+  }
+}
+
+
+//
+// transform (std::shared_ptr<Chess_Piece>)
+//
+void Array_Chess_Board::transform (std::shared_ptr<Chess_Piece> piece)
+{
+  if (piece.get() != nullptr)
+  {
+    this->board_[piece->get_y()][piece->get_x()] = piece;
+  }
+  else
+  {
+    throw invalid_set();
+  }
 }
 
 

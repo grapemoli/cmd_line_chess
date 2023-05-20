@@ -70,9 +70,10 @@ public:
    * Transform the pawn by replacing the Pawn representation
    * with the new representation that the user chooses.
    *
-   * @param[in]         piece           Transform_Chess_Piece reference
+   * @param[in]         piece           Transform_Chess_Piece pointer
+   * @exception         invalid_set     The argument is null
    */
-  void transform (Chess_Piece & piece);
+  void transform (std::shared_ptr<Chess_Piece> piece);
 
   /**
    * Set the chess piece to the inputted parameters.
@@ -80,6 +81,8 @@ public:
    * @param[in]         x               The new x-position
    * @param[in]         y               The new y-position
    * @param[in]         piece           Chess_Piece reference
+   * @exception         invalid_set     The argument pointer differs from the pointer
+   *                                    stored in the chess board
    */
   void set_chess_piece(size_t x, size_t y, Chess_Piece & piece);
 

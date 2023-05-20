@@ -14,6 +14,7 @@
 #include <stack>          // For stack.
 #include <memory>         // For shared_ptr.
 #include <sstream>        // For string conversion.
+#include <memory>         // For custom exception: invalid_set.
 
 // Forward Declarations.
 class Chess_Piece;
@@ -29,6 +30,41 @@ class Movement_Validation_Strategy;
 class Chess_Board
 {
 public:
+  /*************
+  * Custom Exceptions
+  **************/
+  /**
+   * @class invalid_set
+   *
+   * Exception thrown to indicate invalid setting of Chess Pieces.
+   */
+  class invalid_set : public std::exception
+  {
+  public:
+    /// Default constructor.
+    invalid_set(void)
+      :std::exception() { }
+
+    /**
+     * Initializing constructor.
+     *
+     * @param[in]      msg          Error message.
+     */
+    invalid_set(const char* msg)
+      :std::exception(msg) { }
+
+    /// Message to be returned when what() is called.
+    const char* what() const throw ()
+    {
+      return "Invalid attempt to set a Chess Piece.";
+    }
+  };
+
+
+
+  /*************
+  * Member Functions
+  **************/
   /**
    * Default constructor.
    * 
@@ -74,9 +110,9 @@ public:
    * Transform the pawn by replacing the Pawn representation
    * with the new representation that the user chooses.
    * 
-   * @param[in]         piece           Transform_Chess_Piece reference
+   * @param[in]         piece           Transform_Chess_Piece pointer
    */
-  virtual void transform (Chess_Piece & piece) = 0;
+  virtual void transform (std::shared_ptr<Chess_Piece> piece) = 0;
 
   /// Return size_.
   size_t get_size (void) const;

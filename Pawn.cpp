@@ -44,9 +44,7 @@ Pawn::Pawn(Pawn & piece)
 // ~Pawn ()
 //
 Pawn::~Pawn(void)
-{
-  // There is nothing to deallocate.
-}
+{}
 
 
 
@@ -67,10 +65,13 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
 
     if (is_valid == true)
     {
-      // execute as needed.
+      // Set the pawn position on the board -and- the attribute.
       board.set_chess_piece(x, y, *this);
       this->x_ = y;
       this->y_ = y;
+
+      // Check if the pawn can transform.
+      this->transform(board);
     }
     else
     {
@@ -83,6 +84,70 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
   }
 }
 
+
+//
+// transform (Chess_Board &)
+//
+void Pawn::transform (Chess_Board & board)
+{
+  // A white pawn can transform if it reaches the end of the board (y = 0).
+  // A black pawn can transform if it reaches the end of the board (y = 7).
+  bool can_transform = false;
+  if (this->is_white_ == true && this->y_ == 0)
+  {
+    can_transform = true;
+  }
+  else if (this->is_white_ == false && this->y_ == 7)
+  {
+    can_transform = true;
+  }
+
+  // If appropiate, prompt the user for what they would like to change
+  // the Pawn into.
+  if (can_transform == true)
+  {
+    std::string user_input;
+    std::shared_ptr<Chess_Piece> new_piece = nullptr;
+    //std::shared_ptr<Transform_Chess_Piece> new_piece = nullptr;
+
+    while (user_input != "QUIT" || user_input == "1" || user_input == "2" || user_input == "3" || user_input == "4")
+    {
+      user_input.clear();
+      std::cout << "\nPawn to...\n1. Queen\n2. Rook\n3. Bishop\n4. Knight\nYour choice ('QUIT' to keep the same): ";
+      std::cin >> user_input;
+
+      // Build the appropiate piece based on the user input.
+      // Build the user's request.
+      if (user_input == "1")
+      {
+        // Make a queen.
+        //new_piece = std::make_shared<Queen>(*this);
+      }
+      else if (user_input == "2")
+      {
+        // Make a rook.
+        //new_piece = std::make_shared<Rook>(*this);
+      }
+      else if (user_input == "3")
+      {
+        // Make a bishop.
+        //new_piece = std::make_shared<Bishop>(*this);
+      }
+      else if (user_input == "4")
+      {
+        // Make a knight.
+        //new_piece = std::make_shared<Knight>(*this);
+      }
+      else if (user_input != "QUIT")
+      {
+        std::cout << "\nInvalid input. Try again.\n";
+      }
+    }
+
+    // Set the piece on the chess board.
+    board.set_chess_piece (this->x_, this->y_, *new_piece);
+  }
+}
 
 
 /*
