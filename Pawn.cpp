@@ -11,6 +11,7 @@
 #include "Movement_Validation_Strategy.h"
 #include "Game_Over_Visitor.h"
 #include "Pawn.h"
+#include "Queen.h"
 
 
 /*
@@ -107,8 +108,7 @@ void Pawn::transform (Chess_Board & board)
   if (can_transform == true)
   {
     std::string user_input;
-    std::shared_ptr<Chess_Piece> new_piece = nullptr;
-    //std::shared_ptr<Transform_Chess_Piece> new_piece = nullptr;
+    std::shared_ptr<Transform_Chess_Piece> new_piece = nullptr;
 
     while (user_input != "QUIT")
     {
@@ -121,7 +121,7 @@ void Pawn::transform (Chess_Board & board)
       if (user_input == "1")
       {
         // Make a queen.
-        //new_piece = std::make_shared<Queen>(*this);
+        new_piece = std::make_shared<Queen>(*this);
         break;
       }
       else if (user_input == "2")
@@ -147,8 +147,6 @@ void Pawn::transform (Chess_Board & board)
         std::cout << "\nInvalid input, try again.";
       }
     }
-
-  
 
     // Set the piece on the chess board.
     if (new_piece != nullptr)

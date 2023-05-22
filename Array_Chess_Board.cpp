@@ -11,6 +11,7 @@
 #include "Array_Movement_Strategy.h"
 #include "Chess_Piece.h"
 #include "Pawn.h"
+#include "Transform_Chess_Piece.h"
 
 
 /*
@@ -259,9 +260,9 @@ void Array_Chess_Board::set_chess_piece (size_t x, size_t y, Chess_Piece & piece
 
 
 //
-// transform (std::shared_ptr<Chess_Piece>)
+// transform (std::shared_ptr<Transform_Chess_Piece>)
 //
-void Array_Chess_Board::transform (std::shared_ptr<Chess_Piece> piece)
+void Array_Chess_Board::transform (std::shared_ptr<Transform_Chess_Piece> piece)
 {
   if (piece.get() != nullptr)
   {

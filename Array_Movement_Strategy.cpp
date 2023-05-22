@@ -132,8 +132,8 @@ const bool Array_Movement_Strategy::check_queen_movement(size_t x, size_t y, Che
     }
   }
 
-  // A queen can move in any direction diagonally. This is calculated by checking that
-  // the displacements of the x and y are the same.
+  // A queen can move in any direction diagonally. When moving diagonally, 
+  // dx and dy will both be the same displacement as one another.
   if (std::abs(x_displacement) == std::abs(y_displacement))
   {
     if (this->jump_over(x, y, piece, board) == false)
@@ -156,18 +156,20 @@ const bool Array_Movement_Strategy::check_queen_movement(size_t x, size_t y, Che
 //
 const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
 {
-  // Check that there are no pieces in between the path of
-  // movement and the final destination (does not include final
-  // destination, i.e., collisions).
+  // Check that there are no pieces in between the path of movement and 
+  // the final destination (does not include final destination, 
+  // i.e., collisions).
   int dx = piece.get_x() - x;  
   int dy = piece.get_y() - y;  
 
-  const int x_direction = dx == 0 ? 0 : dx/std::abs(dx);
-  const int y_direction = dy == 0 ? 0 : dy/std::abs(dy);
+  const int x_direction = (dx == 0 ? 0 : dx/std::abs(dx));
+  const int y_direction = (dy == 0 ? 0 : dy/std::abs(dy));
 
   size_t x_index;
   size_t y_index;
 
+  // If there is no change in movement, then the piece must have not jumped
+  // over any piece.
   if (dx == 0 && dy == 0)
   {
     return false;
@@ -192,8 +194,8 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
     // Check that the piece is a nullptr.
     std::shared_ptr<Chess_Piece> temp = board.get_chess_piece(x_index, y_index);
 
-    // If the piece is not a nullptr, then the passed arguement
-    // must have jumped over a piece.
+    // If the piece is not a nullptr, then the passed arguement must have 
+    // jumped over a piece.
     if (temp != nullptr)
     {
       return true;
@@ -201,7 +203,7 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
     }
 
     // Increment the displacements.
-    dx = dx != 0 ? dx - x_direction : 0;
-    dy = dy != 0 ? dy - y_direction : 0;
+    dx = (dx != 0 ? dx - x_direction : 0);
+    dy = (dy != 0 ? dy - y_direction : 0);
   }
 }

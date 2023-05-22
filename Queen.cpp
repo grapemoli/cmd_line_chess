@@ -21,12 +21,12 @@
 // Queen (bool, Movement_Validation_Strategy &)
 //
 Queen::Queen (bool is_white, Movement_Validation_Strategy & strategy)
-  :Transform_Chess_Piece(is_white, 4, "~P~", strategy)
+  :Transform_Chess_Piece(is_white, 4, "~Q~", strategy)
 {
   // All Queens are set on x = 4.
   if (this->is_white_ == true)
   {
-    this->string_representation_ = "-P-";
+    this->string_representation_ = "-Q-";
   }
 }
 
@@ -62,7 +62,7 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
     {
       const bool is_collide = this->movement_strategy_.is_collide(x, y, *this, board);
 
-      // Check for collisions.
+      // Check that collisions are valid (eating the other team).
       // Set the queen position on the board -and- the property.
       board.set_chess_piece(x, y, *this);
       this->x_ = x;

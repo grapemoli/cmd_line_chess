@@ -18,6 +18,7 @@
 // Forward Declarations.
 class Chess_Piece;
 class Array_Movement_Strategy;
+class Transform_Chess_Piece;
 
 
 /**
@@ -76,7 +77,7 @@ public:
    * @param[in]         piece           Transform_Chess_Piece pointer
    * @exception         invalid_set     The argument is null
    */
-  void transform (std::shared_ptr<Chess_Piece> piece);
+  void transform (std::shared_ptr<Transform_Chess_Piece> piece);
 
   /**
    * Set the chess piece to the inputted parameters.

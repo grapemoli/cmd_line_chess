@@ -19,6 +19,7 @@
 // Forward Declarations.
 class Chess_Piece;
 class Movement_Validation_Strategy;
+class Transform_Chess_Piece;
 
 
 /**
@@ -170,7 +171,7 @@ public:
    * 
    * @param[in]         piece           Transform_Chess_Piece pointer
    */
-  virtual void transform (std::shared_ptr<Chess_Piece> piece) = 0;
+  virtual void transform (std::shared_ptr<Transform_Chess_Piece> piece) = 0;
 
   /// Return size_.
   size_t get_size (void) const;
