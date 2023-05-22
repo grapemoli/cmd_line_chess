@@ -14,6 +14,7 @@ project (chess){
     Game_Over_Visitor.cpp
 
     Chess_Piece.cpp
+    Transform_Chess_Piece.cpp
     Pawn.cpp
   
     Chess_Board.cpp

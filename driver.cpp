@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 //==============================================================================
 /**
  * File: driver.cpp
@@ -14,6 +14,7 @@
 #include "Array_Movement_Strategy.h"
 #include "Array_Chess_Board.h"
 #include <memory>
+#include <iostream>
 
 
 int main (void)

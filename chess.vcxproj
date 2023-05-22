@@ -562,6 +562,8 @@
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
     </ClCompile>
+    <ClCompile Include="Transform_Chess_Piece.cpp">
+    </ClCompile>
     <ClCompile Include="driver.cpp">
     </ClCompile>
   </ItemGroup>
