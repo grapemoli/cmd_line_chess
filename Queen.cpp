@@ -36,7 +36,18 @@ Queen::Queen (bool is_white, Movement_Validation_Strategy & strategy)
 //
 Queen::Queen(Pawn & piece)
   :Transform_Chess_Piece(piece)
-{}
+{
+  // Currently, the string representation is the Pawn's, 
+  // so change the string representation to be the Queen's.
+  if (this->is_white_ == true)
+  {
+    this->string_representation_ = "-Q-";
+  }
+  else
+  {
+    this->string_representation_ = "~Q~";
+  }
+}
 
 
 //
@@ -77,7 +88,7 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
   {
     throw game_over();
   }
-  catch (Movement_Validation_Strategy::invalid_move& e)
+  catch (Movement_Validation_Strategy::invalid_move & e)
   {
     throw invalid_move();
   }
@@ -87,9 +98,56 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
 //
 // list_valid_moves (Chess_Board &)
 //
-void Queen::list_valid_moves(Chess_Board& board)
+void Queen::list_valid_moves(Chess_Board & board)
 {
-  // Print all valid moves.
+  // Print all valid horizontal moves.
+  for (int x = this->x_; x < 8; x++)
+  {
+    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "(" << x << ", " << y << ")" : "-";
+  }
+
+  for (int x = this->x_; x > 0; x--)
+  {
+
+  }
+
+  // Print all valid vertical moves.
+  for (int y = this->y_; y < 8; y++)
+  {
+
+  }
+
+  for (int y = this->y_; y > 0; y--)
+  {
+
+  }
+
+  // Print all valid diagonal moves.
+  for (int x = this->x_; x < 8; x++)
+  {
+    for (int y = this->y_; y < 8; y++)
+    {
+
+    }
+
+    for (int y = this->y_; y > 0; y--)
+    {
+
+    }
+  }
+
+  for (int x = this->x_; x > 0; x--)
+  {
+    for (int y = this->y_; y < 8; y++)
+    {
+
+    }
+
+    for (int y = this->y_; y > 0; y--)
+    {
+
+    }
+  }
 }
 
 

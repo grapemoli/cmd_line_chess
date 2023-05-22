@@ -12,6 +12,7 @@
 #define _TRANSFORM_CHESS_PIECE_H_
 
 #include "Chess_Piece.h"
+#include <iostream>       // For printing.
 
 // Forward Declarations.
 class Chess_Board;
