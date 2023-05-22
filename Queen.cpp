@@ -60,6 +60,9 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
   {
     if (valid_move == true)
     {
+      const bool is_collide = this->movement_strategy_.is_collide(x, y, *this, board);
+
+      // Check for collisions.
       // Set the queen position on the board -and- the property.
       board.set_chess_piece(x, y, *this);
       this->x_ = x;
@@ -70,9 +73,13 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
       throw invalid_move();
     }
   }
-  catch (Movement_Validation_Strategy::game_over& e)
+  catch (Movement_Validation_Strategy::game_over & e)
   {
     throw game_over();
+  }
+  catch (Movement_Validation_Strategy::invalid_move& e)
+  {
+    throw invalid_move();
   }
 }
 
