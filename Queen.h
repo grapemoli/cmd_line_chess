@@ -1,17 +1,17 @@
 // -*- C++ -*-
 //==============================================================================
 /**
- * File: Transform_Chess_Piece.h
+ * File: Queen.h
  * By: Grace Nguyen
  */
 //==============================================================================
 
 
 #pragma once
-#ifndef _TRANSFORM_CHESS_PIECE_H_
-#define _TRANSFORM_CHESS_PIECE_H_
+#ifndef _QUEEN_CHESS_PIECE_H_
+#define _QUEEN_CHESS_PIECE_H_
 
-#include "Chess_Piece.h"
+#include "Transform_Chess_Piece.h"
 
 // Forward Declarations.
 class Chess_Board;
@@ -21,24 +21,22 @@ class Pawn;
 
 
 /**
- * @class Transform_Chess_Piece
+ * @class Queen
  * 
- * An abstract class made by the template method, to ensure that 
- * all chess pieces that Pawns can transform into have the appropiate
- * methods to allow such behavior.
+ * A full implementation of the Transform_Chess_Piece, allowing 
+ * for Pawns to transform into a Queen if applicable.
  */
-class Transform_Chess_Piece: public Chess_Piece
+class Queen: public Transform_Chess_Piece
 {
 public:
    /**
     * Overloaded constructor.
     * 
     * @param[in]          is_white      Boolean to determine color
-    * @param[in]          x             The x coordinate
     * @param[in]          str           String representation of the Chess Piece
     * @param[in]          strategy      Movement_Validation_Strategy reference
     */
-   Transform_Chess_Piece (bool is_white, size_t x, std::string str, Movement_Validation_Strategy & strategy);
+   Queen (bool is_white, Movement_Validation_Strategy & strategy);
 
   /**
    * Copy Constructor for pieces that Pawns can turn into will take a 
@@ -46,10 +44,10 @@ public:
    * 
    * @param[in]         piece         Pawn reference
    */
-  Transform_Chess_Piece (Pawn & piece);
+  Queen (Pawn & piece);
 
   /// Destructor.
-  virtual ~Transform_Chess_Piece (void) {};
+  ~Queen (void);
 
   /**
    * A pure method that will check the placement validity,
@@ -61,7 +59,7 @@ public:
    * @param[in]         board         Reference to a Chess_Board instance
    * @exception         invalid_move
    */
-  virtual void execute (size_t x, size_t y, Chess_Board & board) = 0;
+  void execute (size_t x, size_t y, Chess_Board & board);
 
   /**
    * List the possible moves that can be made, taking into
@@ -69,15 +67,15 @@ public:
    * 
    * @param[in]         board         Reference to a Chess_Board instance
    */
-  virtual void list_valid_moves (Chess_Board & board) = 0;
+  void list_valid_moves (Chess_Board & board);
 
   /**
    * Enable double dispatching. Used for collision detection.
    * 
    * @param[in]         v             Chess_Piece_Visitor instance
    */
-  virtual void accept (Chess_Piece_Visitor & v) = 0;
+  void accept (Chess_Piece_Visitor & v);
 };
 
 
-#endif   // !defined _TRANSFORM_CHESS_PIECE_H_
+#endif   // !defined _QUEEN_CHESS_PIECE_H_

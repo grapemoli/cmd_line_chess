@@ -16,7 +16,7 @@
 // Forward Declarations.
 class Pawn;
 //class King;
-//class Queen;
+class Queen;
 //class Rook;
 //class Bishop;
 //class Knight;
@@ -56,7 +56,7 @@ public:
    * 
    * @param[in]         piece         Reference to a Queen
    */
-  //virtual void visit (const Queen & piece) = 0;
+  void visit (const Queen & piece);
 
   /**
    * Set visited_king_ to false.

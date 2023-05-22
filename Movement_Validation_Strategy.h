@@ -174,7 +174,7 @@ public:
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //virtual const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
+  virtual const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board) = 0;
 
   /**
    * Check if the movement is valid for a king.

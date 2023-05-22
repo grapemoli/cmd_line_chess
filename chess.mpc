@@ -16,6 +16,7 @@ project (chess){
     Chess_Piece.cpp
     Transform_Chess_Piece.cpp
     Pawn.cpp
+    Queen.cpp
   
     Chess_Board.cpp
     Array_Chess_Board.cpp

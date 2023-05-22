@@ -65,7 +65,7 @@ void Pawn::execute(size_t x, size_t y, Chess_Board & board)
 
     if (is_valid == true)
     {
-      // Set the pawn position on the board -and- the attribute.
+      // Set the pawn position on the board -and- the property.
       board.set_chess_piece(x, y, *this);
       this->x_ = x;
       this->y_ = y;

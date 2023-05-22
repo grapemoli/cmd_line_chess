@@ -11,9 +11,10 @@
 #include "Game_Over_Visitor.h"
 #include "Chess_Piece.h"
 #include "Pawn.h"
+#include "Chess_Board.h"
 //#include "Rook.h"
 //#include "Bishop.h"
-//#include "Queen.h"
+#include "Queen.h"
 //#include "King.h"
 //#include "Knight.h"
 
@@ -91,4 +92,116 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
 
   // If any of the above is not true, then this move must be invalid.
   return false;
+}
+
+
+//
+// check_queen_movement (size_t, size_t, Chess_Piece &, Chess_Board &)
+//
+const bool Array_Movement_Strategy::check_queen_movement(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
+{
+  const int x_displacement = piece.get_x() - x;
+  const int y_displacement = piece.get_y() - y;
+
+  // Check that the movement is not outside of the board's bounds.
+  if (x > 7 || y > 7)
+  {
+    return false;
+  }
+
+  // Check that the movement is not the same placement currently.
+  if (piece.get_x() == x && piece.get_y() == y)
+  {
+    return false;
+  }
+
+  // A queen can move in any direction forwards or backwards.
+  if (piece.get_x() == x && piece.get_y() != y)
+  {
+    if (this->jump_over(x, y, piece, board) == false)
+    {
+      return true;
+    }
+  }
+
+  if (piece.get_y() == y && piece.get_x() != x)
+  {
+    if (this->jump_over(x, y, piece, board) == false)
+    {
+      return true;
+    }
+  }
+
+  // A queen can move in any direction diagonally. This is calculated by checking that
+  // the displacements of the x and y are the same.
+  if (std::abs(x_displacement) == std::abs(y_displacement))
+  {
+    if (this->jump_over(x, y, piece, board) == false)
+    {
+      return true;
+    }
+  }
+
+  // If none of the above are true, then must be false.
+  return false;
+}
+
+
+
+/*
+  Helper Methods
+*/
+//
+// jump_over (size_t, size_t, Chess_Piece &, Chess_Board &)
+//
+const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
+{
+  // Check that there are no pieces in between the path of
+  // movement and the final destination (does not include final
+  // destination, i.e., collisions).
+  int dx = piece.get_x() - x;  
+  int dy = piece.get_y() - y;  
+
+  const int x_direction = dx == 0 ? 0 : dx/std::abs(dx);
+  const int y_direction = dy == 0 ? 0 : dy/std::abs(dy);
+
+  size_t x_index;
+  size_t y_index;
+
+  if (dx == 0 && dy == 0)
+  {
+    return false;
+  }
+
+  while (dx != 0 && dy != 0)
+  {
+    // Break if at the final position.
+    if (dx == 0 && dy == 0)
+    {
+      // Do not check the final position.
+      // If there is no nullptr up until this point, then the
+      // piece must have not jumped over anything.
+      return false;
+      break;
+    }
+
+    // Calculate current index.
+    x_index = piece.get_x() + dx;
+    y_index = piece.get_y() + dy;
+
+    // Check that the piece is a nullptr.
+    std::shared_ptr<Chess_Piece> temp = board.get_chess_piece(x_index, y_index);
+
+    // If the piece is not a nullptr, then the passed arguement
+    // must have jumped over a piece.
+    if (temp != nullptr)
+    {
+      return true;
+      break;
+    }
+
+    // Increment the displacements.
+    dx = dx != 0 ? dx - x_direction : 0;
+    dy = dy != 0 ? dy - y_direction : 0;
+  }
 }

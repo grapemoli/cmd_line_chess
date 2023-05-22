@@ -11,7 +11,7 @@
 #include "Pawn.h"
 //#include "Rook.h"
 //#include "King.h"
-//#include "Queen.h"
+#include "Queen.h"
 //#include "Rook.h"
 //#include "Bishop.h"
 //#include "Knight.h"
@@ -62,12 +62,11 @@ void Game_Over_Visitor::visit(const King & piece)
 //
 // visit (Queen &)
 //
-/*
 void Game_Over_Visitor::visit(const Queen & piece)
 {
   this->visited_king_ = false;
 }
-*/
+
 
 
 //

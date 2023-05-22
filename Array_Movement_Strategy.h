@@ -12,10 +12,12 @@
 #define _ARRAY_MOVEMENT_STRATEGY_H_
 
 #include "Movement_Validation_Strategy.h"
+#include <cmath>        // For absolute value.
 
 // Forward Declarations.
 class Chess_Board;
 class Pawn;
+class Queen;
 
 
 /**
@@ -95,7 +97,7 @@ public:
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
+  const bool check_queen_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
   /**
    * Check if the movement is valid for a king.
@@ -108,6 +110,20 @@ public:
    * @retvalue           False         Not valid
    */
   //const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
+
+private:
+  /**********
+  * Helper Methods
+  ***********/
+  /**
+   * Check if there are any pieces in between the path of movement.
+   * 
+   * @param[in]         x             The new x coordinate
+   * @param[in]         y             The new y coordinate
+   * @param[in]         piece         Chess_Piece reference
+   * @param[in]         board         Chess_Board reference
+   */
+  const bool jump_over (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 };
 
 
