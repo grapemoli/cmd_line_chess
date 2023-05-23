@@ -336,9 +336,13 @@ void Array_Chess_Board::build_board(void)
     }
   }
 
-  std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(true, 0, this->movement_strategy_);
-  this->board_[pawn->get_y()][pawn->get_x()] = pawn;
+  //std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(true, 0, this->movement_strategy_);
+  //this->board_[pawn->get_y()][pawn->get_x()] = pawn;
   
-  std::shared_ptr<Pawn> bl_pawn = std::make_shared<Pawn>(false, 1, this->movement_strategy_);
-  this->board_[bl_pawn->get_y()][bl_pawn->get_x()] = bl_pawn;
+  std::shared_ptr<Queen> queen = std::make_shared<Queen>(true,this->movement_strategy_);
+  std::shared_ptr<Queen> queen_b = std::make_shared<Queen>(false, this->movement_strategy_);
+  this->board_[queen->get_y()][queen->get_x()]
+
+  //std::shared_ptr<Pawn> bl_pawn = std::make_shared<Pawn>(false, 1, this->movement_strategy_);
+  //this->board_[bl_pawn->get_y()][bl_pawn->get_x()] = bl_pawn;
 }
