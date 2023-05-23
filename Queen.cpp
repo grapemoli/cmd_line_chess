@@ -81,7 +81,6 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
     }
     else
     {
-      std::cout << "\nIs the move valid? " << valid_move << std::endl;
       throw invalid_move();
     }
   }
@@ -110,7 +109,6 @@ void Queen::list_valid_moves(Chess_Board & board)
   for (int x = this->x_; x > 0; x--)
   {
     this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "(" << x << ", " << this->y_ << ")" : std::cout << "";
-
   }
 
   // Print all valid vertical moves.
@@ -118,7 +116,7 @@ void Queen::list_valid_moves(Chess_Board & board)
   {
     this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "(" << this->x_ << ", " << y << ")" : std::cout << "";
   }
-
+  
   for (int y = this->y_; y > 0; y--)
   {
     this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "(" << this->x_ << ", " << y << ")" : std::cout << "";

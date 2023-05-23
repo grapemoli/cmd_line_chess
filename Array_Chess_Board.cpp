@@ -315,7 +315,6 @@ void Array_Chess_Board::print(void)
     std::cout << "\n";
   }
 
-
   for (int i = 0; i < 8; i++)
   {
     std::cout << "      " << i;
