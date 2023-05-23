@@ -20,7 +20,7 @@
 //
 // Queen (bool, Movement_Validation_Strategy &)
 //
-Queen::Queen (bool is_white, Movement_Validation_Strategy & strategy)
+Queen::Queen(bool is_white, Movement_Validation_Strategy & strategy)
   :Transform_Chess_Piece(is_white, 4, "~Q~", strategy)
 {
   // All Queens are set on x = 4.
@@ -81,6 +81,7 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
     }
     else
     {
+      std::cout << "\nIs the move valid? " << valid_move << std::endl;
       throw invalid_move();
     }
   }

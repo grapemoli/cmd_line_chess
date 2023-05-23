@@ -185,11 +185,11 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 
       try
       {
-        std::cout << "\n1.Move\n2. View valid moves\n00.Go back\nChoose an option : ";
+        std::cout << "\n1.Move\n2. View valid moves\n00.Go back (or 'QUIT')\nChoose an option : ";
         std::cin >> user_input;
 
         // Check if the user wants to go back.
-        if (user_input == "00")
+        if (user_input == "00" || user_input == "QUIT")
         {
           return false;
         }

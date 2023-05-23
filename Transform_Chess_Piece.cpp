@@ -26,6 +26,8 @@ Transform_Chess_Piece::Transform_Chess_Piece(bool is_white, size_t x, std::strin
   // initialized at y = 7 if the Piece is white.
   if (is_white == true)
   {
+    // Note that proper initialization of the string representation
+    // is up to the client, not this abstract class.
     this->y_ = 7;
   }
 }

@@ -196,7 +196,7 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
 
     // If the piece is not a nullptr, then the passed arguement must have 
     // jumped over a piece.
-    if (temp != nullptr)
+    if (temp.get() != nullptr)
     {
       return true;
       break;
@@ -206,4 +206,8 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
     dx = (dx != 0 ? dx - x_direction : 0);
     dy = (dy != 0 ? dy - y_direction : 0);
   }
+
+  // If the while loop runs successfully, then the piece must have not
+  // jumped over any piece.
+  return false;
 }
