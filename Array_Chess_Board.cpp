@@ -11,6 +11,7 @@
 #include "Array_Movement_Strategy.h"
 #include "Chess_Piece.h"
 #include "Pawn.h"
+#include "Queen.h"
 #include "Transform_Chess_Piece.h"
 
 
@@ -336,13 +337,13 @@ void Array_Chess_Board::build_board(void)
     }
   }
 
-  //std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(true, 0, this->movement_strategy_);
-  //this->board_[pawn->get_y()][pawn->get_x()] = pawn;
+  std::shared_ptr<Pawn> p_w = std::make_shared<Pawn>(true, 0, this->movement_strategy_);
+  this->board_[p_w->get_y()][p_w->get_x()] = p_w;
+  std::shared_ptr<Pawn> p_b = std::make_shared<Pawn>(false, 1, this->movement_strategy_);
+  this->board_[p_b->get_y()][p_b->get_x()] = p_b;
   
-  std::shared_ptr<Queen> queen = std::make_shared<Queen>(true,this->movement_strategy_);
-  std::shared_ptr<Queen> queen_b = std::make_shared<Queen>(false, this->movement_strategy_);
-  this->board_[queen->get_y()][queen->get_x()]
-
-  //std::shared_ptr<Pawn> bl_pawn = std::make_shared<Pawn>(false, 1, this->movement_strategy_);
-  //this->board_[bl_pawn->get_y()][bl_pawn->get_x()] = bl_pawn;
+  std::shared_ptr<Queen> q_w = std::make_shared<Queen>(true, this->movement_strategy_);
+  this->board_[q_w->get_y()][q_w->get_x()] = q_w;
+  std::shared_ptr<Queen> q_b = std::make_shared<Queen>(false, this->movement_strategy_);
+  this->board_[q_b->get_y()][q_b->get_x()] = q_b;
 }

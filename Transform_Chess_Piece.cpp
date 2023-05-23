@@ -20,14 +20,13 @@
 // Transform_Chess_Piece (bool, size_t, string, Movement_Validation_Strategy &)
 //
 Transform_Chess_Piece::Transform_Chess_Piece(bool is_white, size_t x, std::string str, Movement_Validation_Strategy & strategy)
-  :Chess_Piece(is_white, x, 1, "~P~", strategy)
+  :Chess_Piece(is_white, x, 0, str, strategy)
 {
   // Pieces are initialized at y = 1 if the Piece is black, and 
   // initialized at y = 7 if the Piece is white.
   if (is_white == true)
   {
     this->y_ = 7;
-    this->string_representation_ = "-P-";
   }
 }
 
