@@ -30,9 +30,10 @@ The following input styles are sought to be supported in this application:
 To do this, all algorithms that deal with string-to-coordinates conversions and validation will be moved its own seperate class. This allows for the decoupling of string validation from the client (the Chess Board), and allows the possible complexity of string validation to not affect the Chess Board-related algorithms.
 
 The algorithm generally works as such: 
-1. Clean the string
-2. Check the validity of the string
-3. Return the x and y coordindates (
+1. Clean the string (does not need to be called by the client)
+2. Check the validity of the string (must be called by the client)
+3. Return the x and y coordindates (must be called by the client)
+
 ### Collision Detection and Game Over Detection
 Collision detection WILL NOT require the latest concretion, BUT GAME OVER DETECTION WILL.
 
