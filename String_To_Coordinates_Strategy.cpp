@@ -93,8 +93,8 @@ std::string String_To_Coordinates_Strategy::clean_string(std::string string)
 //
 bool String_To_Coordinates_Strategy::is_valid(std::string string)
 {
-  // Check that the length is 3 and contains at least one parenthesis.
-  if (string.find(",") != std::string::npos && string.length() == 3)
+  // Check that the length is 3 and the string is formatted properly.
+  if (string.find(",") != std::string::npos && string.length() == 3 && isalpha(string[0]) != 0 && isdigit(string[2]) != 0)
   {
     return true;
   }
@@ -115,7 +115,6 @@ std::array<size_t, 2> String_To_Coordinates_Strategy::get_coordinates(std::strin
   // Parse the string and return the coordinates appropiately.
   if (this->is_valid(string) == false)
   {
-    // If there are too little tokens, throw exception.
     throw invalid_operation();
   }
   else
@@ -130,6 +129,7 @@ std::array<size_t, 2> String_To_Coordinates_Strategy::get_coordinates(std::strin
 
     try
     {
+      // clean_string() uses a comma delimiter.
       while (std::getline(ss, token, ',')) 
       {
         coordinates[i] = this->to_size_t(token);
@@ -138,7 +138,6 @@ std::array<size_t, 2> String_To_Coordinates_Strategy::get_coordinates(std::strin
     }
     catch (...)
     {
-      // If there are too many tokens, throw exception.
       throw invalid_operation();
     }
   }
