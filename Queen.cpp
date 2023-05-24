@@ -98,42 +98,56 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
 //
 // list_valid_moves (Chess_Board &)
 //
-void Queen::list_valid_moves(Chess_Board & board)
+void Queen::list_valid_moves(Chess_Board& board)
 {
   // Print all valid horizontal moves.
-  for (int x = this->x_; x < 8; x++)
+  for (int x = 0; x < this->x_; x++)
   {
-    this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "(" << x << ", " << this->y_ << ")" : std::cout <<  "";
+    this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "(" << x << ", " << this->y_ << ")" : std::cout << "";
   }
 
-  for (int x = this->x_; x > 0; x--)
+  for (int x = this->x_; x < 8; x++)
   {
     this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "(" << x << ", " << this->y_ << ")" : std::cout << "";
   }
 
   // Print all valid vertical moves.
-  for (int y = this->y_; y < 8; y++)
+  for (int y = 0; y < this->y_; y++)
   {
     this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "(" << this->x_ << ", " << y << ")" : std::cout << "";
   }
-  
-  for (int y = this->y_; y > 0; y--)
+
+  for (int y = this->y_; y < 8; y++)
   {
     this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "(" << this->x_ << ", " << y << ")" : std::cout << "";
   }
 
   // Print all valid diagonal moves.
-  for (int x = this->x_, y_f = this->y_, y_b = this->y_; x < 8, y_f < 8, y_b > 0; x++, y_f++, y_b--)
+  // Increasing x and y.
+  for (int x = this->x_, y = this->y_; x < 8, y < 8; x++, y++)
   {
-    this->movement_strategy_.check_queen_movement(x, y_f, *this, board) ? std::cout << "\n" << "(" << x << ", " << y_f << ")" : std::cout << "";
-    this->movement_strategy_.check_queen_movement(x, y_b, *this, board) ? std::cout << "\n" << "(" << x << ", " << y_b << ")" : std::cout << "";
+    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "(" << x << ", " << y << ")" : std::cout << "";
   }
 
-  for (int x = this->x_, y_f = this->y_, y_b = this->y_; x > 0, y_f < 8, y_b > 0; x--, y_f++, y_b--)
+  // Increasing x, decreasing y.
+  for (int x = this->x_, y = this->y_; x < 8, y > 0; x++, y--)
   {
-    this->movement_strategy_.check_queen_movement(x, y_f, *this, board) ? std::cout << "\n" << "(" << x << ", " << y_f << ")" : std::cout << "";
-    this->movement_strategy_.check_queen_movement(x, y_b, *this, board) ? std::cout << "\n" << "(" << x << ", " << y_b << ")" : std::cout << "";
+    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "(" << x << ", " << y << ")" : std::cout << "";
   }
+
+  // Decreasing x, increasing y.
+  for (int x = this->x_, y = this->y_; x > 0, y < 8; x--, y++)
+  {
+    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "(" << x << ", " << y << ")" : std::cout << "";
+  }
+
+  // Decreasing x, decreasing y.
+  for (int x = this->x_, y = this->y_; x > 0, y > 0; x--, y--)
+  {
+    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "(" << x << ", " << y << ")" : std::cout << "";
+  }
+
+
 }
 
 
