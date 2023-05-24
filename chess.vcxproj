@@ -564,6 +564,8 @@
     </ClCompile>
     <ClCompile Include="Queen.cpp">
     </ClCompile>
+    <ClCompile Include="String_To_Coordinates_Strategy.cpp">
+    </ClCompile>
     <ClCompile Include="Transform_Chess_Piece.cpp">
     </ClCompile>
     <ClCompile Include="driver.cpp">

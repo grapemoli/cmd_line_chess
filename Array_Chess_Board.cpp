@@ -154,7 +154,7 @@ size_t Array_Chess_Board::get_coordinate (std::string prompt)
         }
         else
         {
-          return this->to_size_t(user_input);
+          return this->conversion_strategy_->to_size_t(user_input);
         }
       }
       catch (...)

@@ -24,8 +24,11 @@
 Chess_Board::Chess_Board(Movement_Validation_Strategy & strategy)
   :moves_(),
   size_(SIZE),
-  movement_strategy_(strategy)
-{}
+  movement_strategy_(strategy),
+  conversion_strategy_(nullptr)
+{
+  conversion_strategy_ = std::make_shared<String_To_Coordinates_Strategy>();
+}
 
 
 //
@@ -34,7 +37,8 @@ Chess_Board::Chess_Board(Movement_Validation_Strategy & strategy)
 Chess_Board::Chess_Board (Chess_Board & board)
   :moves_(board.moves_),
   size_(SIZE),
-  movement_strategy_(board.movement_strategy_)
+  movement_strategy_(board.movement_strategy_),
+  conversion_strategy_(board.conversion_strategy_)
 {}
 
 
@@ -43,36 +47,3 @@ Chess_Board::Chess_Board (Chess_Board & board)
 //
 Chess_Board::~Chess_Board(void)
 {}
-
-
-
-/*
-  Helper Methods
-*/
-//
-// to_size_t (std::string)
-//
-size_t Chess_Board::to_size_t(std::string input)
-{
-  // Check that input is a positive integer!
-  // Check if the input contains all digits.
-  bool is_integer = (input.find_first_not_of("0123456789") == std::string::npos);
- 
-  if (is_integer == true)
-  {
-    size_t size_t_str;
-
-    std::stringstream converter;
-    converter.clear();
-    converter.str("");
-
-    converter << input;
-    converter >> size_t_str;
-
-    return size_t_str;
-  }
-  else
-  {
-    throw invalid_input();
-  }
-}

@@ -118,6 +118,8 @@ protected:
 
   /// Alphabet-to-Number conversion.
   std::string alpha_ = "ABDCEFGH";
+
+
 };
 
 

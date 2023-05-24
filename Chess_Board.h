@@ -15,6 +15,7 @@
 #include <memory>         // For shared_ptr.
 #include <sstream>        // For string conversion.
 #include <memory>         // For custom exception: invalid_set.
+#include "String_To_Coordinates_Strategy.h"
 
 // Forward Declarations.
 class Chess_Piece;
@@ -192,19 +193,6 @@ public:
   virtual void build_board (void) = 0;
 
 protected:
-  /**************
-   * Helper Methods
-   **************/
-  /**
-   * Turn the inputted string to a size_t.
-   * 
-   * @param[in]         input         String input
-   * @return            size_t of the input
-   * @exception         invalid_input Input is invalid
-   */
-  size_t to_size_t (std::string input);
-  
-
   /*************
    * Attributes
    **************/
@@ -216,6 +204,9 @@ protected:
 
   /// Strategy for movement.
   Movement_Validation_Strategy & movement_strategy_;
+
+  // Strategy for string to coordinates conversion.
+  std::shared_ptr<String_To_Coordinates_Strategy> conversion_strategy_;
 };
 
 

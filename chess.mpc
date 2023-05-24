@@ -7,6 +7,8 @@ project (chess){
   }
 
   Source_Files {
+    String_To_Coordinates_Strategy.cpp
+
     Movement_Validation_Strategy.cpp
     Array_Movement_Strategy.cpp
 

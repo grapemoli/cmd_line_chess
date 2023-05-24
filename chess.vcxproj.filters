@@ -45,6 +45,9 @@
     <ClCompile Include="Queen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="String_To_Coordinates_Strategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Transform_Chess_Piece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
