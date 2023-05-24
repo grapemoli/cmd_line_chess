@@ -159,8 +159,8 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
   // Check that there are no pieces in between the path of movement and 
   // the final destination (does not include final destination, 
   // i.e., collisions).
-  int dx = piece.get_x() - x;  
-  int dy = piece.get_y() - y;  
+  int dx = x - piece.get_x();  
+  int dy = y - piece.get_y();
 
   const int x_direction = (dx == 0 ? 0 : dx/std::abs(dx));
   const int y_direction = (dy == 0 ? 0 : dy/std::abs(dy));
