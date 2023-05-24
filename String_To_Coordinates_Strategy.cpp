@@ -115,6 +115,7 @@ std::array<size_t, 2> String_To_Coordinates_Strategy::get_coordinates(std::strin
   // Parse the string and return the coordinates appropiately.
   if (this->is_valid(string) == false)
   {
+    // If there are too little tokens, throw exception.
     throw invalid_operation();
   }
   else
@@ -137,6 +138,7 @@ std::array<size_t, 2> String_To_Coordinates_Strategy::get_coordinates(std::strin
     }
     catch (...)
     {
+      // If there are too many tokens, throw exception.
       throw invalid_operation();
     }
   }
