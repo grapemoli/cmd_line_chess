@@ -558,6 +558,8 @@
     </ClCompile>
     <ClCompile Include="Game_Over_Visitor.cpp">
     </ClCompile>
+    <ClCompile Include="King.cpp">
+    </ClCompile>
     <ClCompile Include="Movement_Validation_Strategy.cpp">
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
