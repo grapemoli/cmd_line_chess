@@ -15,7 +15,7 @@ project (chess){
 
     Chess_Piece.cpp
     Transform_Chess_Piece.cpp
-    King.cpp
+    //King.cpp
     Pawn.cpp
     Queen.cpp
   

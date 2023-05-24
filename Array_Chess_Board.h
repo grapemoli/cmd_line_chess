@@ -117,7 +117,7 @@ protected:
   std::array<std::array<std::shared_ptr<Chess_Piece>, 8>, 8> board_;
 
   /// Alphabet-to-Number conversion.
-  std::array<std::string, 8> alphabet_;
+  std::string alpha_ = "ABDCEFGH";
 };
 
 

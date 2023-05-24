@@ -144,8 +144,18 @@ size_t Array_Chess_Board::get_coordinate (std::string prompt)
     {
       try
       {
-        size_t coordindate = this->to_size_t(user_input);
-        return coordindate;
+        size_t coordinate;
+
+        // X coordinates will require one extra step (transforming a char
+        // into a number).
+        if (prompt.find("x coordinate") != std::string::npos)
+        {
+          return this->alpha_.find(user_input);
+        }
+        else
+        {
+          return this->to_size_t(user_input);
+        }
       }
       catch (...)
       {
@@ -166,7 +176,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 {
   // Player 1 is false (0) = white (1). Player 2 is true (1) = black (0).
   // Check that the player is moving a piece of the correct color.
-  std::cout << "\n\n--- " << piece.string() << "(" << piece.get_x() << ", " << piece.get_y() << ") ---";
+  std::cout << "\n\n--- " << piece.string() << "(" << this->alpha_[piece.get_x()] << piece.get_y() << ") ---";
 
   if (player == piece.is_white())
   {
@@ -204,8 +214,8 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
           // Get new coordinates.
           user_input.clear();
           std::cout << "\n";
-          x_final = this->get_coordinate("New x Coordinate: ");
-          y_final = this->get_coordinate("New y Coordinate: ");
+          x_final = this->get_coordinate("New x coordinate: ");
+          y_final = this->get_coordinate("New y coordinate: ");
 
           // Move.
           piece.execute(x_final,y_final, *this);
@@ -317,7 +327,7 @@ void Array_Chess_Board::print(void)
 
   for (int i = 0; i < 8; i++)
   {
-    std::cout << "      " << i;
+    std::cout << "      " << this->alpha_[i];
   }
 }
 
