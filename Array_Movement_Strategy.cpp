@@ -169,18 +169,34 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
   size_t y_index;
 
   // If there is no change in movement, then the piece must have not jumped
-  // over any piece.
-  if (dx == 0 && dy == 0)
+  // over any piece. Otherwise, reduce the displacement by one to
+  // exclude the final destination.
+  if (dx == 0)
   {
-    return false;
+    if (dy == 0)
+    {
+      return false;
+    }
+    else
+    {
+      // Do not include the final destination.
+      dy = dy - y_direction;
+    }
+  }
+  else
+  {
+    if (dy != 0)
+    {
+      dy = dy - y_direction;
+    }
+    dx = dx - x_direction;
   }
 
   while (dx != 0 && dy != 0)
   {
-    // Break if at the final position.
+    // Break if at the initial position.
     if (dx == 0 && dy == 0)
     {
-      // Do not check the final position.
       // If there is no nullptr up until this point, then the
       // piece must have not jumped over anything.
       return false;
