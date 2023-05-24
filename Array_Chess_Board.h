@@ -101,14 +101,14 @@ protected:
    * Helper Methods
    **************/
   /**
-   * Prompt the user for a coordinate until the input fits
+   * Prompt the user for coordinates until the input fits
    * requirements.
    *
    * @param[in]         prompt          What to prompt the user
-   * @return            size_t of the user input
+   * @return            An array of the x-y coordinates
    * @exception         quit()          User inputs 'QUIT'
    */
-  size_t get_coordinate (std::string prompt);
+  std::array<size_t, 2> get_coordinates (std::string prompt);
 
   /*************
    * Attributes

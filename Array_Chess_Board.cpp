@@ -63,8 +63,7 @@ void Array_Chess_Board::start(void)
   std::string user_input;
   bool player = false;   // First Player = false
   std::shared_ptr<Chess_Piece> current_piece = nullptr;
-  size_t x_initial;
-  size_t y_initial;
+  std::array<size_t, 2> coordinates;
 
   while (keep_going == true)
   {
@@ -79,10 +78,9 @@ void Array_Chess_Board::start(void)
       // Get coordinates
       user_input.clear();
       std::cout << "\n";
-      x_initial = this->get_coordinate("Choose a x coordinate: ");
-      y_initial = this->get_coordinate("Choose a y coordinate: ");
+      coordinates = this->get_coordinates("Input chess piece coordinates: ");
 
-      current_piece = this->board_[y_initial][x_initial];
+      current_piece = this->board_[coordinates[1]][coordinates[0]];
 
       // Check that the user inputted an existing piece.
       if (current_piece != nullptr)
@@ -122,12 +120,13 @@ void Array_Chess_Board::start(void)
 
 
 //
-// get_coordinate (string)
+// get_coordinates (string)
 //
-size_t Array_Chess_Board::get_coordinate (std::string prompt)
+std::array<size_t, 2> Array_Chess_Board::get_coordinates (std::string prompt)
 {
   bool keep_going = true;
   std::string user_input;
+  std::array<size_t, 2> coordinates;
 
   while (keep_going == true)
   {
@@ -144,25 +143,20 @@ size_t Array_Chess_Board::get_coordinate (std::string prompt)
     {
       try
       {
-        size_t coordinate;
-
-        // X coordinates will require one extra step (transforming a char
-        // into a number).
-        if (prompt.find("x coordinate") != std::string::npos)
-        {
-          return this->alpha_.find(user_input);
-        }
-        else
-        {
-          return this->conversion_strategy_->to_size_t(user_input);
-        }
+        coordinates = this->conversion_strategy_->get_coordinates(user_input);
       }
-      catch (...)
+      catch (String_To_Coordinates_Strategy::invalid_operation & e)
       {
         std::cout << "Invalid input. Try again.\n";
       }
+      catch (...)
+      {
+        std::cout << "Something went wrong. Try again.\n";
+      }
     }
   }
+
+  return coordinates;
 }
 
 
@@ -186,8 +180,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
   {
     bool keep_going = true;
     std::string user_input;
-    size_t x_final;
-    size_t y_final;
+    std::array<size_t, 2> coordinates;
 
     while (keep_going == true)
     {
@@ -214,11 +207,10 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
           // Get new coordinates.
           user_input.clear();
           std::cout << "\n";
-          x_final = this->get_coordinate("New x coordinate: ");
-          y_final = this->get_coordinate("New y coordinate: ");
+          coordinates = this->get_coordinates("Input new coordaintes: ");
 
           // Move.
-          piece.execute(x_final,y_final, *this);
+          piece.execute(coordinates[0], coordinates[1], *this);
           keep_going = false;
           return true;
         }
