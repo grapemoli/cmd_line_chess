@@ -581,6 +581,7 @@
     <ClInclude Include="Movement_Validation_Strategy.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Queen.h" />
+    <ClInclude Include="String_To_Coordinates_Strategy.h" />
     <ClInclude Include="Transform_Chess_Piece.h" />
   </ItemGroup>
   <ItemGroup>

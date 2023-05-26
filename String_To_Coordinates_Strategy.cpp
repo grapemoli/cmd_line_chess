@@ -42,34 +42,44 @@ std::string String_To_Coordinates_Strategy::clean_string(std::string string)
   // second coordinate a comma delimiter.
   std::string clean_string;
 
-  std::stringstream ss;
+  std::istringstream ss;
   ss.clear();
   ss.str("");
   ss.str(string);
 
   std::string token;
 
-  while (std::getline(ss, token))
+  while (ss >> token)
   {
-    // Check that the token is entirely alphanumeric before parsing it.
-    // This will remove parenthesis, etc.
     bool valid = true;
+    std::string temp;
+
+    // Remove commas, parenthesis, other non-alphanumeric values.
     for (int i = 0; i < token.length(); i++)
     {
+
       if (isalnum(token[i]) == 0)
       {
-        valid == false;
+        // Parenthesis or commas are 'valid' inputs that simply need to be removed from the token.
+        if (token[i] != ',' && token[i] != '(' && token[i] != ')' && token[i] != ' ')
+        {
+          valid = false;
+          break;
+        }
+      }
+      else
+      {
+        temp += token[i];
       }
     }
 
-    // Only concatenate the token to the string *if* the token is entirely
-    // alphanumeric.
+    // Add the token to the clean string, with commas as delimiter.
     if (valid == true)
     {
+      token = temp;
       if (clean_string.length() != 0)
       {
-        clean_string += ",";
-        clean_string += token;
+        clean_string = clean_string + "," + token;
       }
       else
       {
@@ -78,11 +88,13 @@ std::string String_To_Coordinates_Strategy::clean_string(std::string string)
     }
   }
 
-  // Check for if the string is formatted as, ex., A4. In which case, format the string as
-  // A,4.
-  if (string.length() == 2 && isalpha(string[0]) != 0 && isdigit(string[1]) != 0)
+  // Check that the string is not in the format of E1, etc.
+  if (clean_string.length() == 2)
   {
-    clean_string = clean_string[0] + "," + clean_string[1];
+    if (isalpha(clean_string[0]) != 0 && isdigit(clean_string[1]) != 0)
+    {
+      clean_string = clean_string.substr(0, 1) + "," + clean_string.substr(1);
+    }
   }
 
   return clean_string;
@@ -112,39 +124,18 @@ bool String_To_Coordinates_Strategy::is_valid(std::string string)
 std::array<size_t, 2> String_To_Coordinates_Strategy::get_coordinates(std::string string)
 { 
   std::array<size_t, 2> coordinates;
-  string = this->clean_string(string);
-  std::cout << "here" << string << std::endl;
 
-  // Parse the string and return the coordinates appropiately.
+  // Get the coordinates.
   if (this->is_valid(string) == false)
   {
     throw invalid_operation();
   }
   else
   {
-    std::stringstream ss;
-    ss.clear();
-    ss.str("");
-
-    ss >> string;
-    std::string token;
-    int i = 0;
-
-    try
-    {
-      // clean_string() uses a comma delimiter.
-      while (std::getline(ss, token, ',')) 
-      {
-        coordinates[i] = this->to_size_t(token);
-        i++;
-      }
-    }
-    catch (...)
-    {
-      throw invalid_operation();
-    }
+    coordinates[0] = this->to_size_t(string.substr(0, 1));
+    coordinates[1] = this->to_size_t(string.substr(2));
   }
-
+  
   return coordinates;
 }
 
@@ -168,6 +159,7 @@ size_t String_To_Coordinates_Strategy::to_size_t(std::string string)
     converter << string;
     converter >> size_t_str;
 
+    converter.clear();
     return size_t_str;
   }
   else

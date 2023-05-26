@@ -80,6 +80,9 @@
     <ClInclude Include="Queen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="String_To_Coordinates_Strategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Transform_Chess_Piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>

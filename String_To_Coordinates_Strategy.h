@@ -88,10 +88,6 @@ public:
    */
   virtual size_t to_size_t (std::string string);
 
-protected:
-  /*************
-   * Helper Methods
-   **************/
   /**
    * Clean the string such all parenthesis and spaces are removed
    * from the string. Note that between the first and second coordinate
@@ -111,8 +107,7 @@ protected:
    */
   virtual bool is_valid(std::string string);
 
-
-
+protected:
   /*************
    * Attributes
    **************/

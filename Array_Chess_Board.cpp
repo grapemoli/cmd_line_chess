@@ -143,6 +143,10 @@ std::array<size_t, 2> Array_Chess_Board::get_coordinates (std::string prompt)
     {
       try
       {
+        user_input = this->conversion_strategy_->clean_string(user_input);
+        
+        std::cout << "User input: " << user_input << '\n';
+
         coordinates = this->conversion_strategy_->get_coordinates(user_input);
       }
       catch (String_To_Coordinates_Strategy::invalid_operation & e)
