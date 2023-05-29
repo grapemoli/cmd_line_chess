@@ -16,6 +16,7 @@
 #include <exception>  // For custom exception: invalid_exception
 #include <sstream>    // For stringstream.
 #include <ctype.h>    // For islanum.
+#include <iostream>   // For iostream.
 
 
 /**
@@ -93,10 +94,10 @@ public:
    * from the string. Note that between the first and second coordinate
    * is a comma delimiter.
    *
-   * @param[in]           string          The string input
+   * @param[in]           string        The string to pass
    * @return              The cleaned string input.
    */
-  virtual std::string clean_string(std::string string);
+  virtual std::string clean_string (std::string string);
 
   /**
    * Check that the passed string is valid for coordinates extraction.
@@ -105,7 +106,7 @@ public:
    * @retvalue           True            The string input is valid
    * @retvalue           False           The string input is invalid
    */
-  virtual bool is_valid(std::string string);
+  virtual bool is_valid (std::string string);
 
 protected:
   /*************

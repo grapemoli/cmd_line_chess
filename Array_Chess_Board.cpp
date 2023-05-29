@@ -132,7 +132,7 @@ std::array<size_t, 2> Array_Chess_Board::get_coordinates (std::string prompt)
   {
     user_input.clear();
     std::cout << prompt;
-    std::cin >> user_input;
+    std::getline(std::cin, user_input);
 
     if (user_input == "QUIT")
     {
@@ -144,14 +144,10 @@ std::array<size_t, 2> Array_Chess_Board::get_coordinates (std::string prompt)
       try
       {
         user_input = this->conversion_strategy_->clean_string(user_input);
-        
-        std::cout << "User input: " << user_input << '\n';
-
-        coordinates = this->conversion_strategy_->get_coordinates(user_input);
       }
       catch (String_To_Coordinates_Strategy::invalid_operation & e)
       {
-        std::cout << "Invalid input. Try again.\n";
+        std::cout << "Invalid input.. Try again.\n";
       }
       catch (...)
       {

@@ -34,7 +34,7 @@ String_To_Coordinates_Strategy::~String_To_Coordinates_Strategy(void)
   String-to-Coordinates Methods
 */
 //
-// clean_string (string)
+// clean_string (std::string)
 //
 std::string String_To_Coordinates_Strategy::clean_string(std::string string)
 {
@@ -42,60 +42,10 @@ std::string String_To_Coordinates_Strategy::clean_string(std::string string)
   // second coordinate a comma delimiter.
   std::string clean_string;
 
-  std::istringstream ss;
-  ss.clear();
-  ss.str("");
-  ss.str(string);
-
   std::string token;
 
-  while (ss >> token)
-  {
-    bool valid = true;
-    std::string temp;
-
-    // Remove commas, parenthesis, other non-alphanumeric values.
-    for (int i = 0; i < token.length(); i++)
-    {
-
-      if (isalnum(token[i]) == 0)
-      {
-        // Parenthesis or commas are 'valid' inputs that simply need to be removed from the token.
-        if (token[i] != ',' && token[i] != '(' && token[i] != ')' && token[i] != ' ')
-        {
-          valid = false;
-          break;
-        }
-      }
-      else
-      {
-        temp += token[i];
-      }
-    }
-
-    // Add the token to the clean string, with commas as delimiter.
-    if (valid == true)
-    {
-      token = temp;
-      if (clean_string.length() != 0)
-      {
-        clean_string = clean_string + "," + token;
-      }
-      else
-      {
-        clean_string += token;
-      }
-    }
-  }
-
-  // Check that the string is not in the format of E1, etc.
-  if (clean_string.length() == 2)
-  {
-    if (isalpha(clean_string[0]) != 0 && isdigit(clean_string[1]) != 0)
-    {
-      clean_string = clean_string.substr(0, 1) + "," + clean_string.substr(1);
-    }
-  }
+  std::cout << string;
+  
 
   return clean_string;
 }
