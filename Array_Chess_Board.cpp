@@ -115,6 +115,9 @@ void Array_Chess_Board::start(void)
     {
       std::cout << "\nSomething went wrong. Try again.";
     }
+
+    // Ignore other inputs; clear the stream.
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
 }
 
@@ -208,6 +211,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
         { 
           // Get new coordinates.
           std::cout << "\n";
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');   // Clear the stream.
           coordinates = this->get_coordinates("Input new coordinates('QUIT' to quit): ");
 
           // Move.
@@ -218,7 +222,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
       }
       catch (Chess_Board::quit & e)
       {
-        return false;
+        // Do nothing.
       }
       catch (Chess_Piece::invalid_move & e)
       {
