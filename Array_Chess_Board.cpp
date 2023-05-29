@@ -144,6 +144,8 @@ std::array<size_t, 2> Array_Chess_Board::get_coordinates (std::string prompt)
       try
       {
         user_input = this->conversion_strategy_->clean_string(user_input);
+        coordinates = this->conversion_strategy_->get_coordinates(user_input);
+        keep_going = false;
       }
       catch (String_To_Coordinates_Strategy::invalid_operation & e)
       {
@@ -170,7 +172,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 {
   // Player 1 is false (0) = white (1). Player 2 is true (1) = black (0).
   // Check that the player is moving a piece of the correct color.
-  std::cout << "\n\n--- " << piece.string() << "(" << this->alpha_[piece.get_x()] << piece.get_y() << ") ---";
+  std::cout << "\n\n### " << piece.string() << "(" << this->alpha_[piece.get_x()] << piece.get_y() << ") ###";
 
   if (player == piece.is_white())
   {
@@ -188,7 +190,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 
       try
       {
-        std::cout << "\n1.Move\n2. View valid moves\n00.Go back (or 'QUIT')\nChoose an option : ";
+        std::cout << "\n1.Move\n2. View valid moves\n00.Go back (or 'QUIT')\nChoose an option: ";
         std::cin >> user_input;
 
         // Check if the user wants to go back.
@@ -205,9 +207,8 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
         else if (user_input == "1")
         { 
           // Get new coordinates.
-          user_input.clear();
           std::cout << "\n";
-          coordinates = this->get_coordinates("Input new coordaintes: ");
+          coordinates = this->get_coordinates("Input new coordinates('QUIT' to quit): ");
 
           // Move.
           piece.execute(coordinates[0], coordinates[1], *this);

@@ -180,11 +180,11 @@ void Pawn::list_valid_moves(Chess_Board & board)
   // These one-liners look complex, but they are simple in nature: *only* print a
   // coordinate if it is a valid coordindate.
   // Typical Movement: (x, y -/+ 1)
-  this->movement_strategy_.check_pawn_movement(this->x_, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "(" << this->x_ << ", " << this->y_ + y_movement << ")" : std::cout << "";
+  this->movement_strategy_.check_pawn_movement(this->x_, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "- " << this->alpha_[this->x_] << this->y_ + y_movement : std::cout << "";
 
   // Pawn Eating Movement, pt. 1: (x + 1, y -/+ 1)
-  this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "(" << this->x_ + 1 << ", " << this->y_ + y_movement << ")" : std::cout << "";
+  this->movement_strategy_.check_pawn_movement(this->x_ + 1, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "- " << this->alpha_[this->x_ + 1] << this->y_ + y_movement : std::cout << "";
 
   // Pawn Eating Movement, pt. 2: (x - 1, y -/+ 1)
-  this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "(" << this->x_ - 1 << ", " << this->y_ + y_movement << ")" : std::cout << "";
+  this->movement_strategy_.check_pawn_movement(this->x_ - 1, this->y_ + y_movement, *this, board) ? std::cout << "\n" << "- " << this->alpha_[this->x_ - 1] << this->y_ + y_movement : std::cout << "";
 }

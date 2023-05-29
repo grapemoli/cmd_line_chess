@@ -193,6 +193,9 @@ protected:
 
   /// The string representation of this class on the board.
   std::string string_representation_;
+
+  /// Conversion from x-alphabet coordinates to numbers (defined by the index).
+  std::string alpha_ = "ABCDEFGH";
 };
 
 

@@ -42,10 +42,58 @@ std::string String_To_Coordinates_Strategy::clean_string(std::string string)
   // second coordinate a comma delimiter.
   std::string clean_string;
 
-  std::string token;
+  std::stringstream ss;
+  ss.clear();
+  ss.str("");
+  ss.str(string);
 
-  std::cout << string;
-  
+  std::string token;
+  std::string temp;
+  bool valid = true;
+
+  while (ss >> token)
+  {
+    valid = true;
+    temp.clear();
+
+    // Search through the token to make sure one of the characters is not a comma or parenthesis.
+    for (int i = 0; i < token.length(); i++)
+    {
+      if (isalnum(token[i]) == 0)
+      {
+        // "Valid" inputs are: commas, parenthesis.
+        if (token[i] != ',' && token[i] != '(' && token[i] != ')')
+        {
+          // Invalid input.
+          valid = false;
+          break;
+        }
+      }
+      else
+      {
+        temp += token.substr(i, 1);
+      }
+    }
+
+    // ONLY parse the -validified- token if the valid flag is true.
+    if (valid == true)
+    {
+      if (clean_string.length() != 0)
+      {
+        clean_string = clean_string +  "," + temp;
+      }
+      else
+      {
+        clean_string = temp;
+      }
+    }
+  }
+
+  // Check for inputs such as A4, where you need to split the token to become A,4.
+  if (clean_string.length() == 2 && isalpha(clean_string[0]) != 0 && isdigit(clean_string[1]) != 0)
+  {
+    clean_string = clean_string.substr(0, 1) + "," + clean_string.substr(1);
+  }
 
   return clean_string;
 }
