@@ -34,7 +34,7 @@ public:
    * @param[in]         x             The x position
    * @param[in]         strategy      Movement_Validation_Strategy reference
    */
-  King (bool is_white, size_t x, Movement_Validation_Strategy& strategy);
+  King (bool is_white, Movement_Validation_Strategy & strategy);
 
   /// Destructor.
   ~King (void);
@@ -48,7 +48,7 @@ public:
    * @param[in]         y             New y position
    * @param[in]         board         The Chess_Board instance
    */
-  void execute(size_t x, size_t y, Chess_Board& board);
+  void execute (size_t x, size_t y, Chess_Board & board);
 
   /**
    * List the possible moves that can be made, taking into
@@ -56,27 +56,14 @@ public:
    *
    * @param[in]         board         Chess_Board reference
    */
-  void list_valid_moves(Chess_Board& board);
+  void list_valid_moves (Chess_Board & board);
 
   /**
    * Enable double dispatching. Used for collision detection.
    *
    * @param[in]         v             Chess_Piece_Visitor instance
    */
-  void accept(Chess_Piece_Visitor& v);
-
-private:
-  /*************
-   * Helper Methods
-   **************/
-   /**
-    * Check if the Pawn can transform (i.e., reaches the end of the board),
-    * and prompt the user for the piece they wish to transform the pawn
-    * into. Then, transform the pawn with the new piece.
-    *
-    * @param[in]         board         Chess_Board reference
-    */
-  void transform(Chess_Board& board);
+  void accept (Chess_Piece_Visitor & v);
 };
 
 
