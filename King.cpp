@@ -89,21 +89,82 @@ void King::list_valid_moves (Chess_Board & board)
 {
   // Kings can move in the square around them.
   // Check all variations where x is incremented.
-  this->movement_strategy_.check_king_movement(this->x_ + 1, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ : std::cout << "";
-  this->movement_strategy_.check_king_movement(this->x_ + 1, this->y_ + 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ + 1 : std::cout << "";
-  this->movement_strategy_.check_king_movement(this->x_ + 1, this->y_ - 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ - 1 : std::cout << "";
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_ + 1, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_;
+  }
+
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_ + 1, this->y_ + 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ + 1 : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ + 1;
+  }
+
+  try
+  {
+      this->movement_strategy_.check_king_movement(this->x_ + 1, this->y_ - 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ - 1 : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ - 1;
+
+  }
 
   // Check all remaining variations where y is incremented.
-  this->movement_strategy_.check_king_movement(this->x_, this->y_ + 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ + 1 : std::cout << "";
-  this->movement_strategy_.check_king_movement(this->x_ - 1, this->y_ + 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ + 1 : std::cout << "";
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_, this->y_ + 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ + 1 : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ + 1;
+  }
+
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_ - 1, this->y_ + 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ + 1 : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ + 1;
+  }
 
   // Check all remaining variations where x is decremented.
-  this->movement_strategy_.check_king_movement(this->x_ - 1, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ : std::cout << "";
-  this->movement_strategy_.check_king_movement(this->x_ - 1, this->y_ - 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ - 1: std::cout << "";
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_ - 1, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_;
+  }
+
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_ - 1, this->y_ - 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ - 1 : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ - 1;
+  }
 
   // Check the remaining variations where y is decremented.
-  this->movement_strategy_.check_king_movement(this->x_, this->y_ - 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ - 1 : std::cout << "";
-
+  try
+  {
+    this->movement_strategy_.check_king_movement(this->x_, this->y_ - 1, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ - 1 : std::cout << "";
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ - 1;
+  }
 }
+
 
 

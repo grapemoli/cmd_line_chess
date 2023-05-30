@@ -106,52 +106,99 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << this->y_
+      std::cout << "\n" << "-" << this->alpha_[x] << this->y_;
     }
   }
 
   for (int x = this->x_; x < 8; x++)
   {
-    this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << this->y_ : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << this->y_ : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[x] << this->y_;
+    }
   }
 
   // Print all valid vertical moves.
   for (int y = 0; y < this->y_; y++)
   {
-    this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << y : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << y : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[this->x_] << y;
+    }
   }
 
   for (int y = this->y_; y < 8; y++)
   {
-    this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << y : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(this->x_, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[this->x_] << y : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+       std::cout << "\n" << "-" << this->alpha_[this->x_] << y;
+    }
   }
 
   // Print all valid diagonal moves.
   // Increasing x and y.
   for (int x = this->x_, y = this->y_; x < 8, y < 8; x++, y++)
   {
-    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[x] << y;
+    }
   }
 
   // Increasing x, decreasing y.
   for (int x = this->x_, y = this->y_; x < 8, y > 0; x++, y--)
   {
-    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[x] << y;
+    }
   }
 
   // Decreasing x, increasing y.
   for (int x = this->x_, y = this->y_; x > 0, y < 8; x--, y++)
   {
-    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[x] << y;
+    }
   }
 
   // Decreasing x, decreasing y.
   for (int x = this->x_, y = this->y_; x > 0, y > 0; x--, y--)
   {
-    this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(x, y, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << y : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[x] << y;
+    }
   }
-
-
 }
 
 
