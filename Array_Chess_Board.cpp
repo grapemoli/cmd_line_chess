@@ -190,7 +190,7 @@ bool Array_Chess_Board::move(Chess_Piece & piece, bool player)
 
       try
       {
-        std::cout << "\n1.Move\n2. View valid moves\n00.Go back (or 'QUIT')\nChoose an option: ";
+        std::cout << "\n1. Move\n2. View valid moves\n00. Go back (or 'QUIT')\nChoose an option: ";
         std::cin >> user_input;
 
         // Check if the user wants to go back.
@@ -344,6 +344,8 @@ void Array_Chess_Board::build_board(void)
   this->board_[p_w->get_y()][p_w->get_x()] = p_w;
   std::shared_ptr<Pawn> p_b = std::make_shared<Pawn>(false, 1, this->movement_strategy_);
   this->board_[p_b->get_y()][p_b->get_x()] = p_b;
+  std::shared_ptr<Pawn> p_w2 = std::make_shared<Pawn>(true, 1, this->movement_strategy_);
+  this->board_[p_w2->get_y()][p_w2->get_x()] = p_w2;
   
   std::shared_ptr<Queen> q_w = std::make_shared<Queen>(true, this->movement_strategy_);
   this->board_[q_w->get_y()][q_w->get_x()] = q_w;
