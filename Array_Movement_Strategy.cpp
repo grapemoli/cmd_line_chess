@@ -26,7 +26,8 @@
 // Array_Movement_Strategy ()
 //
 Array_Movement_Strategy::Array_Movement_Strategy(void)
-  :Movement_Validation_Strategy()
+  :game_over_(),
+  Movement_Validation_Strategy()
 {}
 
 
@@ -91,6 +92,7 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
       // You cannot eat from the same color.
       if (this->is_collide(x, y, piece, board) == true && board.get_chess_piece(x, y)->is_white() != piece.is_white())
       {
+        check_game_over(x, y, board);
         return true;
       }
       else
@@ -107,6 +109,7 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
       // You cannot eat from the same color.
       if (this->is_collide(x, y, piece, board) == true && board.get_chess_piece(x, y)->is_white() != piece.is_white())
       {
+        check_game_over(x, y, board);
         return true;
       }
       else
@@ -306,6 +309,8 @@ const bool Array_Movement_Strategy::valid_collision(size_t x, size_t y, Chess_Pi
     }
     else
     {
+      // Check for game over before return true.
+      check_game_over(x, y, board);
       return true;
     }
   }
@@ -316,3 +321,17 @@ const bool Array_Movement_Strategy::valid_collision(size_t x, size_t y, Chess_Pi
   }
 }
 
+
+//
+// check_game_over (size_t, size_t, Chess_Board &)
+//
+void Array_Movement_Strategy::check_game_over(size_t x, size_t y, Chess_Board & board)
+{
+  board.get_chess_piece(x, y)->accept(this->game_over_);
+  
+  // If the victim is a King, then it's game over!
+  if (this->game_over_.get_result() == true)
+  {
+    throw game_over();
+  }
+}

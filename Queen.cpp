@@ -100,7 +100,14 @@ void Queen::list_valid_moves(Chess_Board& board)
   // Print all valid horizontal moves.
   for (int x = 0; x < this->x_; x++)
   {
-    this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << this->y_ : std::cout << "";
+    try
+    {
+      this->movement_strategy_.check_queen_movement(x, this->y_, *this, board) ? std::cout << "\n" << "-" << this->alpha_[x] << this->y_ : std::cout << "";
+    }
+    catch (Movement_Validation_Strategy::game_over & e)
+    {
+      std::cout << "\n" << "-" << this->alpha_[x] << this->y_
+    }
   }
 
   for (int x = this->x_; x < 8; x++)

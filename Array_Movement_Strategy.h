@@ -12,6 +12,7 @@
 #define _ARRAY_MOVEMENT_STRATEGY_H_
 
 #include "Movement_Validation_Strategy.h"
+#include "Game_Over_Visitor.h"
 #include <cmath>        // For absolute value.
 
 // Forward Declarations.
@@ -116,6 +117,17 @@ private:
   * Helper Methods
   ***********/
   /**
+   * Check if the game is over (this is defined as the victim of the x-y coordinate is a
+   * King. Uses the Game_Over_Visitor class.
+   * 
+   * @param[in]         x             The to-be x placement
+   * @param[in]         y             The to-be y placement
+   * @param[in]         board         The Chess_Board reference
+   * @exception         game_over
+   */
+  void check_game_over (size_t x, size_t y, Chess_Board & board);
+
+  /**
    * Check if there are any pieces in between the path of movement.
    * 
    * @param[in]         x             The new x coordinate
@@ -138,6 +150,10 @@ private:
    * @retvalue          False         Collision occurs and is not valid
    */
   const bool valid_collision (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
+
+private:
+  // Game over stragegy.
+  Game_Over_Visitor game_over_;
 };
 
 

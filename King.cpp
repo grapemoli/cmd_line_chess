@@ -11,7 +11,6 @@
 #include "Chess_Board.h"
 #include "Movement_Validation_Strategy.h"
 #include "Chess_Piece_Visitor.h"
-#include "Game_Over_Visitor.h"
 
 
 /*
@@ -62,6 +61,10 @@ void King::execute(size_t x, size_t y, Chess_Board& board)
     {
       throw invalid_move();
     }
+  }
+  catch (Movement_Validation_Strategy::game_over & e)
+  {
+    throw game_over();
   }
   catch (Movement_Validation_Strategy::invalid_move & e)
   {
