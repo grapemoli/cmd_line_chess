@@ -115,9 +115,6 @@ void Array_Chess_Board::start(void)
     {
       std::cout << "\nSomething went wrong. Try again.";
     }
-
-    // Ignore other inputs; clear the stream.
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
 }
 

@@ -558,6 +558,8 @@
     </ClCompile>
     <ClCompile Include="Game_Over_Visitor.cpp">
     </ClCompile>
+    <ClCompile Include="King.cpp">
+    </ClCompile>
     <ClCompile Include="Movement_Validation_Strategy.cpp">
     </ClCompile>
     <ClCompile Include="Pawn.cpp">
@@ -578,6 +580,7 @@
     <ClInclude Include="Chess_Piece.h" />
     <ClInclude Include="Chess_Piece_Visitor.h" />
     <ClInclude Include="Game_Over_Visitor.h" />
+    <ClInclude Include="King.h" />
     <ClInclude Include="Movement_Validation_Strategy.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Queen.h" />

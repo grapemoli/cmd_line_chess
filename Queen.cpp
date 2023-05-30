@@ -21,9 +21,9 @@
 // Queen (bool, Movement_Validation_Strategy &)
 //
 Queen::Queen(bool is_white, Movement_Validation_Strategy & strategy)
-  :Transform_Chess_Piece(is_white, 4, "~Q~", strategy)
+  :Transform_Chess_Piece(is_white, 3, "~Q~", strategy)
 {
-  // All Queens are set on x = 4.
+  // All Queens are set on x = 3.
   if (this->is_white_ == true)
   {
     this->string_representation_ = "-Q-";

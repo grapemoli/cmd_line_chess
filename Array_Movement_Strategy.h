@@ -109,7 +109,7 @@ public:
    * @retvalue           True          Valid
    * @retvalue           False         Not valid
    */
-  //const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
+  const bool check_king_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 
 private:
   /**********
@@ -122,8 +122,22 @@ private:
    * @param[in]         y             The new y coordinate
    * @param[in]         piece         Chess_Piece reference
    * @param[in]         board         Chess_Board reference
+   * @retvalue          True          A piece is jumped over
+   * @retvalue          False         A piece is not jumped over
    */
   const bool jump_over (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
+
+  /**
+   * Check that the collision is valid. 
+   *
+   * @param[in]         x             The new x coordinate
+   * @param[in]         y             The new y coordinate
+   * @param[in]         piece         Chess_Piee reference
+   * @param[in]         board         Chess_Board reference
+   * @retvalue          True          Collision occurs and is valid (or does not occur at all)
+   * @retvalue          False         Collision occurs and is not valid
+   */
+  const bool valid_collision (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board);
 };
 
 

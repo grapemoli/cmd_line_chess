@@ -59,12 +59,28 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
   // y-coordinates.
   if (piece.is_white() == true && y == piece.get_y() - 1 && x == piece.get_x())   // White
   {
-    return true;
+    // Pawns cannot eat while moving forwards.
+    if (this->is_collide(x, y, piece, board) == false)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 
   if (piece.is_white() == false && y == piece.get_y() + 1 && x == piece.get_x())  // Black
   {
-    return true;
+    // Pawns cannot eat while moving forwards.
+    if (this->is_collide(x, y, piece, board) == false)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 
   // A pawn that eats other pieces can move forward diagonally.
@@ -72,9 +88,14 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
   {
     if (x == piece.get_x() - 1 || x == piece.get_x() + 1)
     {
-      if (this->is_collide(x, y, piece, board) == true)
+      // You cannot eat from the same color.
+      if (this->is_collide(x, y, piece, board) == true && board.get_chess_piece(x, y)->is_white() != piece.is_white())
       {
         return true;
+      }
+      else
+      {
+        return false;
       }
     }
   }
@@ -83,9 +104,14 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
   {
     if (x == piece.get_x() || x == piece.get_x() + 1)
     {
-      if (this->is_collide(x, y, piece, board) == true)
+      // You cannot eat from the same color.
+      if (this->is_collide(x, y, piece, board) == true && board.get_chess_piece(x, y)->is_white() != piece.is_white())
       {
         return true;
+      }
+      else
+      {
+        return false;
       }
     }
   }
@@ -120,7 +146,7 @@ const bool Array_Movement_Strategy::check_queen_movement(size_t x, size_t y, Che
   {
     if (this->jump_over(x, y, piece, board) == false)
     {
-      return true;
+      return (this->valid_collision(x, y, piece, board));
     }
   }
 
@@ -128,7 +154,7 @@ const bool Array_Movement_Strategy::check_queen_movement(size_t x, size_t y, Che
   {
     if (this->jump_over(x, y, piece, board) == false)
     {
-      return true;
+      return (this->valid_collision(x, y, piece, board));
     }
   }
 
@@ -138,11 +164,40 @@ const bool Array_Movement_Strategy::check_queen_movement(size_t x, size_t y, Che
   {
     if (this->jump_over(x, y, piece, board) == false)
     {
-      return true;
+      // Check for collisions (only valid if colliding with the opposite team).
+      // Also only valid if not colliding at all.
+      return (this->valid_collision(x, y, piece, board));
     }
   }
 
   // If none of the above are true, then must be false.
+  return false;
+}
+
+
+//
+// check_king_movement (size_t, size_t, Chess_Piece &, Chess_Board &)
+//
+const bool Array_Movement_Strategy::check_king_movement (size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
+{
+  // Check for border collision.
+  if (x > 7 || y > 7)
+  {
+    return false;
+  }
+
+  const int dx = piece.get_x() - x;
+  const int dy = piece.get_y() - y;
+
+  // Displacement for a King is always 1 or 0.
+  if (std::abs(dx) <= 1 && std::abs(dy) <= 1)
+  {
+
+  }
+
+
+
+  // If any of the above is not true, then this move must be invalid.
   return false;
 }
 
@@ -227,3 +282,31 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
   // jumped over any piece.
   return false;
 }
+
+
+
+
+/*
+  valid_collision (size_t, size_t, Chess_Piece &, Chess_Board &)
+*/
+const bool Array_Movement_Strategy::valid_collision(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
+{
+  if (this->is_collide(x, y, piece, board) == true)
+  {
+    // You cannot eat a chess piece of the same color.
+    if (board.get_chess_piece(x, y)->is_white() == piece.is_white())
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+  else
+  {
+    // No collision is also valid.
+    return true;
+  }
+}
+
