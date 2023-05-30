@@ -106,7 +106,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << this->y_;
+      std::cout << "\n" << "!! " << this->alpha_[x] << this->y_;
     }
   }
 
@@ -118,7 +118,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << this->y_;
+      std::cout << "\n" << "!! " << this->alpha_[x] << this->y_;
     }
   }
 
@@ -131,7 +131,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[this->x_] << y;
+      std::cout << "\n" << "!! " << this->alpha_[this->x_] << y;
     }
   }
 
@@ -143,7 +143,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-       std::cout << "\n" << "-" << this->alpha_[this->x_] << y;
+       std::cout << "\n" << "!! " << this->alpha_[this->x_] << y;
     }
   }
 
@@ -157,7 +157,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << y;
+      std::cout << "\n" << "!! " << this->alpha_[x] << y;
     }
   }
 
@@ -170,7 +170,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << y;
+      std::cout << "\n" << "!! " << this->alpha_[x] << y;
     }
   }
 
@@ -183,7 +183,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << y;
+      std::cout << "\n" << "!! " << this->alpha_[x] << y;
     }
   }
 
@@ -196,7 +196,7 @@ void Queen::list_valid_moves(Chess_Board& board)
     }
     catch (Movement_Validation_Strategy::game_over & e)
     {
-      std::cout << "\n" << "-" << this->alpha_[x] << y;
+      std::cout << "\n" << "!! " << this->alpha_[x] << y;
     }
   }
 }

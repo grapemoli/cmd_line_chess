@@ -95,7 +95,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ + 1] << this->y_;
   }
 
   try
@@ -104,7 +104,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ + 1;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ + 1] << this->y_ + 1;
   }
 
   try
@@ -113,7 +113,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_ + 1] << this->y_ - 1;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ + 1] << this->y_ - 1;
 
   }
 
@@ -124,7 +124,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ + 1;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_] << this->y_ + 1;
   }
 
   try
@@ -133,7 +133,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ + 1;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ - 1] << this->y_ + 1;
   }
 
   // Check all remaining variations where x is decremented.
@@ -143,7 +143,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ - 1] << this->y_;
   }
 
   try
@@ -152,7 +152,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_ - 1] << this->y_ - 1;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ - 1] << this->y_ - 1;
   }
 
   // Check the remaining variations where y is decremented.
@@ -162,7 +162,7 @@ void King::list_valid_moves (Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "-" << this->alpha_[this->x_] << this->y_ - 1;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_] << this->y_ - 1;
   }
 }
 

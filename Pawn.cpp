@@ -186,7 +186,7 @@ void Pawn::list_valid_moves(Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "- " << this->alpha_[this->x_] << this->y_ + y_movement;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_] << this->y_ + y_movement;
   }
 
   // Pawn Eating Movement, pt. 1: (x + 1, y -/+ 1)
@@ -196,7 +196,7 @@ void Pawn::list_valid_moves(Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "- " << this->alpha_[this->x_ + 1] << this->y_ + y_movement;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ + 1] << this->y_ + y_movement;
   }
 
   // Pawn Eating Movement, pt. 2: (x - 1, y -/+ 1)
@@ -206,6 +206,6 @@ void Pawn::list_valid_moves(Chess_Board & board)
   }
   catch (Movement_Validation_Strategy::game_over & e)
   {
-    std::cout << "\n" << "- " << this->alpha_[this->x_ - 1] << this->y_ + y_movement;
+    std::cout << "\n" << "!! " << this->alpha_[this->x_ - 1] << this->y_ + y_movement;
   }
 }
