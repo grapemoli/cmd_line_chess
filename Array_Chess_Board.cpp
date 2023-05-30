@@ -12,6 +12,7 @@
 #include "Chess_Piece.h"
 #include "Pawn.h"
 #include "Queen.h"
+#include "King.h"
 #include "Transform_Chess_Piece.h"
 
 
@@ -351,4 +352,9 @@ void Array_Chess_Board::build_board(void)
   this->board_[q_w->get_y()][q_w->get_x()] = q_w;
   std::shared_ptr<Queen> q_b = std::make_shared<Queen>(false, this->movement_strategy_);
   this->board_[q_b->get_y()][q_b->get_x()] = q_b;
+
+  std::shared_ptr<King> k_b = std::make_shared<King>(false, this->movement_strategy_);
+  this->board_[k_b->get_y()][k_b->get_x()] = k_b;
+  std::shared_ptr<King> k_w = std::make_shared<King>(true, this->movement_strategy_);
+  this->board_[k_w->get_y()][k_w->get_x()] = k_w;
 }

@@ -192,10 +192,16 @@ const bool Array_Movement_Strategy::check_king_movement (size_t x, size_t y, Che
   // Displacement for a King is always 1 or 0.
   if (std::abs(dx) <= 1 && std::abs(dy) <= 1)
   {
-
+    // Check for collisions.
+    if (this->valid_collision(x, y, piece, board) == true)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
-
-
 
   // If any of the above is not true, then this move must be invalid.
   return false;
@@ -286,9 +292,9 @@ const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & 
 
 
 
-/*
-  valid_collision (size_t, size_t, Chess_Piece &, Chess_Board &)
-*/
+//
+// valid_collision (size_t, size_t, Chess_Piece &, Chess_Board &)
+//
 const bool Array_Movement_Strategy::valid_collision(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
 {
   if (this->is_collide(x, y, piece, board) == true)

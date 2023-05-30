@@ -41,14 +41,32 @@ King::~King(void)
 
 
 /*
-  Execution Methods
+  Movement Methods
 */
 //
 // execute (size_t, size_t, Chess_Board &)
 //
 void King::execute(size_t x, size_t y, Chess_Board& board)
 {
-  // Go forward, as always.
+  const bool valid_move = this->movement_strategy_.check_king_movement(x, y, *this, board);
+  try
+  {
+    if (valid_move == true)
+    {
+      // Set the king position on the board -and- the property.
+      board.set_chess_piece(x, y, *this);
+      this->x_ = x;
+      this->y_ = y;
+    }
+    else
+    {
+      throw invalid_move();
+    }
+  }
+  catch (Movement_Validation_Strategy::invalid_move & e)
+  {
+    throw invalid_move();
+  }
 }
 
 

@@ -71,9 +71,6 @@ void Queen::execute(size_t x, size_t y, Chess_Board & board)
   {
     if (valid_move == true)
     {
-      const bool is_collide = this->movement_strategy_.is_collide(x, y, *this, board);
-
-      // Check that collisions are valid (eating the other team).
       // Set the queen position on the board -and- the property.
       board.set_chess_piece(x, y, *this);
       this->x_ = x;
