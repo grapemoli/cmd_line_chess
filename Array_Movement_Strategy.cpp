@@ -54,6 +54,20 @@ const bool Array_Movement_Strategy::check_pawn_movement(size_t x, size_t y, Ches
     return false;
   }
 
+  // A pawn, if having no prior moves, can move *two* spaces!
+  if (piece.get_actions().size() == 0)
+  {
+    if (piece.is_white() == true && y == piece.get_y() - 2)
+    {
+      return true;
+    }
+
+    if (piece.is_white() == false && y == piece.get_y() + 2)
+    {
+      return true;
+    }
+  }
+
   // A pawn that does not eat other pieces can only move forward.
   // White pawns' 'forward movement' result in decrementing y-coordinates,
   // while black pawns' 'forward movement' result in incrementing 
@@ -217,7 +231,7 @@ const bool Array_Movement_Strategy::check_king_movement (size_t x, size_t y, Che
 */
 //
 // jump_over (size_t, size_t, Chess_Piece &, Chess_Board &)
-//
+//pawn
 const bool Array_Movement_Strategy::jump_over(size_t x, size_t y, Chess_Piece & piece, Chess_Board & board)
 {
   // Check that there are no pieces in between the path of movement and 
