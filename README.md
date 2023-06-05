@@ -9,6 +9,8 @@
 6. With the UI, reflect the board's printing such that the player who is playing is on the bottom
 7. Letter = x, Number = y system ✔️
 8. Check for moving into check
+9. Pawn (+2) movement 
+10. Checkmate check
 
 ## Savepoints
 1. Create UML ✔️
@@ -22,6 +24,20 @@
 10. Optimize the physical representation of the board
 
 ## Algorithms & Implementations
+### Checkmate Check 
+Only check if a check is detected.
+
+1. Get the king's coordinates, and manipulate them to get the appropiate square around the king. Store in a 2D array ( (x,y), (x,y), ...,).
+2. Check if pieces of the opposite team can hit all pieces in the square around the king. The alogorithm is pretty brute force:
+- Store an array of booleans. If a (true) (for the coordinate in the 2D array being a valid move) is returned from a Chess piece, break. 
+- This will be a double for-loop: for every board piece, check across all coordinates in the array. 
+- Check the array of booleans. If there is a false, there is no checkmate. If there are all trues then there is a checkmate. 
+
+Things to consider:
+1. If a piece is occupying a placement in the square and is of the same color as the King, then "true" is returned. 
+2. If a piece is occupying a placement in the square and is of the different color, then this placement is considered as "false."
+
+
 ### Support for mulitple methods of position input
 The following input styles are sought to be supported in this application: 
 1. Algebraic-style notation (ex. A1; H 3; H,3)
