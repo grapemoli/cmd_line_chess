@@ -15,7 +15,7 @@
 //#include "Rook.h"
 //#include "Bishop.h"
 #include "Queen.h"
-//#include "King.h"
+#include "King.h"
 //#include "Knight.h"
 
 
