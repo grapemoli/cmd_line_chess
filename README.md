@@ -9,8 +9,8 @@
 6. With the UI, reflect the board's printing such that the player who is playing is on the bottom
 7. Letter = x, Number = y system ✔️
 8. Check for moving into check
-9. Pawn (+2) movement 
-10. Checkmate check
+9. Pawn (+2) movement ✔️
+10. Checkmate check 👈
 
 ## Savepoints
 1. Create UML ✔️
