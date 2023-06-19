@@ -27,6 +27,19 @@
 ### Checkmate Check 
 Only check if a check is detected.
 
+Returns: true (checkmate), false (no checkmate)
+1. Get the king's coordinates.
+2. Get the square around the king. Create a 2D array of booleans that represents the square around the king.
+3. For the main offender (the piece that places the King in check), check that it can't/can be eaten. If it can be eaten, NO CHECKMATE. If it can't, continue...
+4. Check for pieces that occupy the square.
+- If the piece is of the same color, cross out the availability of the square in the 2D array.
+- If the piece is of a different color, store this position. This position needs to be checked for if it's covered by another opposing piece. (If not, this place is avaliable, no checkmate. If covered, this place is not available, checkmate).
+- If the square is taken, checkmate. If not, continue...
+6. 2D Array: For every placement on the board, check for if a piece occupies the board.
+- If a piece occupies the board, then check if it covers any portion of the square. Mark appropiately.
+7. At the end, check the 2D array of booleans. If it's full of true's, then checkmate.
+  
+
 1. Get the king's coordinates, and manipulate them to get the appropiate square around the king. Store in a 2D array ( (x,y), (x,y), ...,).
 2. Check if pieces of the opposite team can hit all pieces in the square around the king. The alogorithm is pretty brute force:
 - Store an array of booleans. If a (true) (for the coordinate in the 2D array being a valid move) is returned from a Chess piece, break. 
