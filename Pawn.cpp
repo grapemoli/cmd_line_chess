@@ -177,6 +177,12 @@ void Pawn::list_valid_moves(Chess_Board & board)
   // piece needs to move in (white moves -y, black moves +y).
   const int y_movement = 1 - (2 * this->is_white_);
 
+  // Print +2 movement of the pawn IF this is the pawn's first move.
+  if (this->actions_.size() == 0)
+  {
+    this->movement_strategy_.check_pawn_movement(this->x_, this->y_ + (y_movement*2), *this, board) ? std::cout << "\n"  << "- " << this->alpha_[this->x_] << this->y_ + (2*y_movement) : std::cout << "";
+  }
+
   // These one-liners look complex, but they are simple in nature: *only* print a
   // coordinate if it is a valid coordindate.
   // Typical Movement: (x, y -/+ 1)

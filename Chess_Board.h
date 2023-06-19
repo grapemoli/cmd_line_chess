@@ -205,7 +205,7 @@ protected:
   /// Strategy for movement.
   Movement_Validation_Strategy & movement_strategy_;
 
-  // Strategy for string to coordinates conversion.
+  /// Strategy for string to coordinates conversion.
   std::shared_ptr<String_To_Coordinates_Strategy> conversion_strategy_;
 };
 

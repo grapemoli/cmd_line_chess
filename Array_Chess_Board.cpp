@@ -87,6 +87,7 @@ void Array_Chess_Board::start(void)
       if (current_piece != nullptr)
       {
         bool moved = this->move(*current_piece, player);
+        this->moves_.push(current_piece);
 
         // Switch players.
         if (moved == true)
